@@ -1,0 +1,44 @@
+{
+    "name": "rmunate/laravel_helpers",
+    "description": "Laravel helper management standard by classes.",
+    "keywords": [
+        "artisan",
+        "laravel",
+        "helpers",
+        "rmunate"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Rmunate\\LaravelHelpers\\": "src/"
+        },
+        "files": [
+            "src/Helper.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Raul Mauricio Uñate Castro",
+            "email": "raulmauriciounate@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4 || ^8.0"
+    },
+    "require-dev": {
+
+    },
+    "extra" : {
+        "branch-alias" : {
+            "dev-main": "1.0.x-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Rmunate\\LaravelHelpers\\HelpersServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
