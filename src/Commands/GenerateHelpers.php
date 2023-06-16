@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands;
+namespace Rmunate\LaravelHelpers\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
