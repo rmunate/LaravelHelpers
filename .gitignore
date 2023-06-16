@@ -1,0 +1,11 @@
+src/Presentación.pptx
+/vendor/
+/.fleet
+/.idea
+/.vscode
+/.DS_Store
+vendor
+.fleet
+.idea
+.vscode
+.DS_Store

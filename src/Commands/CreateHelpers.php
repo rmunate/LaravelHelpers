@@ -25,9 +25,9 @@ class CreateHelpers extends Command
         $stub = <<<PHP
         <?php
 
-        use Rmunate\LaravelHelpers\BaseHelpers;
-
         namespace App\Helpers;
+
+        use Rmunate\LaravelHelpers\BaseHelpers;
 
         class {$className} extends BaseHelpers
         {
