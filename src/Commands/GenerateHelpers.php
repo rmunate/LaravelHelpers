@@ -72,9 +72,9 @@ class GenerateHelpers extends Command
         $content = <<<PHP
         <?php
 
-        use Rmunate\LaravelHelpers\BaseHelpers;
-
         namespace {$namespace};
+
+        use Rmunate\LaravelHelpers\BaseHelpers;
 
         class {$className} extends BaseHelpers
         {
@@ -100,7 +100,7 @@ class GenerateHelpers extends Command
         $namespace = 'App\Helpers\\';
         $namespace = str_replace('/', '\\', dirname($filePath)) . '\\';
 
-        return $namespace . $className;
+        return $className;
     }
 }
 ?>
