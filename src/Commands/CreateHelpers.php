@@ -5,7 +5,7 @@ namespace Rmunate\LaravelHelpers\Commands;
 use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 
-class CreateHelper extends Command
+class CreateHelpers extends Command
 {
     protected $signature = 'create:helper {name}';
 
