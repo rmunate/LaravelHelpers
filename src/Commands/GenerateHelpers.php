@@ -12,7 +12,7 @@ class GenerateHelpers extends Command
      *
      * @var string
      */
-    protected $signature = 'structure:helpers';
+    protected $signature = 'generate:helpers';
 
     /**
      * The console command description.
