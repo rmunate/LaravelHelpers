@@ -20,7 +20,7 @@ class HelpersServiceProvider extends ServiceProvider
      */
     protected function registerCommands(){
         $this->commands([
-            Commands\StructureHelpers::class,
+            Commands\GenerateHelpers::class,
             Commands\CreateHelpers::class,
         ]);
     }
