@@ -1,5 +1,5 @@
 # Standard Creation and Use of Helpers within (Laravel PHP Framework) v1.0.1
-[English](README_SPANISH.md)
+[---- Spanish ----](README_SPANISH.md)
 
 ![Logo](https://github.com/rmunate/PHP2JS/assets/91748598/447112ed-7993-4808-bfb8-fd85da3c0010)
 
