@@ -1,5 +1,5 @@
 # Estándar creación y uso de ayudantes dentro de (Laravel PHP Framework) v1.0.1
-[---- English ----](README.md)
+[----Documentation In English----](README.md)
 
 
 ![Logotipo](https://github.com/rmunate/PHP2JS/assets/91748598/447112ed-7993-4808-bfb8-fd85da3c0010)
@@ -92,6 +92,7 @@ Una forma más eficiente, clara, limpia y elegante de crear y gestionar tus prop
 
 ## Creador
 - 🇨🇴Raúl Mauricio Uñate Castro. (raulmauriciounate@gmail.com)
+
 Ayúdame con tus sugerencias!
 
 [![Licencia MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
