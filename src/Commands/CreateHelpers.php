@@ -39,7 +39,6 @@ class CreateHelpers extends Command
         PHP;
 
         file_put_contents($path . '/' . $fileName, $stub);
-
         $this->info('Helper class created successfully!');
     }
 }

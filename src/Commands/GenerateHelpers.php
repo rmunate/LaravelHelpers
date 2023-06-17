@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\File;
 
 class GenerateHelpers extends Command
 {
-    /**
+    /*
      * The name and signature of the console command.
      *
      * @var string

@@ -2,10 +2,10 @@
     "name": "rmunate/laravel_helpers",
     "description": "Laravel helper management standard by classes.",
     "keywords": [
+        "rmunate",
         "artisan",
         "laravel",
-        "helpers",
-        "rmunate"
+        "helpers"
     ],
     "type": "library",
     "license": "MIT",

@@ -3,9 +3,9 @@
 namespace Rmunate\LaravelHelpers;
 
 /**
- * Autor: Raul Mauricio Uñate
- * Standard Creation of Helpers in Laravel
- */
+* Autor: Raul Mauricio Uñate
+* Standard Creation of Helpers in Laravel
+*/
 
 abstract class BaseHelpers
 {

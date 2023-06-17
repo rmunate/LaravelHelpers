@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
 * Estrcutura Por Clases para Manejo de Helpers.
 * Autor: Raul Mauricio Uñate
 * Permite reconocer que se esta usando helpers dependiendo el lugar donda se llame dentro del sistema.
