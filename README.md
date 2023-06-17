@@ -53,7 +53,7 @@ class General extends BaseHelpers
 }
 ```
 
-Now that you have defined the methods, you can call them from anywhere in your application using the following syntax: start with the word `Helper`, followed by the static call `::`, then write the lowercase name of the helper category, in this case, "general", and finally the method name in `PascalCase`.
+Now that you have defined the methods, you can call them from anywhere in your application using the following syntax: start with the word `Helper`, followed by the static call `::`, then write the lowercase name of the helper category, in this case, `general`, and finally the method name in `PascalCase`.
 
 Example of using the `myMethod` method:
 

@@ -55,7 +55,7 @@ class General extends BaseHelpers
     }
 }
 ```
-Ahora que has definido los métodos, puedes llamarlos desde cualquier lugar de tú aplicación con la siguiente sintaxis, colocarás la palabra `Helper` seguida de la llamada estática `::` y luego pondrás el nombre de la categoría de ayuda en minúsculas, para este ejemplo `"general"` y finalmente el nombre del método en `“PascalCase”`.
+Ahora que has definido los métodos, puedes llamarlos desde cualquier lugar de tú aplicación con la siguiente sintaxis, colocarás la palabra `Helper` seguida de la llamada estática `::` y luego pondrás el nombre de la categoría de ayuda en minúsculas, para este ejemplo `general` y finalmente el nombre del método en `“PascalCase”`.
 
 Ejemplo de uso del método `myMethod` .
 
