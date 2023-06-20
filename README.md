@@ -72,7 +72,7 @@ Helper::stringsMyMethod();
 Views or Components:
 
 ```php
-{{ Helper::generalMyMethod() }}
+{{ Helper::stringsMyMethod() }}
 ```
 
 Similarly, since the place where you write the helpers is a class, you can directly call the class that needs to be extended or imported for use. For this purpose, the `instance()` method is included, and you can use it as follows:
