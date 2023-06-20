@@ -1,4 +1,4 @@
-# Estándar creación y uso de ayudantes dentro de (Laravel PHP Framework) | v1.1.x
+# Estándar creación y uso de ayudantes dentro de (Laravel PHP Framework) | v1.x
 **Es hora de estandarizar como crearlos y usarlos.**
 
 [**----Documentation In English----**](README.md)
