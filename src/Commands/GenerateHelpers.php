@@ -2,7 +2,7 @@
 
 /*
  * Copyright (c) [2023] [RAUL MAURICIO UÑATE CASTRO]
- *
+ * 
  * Esta biblioteca es un software de código abierto disponible bajo la licencia MIT.
  * Se concede permiso, de forma gratuita, a cualquier persona que obtenga una copia de esta biblioteca y los archivos de
  * documentación asociados (el "Software"), para utilizar la biblioteca sin restricciones, incluyendo, entre otras, las

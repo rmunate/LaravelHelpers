@@ -7,7 +7,7 @@
 # Ignorar archivos específicos
 /src/Presentación.pptx
 
-# Ignorar archivos y directorios comunes de macOS
+# Ignorar archivos y directorios comunes de macOS 
 .DS_Store
 
 # Ignorar directorio y archivos generados por Composer

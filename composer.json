@@ -1,6 +1,6 @@
 {
     "name": "rmunate/laravel_helpers",
-    "description": "Laravel helper management standard by classes.",
+    "description": "Standard creation and use of helpers within the Laravel framework through classes, a simple, efficient, and elegant way to execute your application's own methods from any class or view.",
     "keywords": [
         "rmunate",
         "artisan",
