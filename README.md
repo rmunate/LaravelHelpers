@@ -1,4 +1,4 @@
-# Standard Creation and Use of Helpers within (Laravel PHP Framework) | v1.1.0
+# Standard Creation and Use of Helpers within (Laravel PHP Framework) | v1.1.x
 **It's time to standardize how to create and use them**
 
 [**---- Documentación En Español ----**](README_SPANISH.md)
