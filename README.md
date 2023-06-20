@@ -1,5 +1,7 @@
-# Standard Creation and Use of Helpers within (Laravel PHP Framework) v1.0.1
-[---- Documentación En Español ----](README_SPANISH.md)
+# Standard Creation and Use of Helpers within (Laravel PHP Framework) | v1.1.0
+**It's time to standardize how to create and use them**
+
+[**---- Documentación En Español ----**](README_SPANISH.md)
 
 ![Logo](https://github.com/rmunate/PHP2JS/assets/91748598/447112ed-7993-4808-bfb8-fd85da3c0010)
 
@@ -29,7 +31,8 @@ This will create a folder named `Helpers` within `App/` where you will find the 
 
 ```css
 app/
-└── Helpers/
+└── Helpers/ 
+    └── General.php
     └── Strings.php
     └── Arrays.php
     //..
@@ -41,28 +44,29 @@ The methods you create within the chosen class should always have their method n
 
 ```php
 <?php
+
 namespace App\Helpers;
 
 use Rmunate\LaravelHelpers\BaseHelpers;
 
-class General extends BaseHelpers
+class Strings extends BaseHelpers
 {
     public function myMethod() {
-        // Your Code...
+        // Your Code…
     }
 }
 ```
 
-Now that you have defined the methods, you can call them from anywhere in your application using the following syntax: start with the word `Helper`, followed by the static call `::`, then write the lowercase name of the helper category, in this case, `general`, and finally the method name in `PascalCase`.
+Now that you have defined the methods, you can call them from anywhere in your application using the following syntax: start with the word `Helper`, followed by the static call `::`, then write the lowercase name of the helper category, in this case, `strings`, and finally the method name in `PascalCase`.
 
 Example of using the `myMethod` method:
 
 Controllers or Classes:
 
 ```php
-// General is the class, so we'll write its full name in lowercase.
+// Strings is the class, so we'll write its full name in lowercase.
 // From the second word onwards, we'll use PascalCase.
-Helper::generalMyMethod();
+Helper::stringsMyMethod();
 ```
 
 Views or Components:
@@ -92,7 +96,5 @@ An efficient, clear, clean, and elegant way to create and manage your own functi
 
 ## Creator
 - 🇨🇴 Raúl Mauricio Uñate Castro. (raulmauriciounate@gmail.com)
-
-Help me with your suggestions!
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)

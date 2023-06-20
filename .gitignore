@@ -1,11 +1,19 @@
-src/Presentación.pptx
-/.DS_Store
+# Ignorar archivos y directorios generados automáticamente
 /vendor/
 /.fleet
 /.idea
 /.vscode
-vendor
+
+# Ignorar archivos específicos
+/src/Presentación.pptx
+
+# Ignorar archivos y directorios comunes de macOS
+.DS_Store
+
+# Ignorar directorio y archivos generados por Composer
+/vendor
+
+# Ignorar archivos y directorios generados por herramientas de desarrollo
 .fleet
 .idea
 .vscode
-.DS_Store

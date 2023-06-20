@@ -1,17 +1,18 @@
-# Estándar creación y uso de ayudantes dentro de (Laravel PHP Framework) v1.0.1
-[----Documentation In English----](README.md)
+# Estándar creación y uso de ayudantes dentro de (Laravel PHP Framework) | v1.1.0
+**Es hora de estandarizar como crearlos y usarlos.**
 
+[**----Documentation In English----**](README.md)
 
 ![Logotipo](https://github.com/rmunate/PHP2JS/assets/91748598/447112ed-7993-4808-bfb8-fd85da3c0010)
 
 ## Creación y uso estándar de ayudantes en el marco de Laravel a través de clases, una forma simple, eficiente y elegante de ejecutar los métodos propios de tu aplicación desde cualquier clase o vista.
 
-- Llama a los ayudantes en las vistas, componentes y clases de tu aplicación sin necesidad de instancias la clase Helper.
-- Organiza tus ayudantes en clases dedicadas a la gestión de sus funciones, Míralo como categorías, tendrás todos los Helpers organizados de acuerdo a su uso.
+- Llama a los ayudantes en las vistas, componentes y clases de tu aplicación sin necesidad de instanciar la clase Helper.
+- Organiza tus ayudantes en clases dedicadas a la gestión de sus funciones, míralo como categorías, tendrás todos los Helpers organizados de acuerdo a su uso.
 - Instancia de forma estática sin necesidad de crear un objeto para llamar cualquier ayudante.
-- Crea las categorías que requiere tu aplicación y personaliza las funciones.
-- Si lo deseas, puedes acceder directamente a la clase que contiene tus métodos desde los controladores.
-- Administra un estándar en el proceso de creación y uso de ayudantes dentro de tu aplicación. Es hora de estandarizar como crearlos y usarlos.
+- Crea las categorías que requiera tu aplicación y personaliza las funciones.
+- Si lo deseas, puedes acceder directamente a la clase que contiene tus métodos desde los controladores con un metodo incluido en esta libreria.
+- Administra un estándar en el proceso de creación y uso de ayudantes dentro de tu aplicación.
 
 ## _Instalación a través de Composer_
 
@@ -32,6 +33,7 @@ Esto creará dentro de tu proyecto una carpeta dentro de `App/` con el nombre `H
 ```css
 app/
 └── Helpers/
+    └── General.php
     └── Strings.php
     └── Arrays.php
     //..
@@ -48,14 +50,14 @@ namespace App\Helpers;
 
 use Rmunate\LaravelHelpers\BaseHelpers;
 
-class General extends BaseHelpers
+class Strings extends BaseHelpers
 {
     public function myMethod() {
         // Your Code…
     }
 }
 ```
-Ahora que has definido los métodos, puedes llamarlos desde cualquier lugar de tú aplicación con la siguiente sintaxis, colocarás la palabra `Helper` seguida de la llamada estática `::` y luego pondrás el nombre de la categoría de ayuda en minúsculas, para este ejemplo `general` y finalmente el nombre del método en `“PascalCase”`.
+Ahora que has definido los métodos, puedes llamarlos desde cualquier lugar de tú aplicación con la siguiente sintaxis, colocarás la palabra `Helper` seguida de la llamada estática `::` y luego pondrás el nombre de la categoría de ayuda en minúsculas, para este ejemplo `strings` y finalmente el nombre del método en `“PascalCase”`.
 
 Ejemplo de uso del método `myMethod` .
 
@@ -63,14 +65,14 @@ Controladores o Clases:
 
 ```php
 
-//General es la clase, así que pondremos todo su nombre en mionuscula.
+//Strings es la clase, así que pondremos todo su nombre en mionuscula.
 //Luego desde la segunda Palabra empezaremos con mayúscula.
-Helper::generalMyMethod();
+Helper::stringsMyMethod();
 ```
 Vistas o componentes:
 
 ```php
-{{ Helper::generalMyMethod() }}
+{{ Helper::stringsMyMethod() }}
 ```
 
 De la misma manera, dado que el lugar donde escribes los ayudantes es una clase, puede llamar directamente a la clase que necesitas extendiendola o importando su uso, para este propósito se incluye el método `instance()`, puedes usarlo de la siguiente forma:
@@ -92,7 +94,5 @@ Una forma más eficiente, clara, limpia y elegante de crear y gestionar tus prop
 
 ## Creador
 - 🇨🇴Raúl Mauricio Uñate Castro. (raulmauriciounate@gmail.com)
-
-Ayúdame con tus sugerencias!
 
 [![Licencia MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
