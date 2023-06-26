@@ -7,6 +7,7 @@
         "laravel",
         "helpers"
     ],
+    "homepage": "https://github.com/rmunate/LaravelHelpers",
     "type": "library",
     "license": "MIT",
     "autoload": {
@@ -20,7 +21,9 @@
     "authors": [
         {
             "name": "Raul Mauricio Uñate Castro",
-            "email": "raulmauriciounate@gmail.com"
+            "email": "raulmauriciounate@gmail.com",
+            "role": "owner",
+            "homepage": "https://github.com/rmunate"
         }
     ],
     "require": {

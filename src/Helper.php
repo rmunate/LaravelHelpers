@@ -2,7 +2,7 @@
 
 /*
  * Copyright (c) [2023] [RAUL MAURICIO UÑATE CASTRO]
- * 
+ *
  * Esta biblioteca es un software de código abierto disponible bajo la licencia MIT.
  * Se concede permiso, de forma gratuita, a cualquier persona que obtenga una copia de esta biblioteca y los archivos de
  * documentación asociados (el "Software"), para utilizar la biblioteca sin restricciones, incluyendo, entre otras, las
@@ -37,7 +37,7 @@ class Helper
     /**
      * @param mixed $method
      * @param mixed $args
-     * 
+     *
      * @return Call Method
      */
     public static function __callStatic($method, $args)
@@ -48,7 +48,7 @@ class Helper
 
         $class = self::category($category);
         if (!method_exists($class, $realMethod)) {
-            throw new \Exception("The method '".$realMethod."' is not defined in the class '".get_class($class).".php'");
+            throw new \Exception ("The method '" . $realMethod . "' is not defined in the class '" . get_class($class) . ".php'");
         }
 
         // $instance = new $class();
@@ -61,10 +61,10 @@ class Helper
     private static function readCategories()
     {
         /* Directory where the classes are located. */
-        $directory = base_path() . '/app/Helpers/'; 
+        $directory = base_path() . '/app/Helpers/';
 
         /* Get all the PHP files in the directory. */
-        $files = glob($directory.'*.php');
+        $files = glob($directory . '*.php');
 
         /* Create Dynamic Array of Dependencies. */
         $categories = array_reduce($files, function ($carry, $file) {
@@ -94,8 +94,6 @@ class Helper
             return $categoryMap[$category_upper];
         }
 
-        throw new \Exception("There is no class 'App\\Helpers\\" . ucwords(strtolower($category)) . "' under the 'namespace App\Helpers'");
+        throw new \Exception ("There is no class 'App\\Helpers\\" . ucwords(strtolower($category)) . "' under the 'namespace App\Helpers'");
     }
 }
-
-?>

@@ -2,7 +2,7 @@
 
 /*
  * Copyright (c) [2023] [RAUL MAURICIO UÑATE CASTRO]
- * 
+ *
  * Esta biblioteca es un software de código abierto disponible bajo la licencia MIT.
  * Se concede permiso, de forma gratuita, a cualquier persona que obtenga una copia de esta biblioteca y los archivos de
  * documentación asociados (el "Software"), para utilizar la biblioteca sin restricciones, incluyendo, entre otras, las
@@ -39,23 +39,23 @@ class HelpersServiceProvider extends ServiceProvider
 {
 
     /*
-    * Execute the registerCommands method.
-    */
-    public function boot(){
-        $this->registerCommands(); 
+     * Execute the registerCommands method.
+     */
+    public function boot()
+    {
+        $this->registerCommands();
     }
 
     /*
-    * Register Commands.
-    *
-    * @return void
-    */
-    protected function registerCommands(){
+     * Register Commands.
+     *
+     * @return void
+     */
+    protected function registerCommands()
+    {
         $this->commands([
             Commands\GenerateHelpers::class,
-            Commands\CreateHelpers::class
+            Commands\CreateHelpers::class,
         ]);
     }
 }
-
-?>

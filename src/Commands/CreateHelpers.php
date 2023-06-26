@@ -33,28 +33,16 @@
 
 namespace Rmunate\LaravelHelpers\Commands;
 
-use Illuminate\Support\Str;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class CreateHelpers extends Command
 {
-    /*
-     * The name and signature of the console command.
-     * @var string
-     */
     protected $signature = 'create:helper {name}';
 
-    /**
-     * The console command description.
-     * @var string
-     */
-    protected $description = 'Create a new helper class';
+    protected $description = 'Create a new class that contains all the helpers of a single category.';
 
-    /**
-     * Execute the console command.
-     *
-     * @return void
-     */
     public function handle()
     {
         $name = $this->argument('name');
@@ -62,35 +50,44 @@ class CreateHelpers extends Command
         $fileName = $className . '.php';
 
         $path = app_path('Helpers');
-        if (!is_dir($path)) {
-            mkdir($path, 0755, true);
-        }
+        File::ensureDirectoryExists($path);
 
-        if (class_exists('Illuminate\Support\BaseHelpers')) {
-            $originExtends = "Illuminate\Support\BaseHelpers";
+        $stub = $this->generateStub($className);
+
+        $filePath = $path . '/' . $fileName;
+
+        if (File::put($filePath, $stub)) {
+            $this->info("Helper class [$filePath] created successfully.");
         } else {
-            $originExtends = "Rmunate\LaravelHelpers\BaseHelpers";
+            $this->error("Failed to create helper class [$filePath].");
         }
+    }
 
-        $stub = <<<PHP
+    private function generateStub($className)
+    {
+        return <<<PHP
         <?php
 
         namespace App\Helpers;
 
-        use {$originExtends};
+        use Rmunate\LaravelHelpers\BaseHelpers;
 
         class {$className} extends BaseHelpers
         {
-            // This is the structure that you must follow each time you create a new helper.
-            // public function helperName(){
-            //     //.. The helper code
-            // }
+            /**
+             * This is the standard structure to follow when creating a new helper.
+             *
+             * /**
+             *  * Perform a specific task.
+             *  *
+             *  * @return void
+             *  */
+            public function helperName()
+            {
+                //.. The helper code
+            }
         }
 
         PHP;
-
-        file_put_contents($path . '/' . $fileName, $stub);
-        $pathClass = $path . '/' . $fileName;
-        $this->info("Helper class [$pathClass] created successfully.");
     }
 }

@@ -1,19 +1,19 @@
-# Ignorar archivos y directorios generados automáticamente
+# Ignore automatically generated files and directories
 /vendor/
 /.fleet
 /.idea
 /.vscode
 
-# Ignorar archivos específicos
-/src/Presentación.pptx
+# Ignore specific files
+/src/Logo.pptx
 
-# Ignorar archivos y directorios comunes de macOS 
+# Ignore common macOS files and directories
 .DS_Store
 
-# Ignorar directorio y archivos generados por Composer
+# Ignore Composer generated directory and files
 /vendor
 
-# Ignorar archivos y directorios generados por herramientas de desarrollo
+# Ignore development tool generated files and directories
 .fleet
 .idea
 .vscode

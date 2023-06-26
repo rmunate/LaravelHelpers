@@ -2,7 +2,7 @@
 
 /*
  * Copyright (c) [2023] [RAUL MAURICIO UÑATE CASTRO]
- * 
+ *
  * Esta biblioteca es un software de código abierto disponible bajo la licencia MIT.
  * Se concede permiso, de forma gratuita, a cualquier persona que obtenga una copia de esta biblioteca y los archivos de
  * documentación asociados (el "Software"), para utilizar la biblioteca sin restricciones, incluyendo, entre otras, las
@@ -36,87 +36,63 @@ namespace Rmunate\LaravelHelpers\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 
-class GenerateHelpers extends Command
+class CreateHelperCommand extends Command
 {
-    /*
-     * The name and signature of the console command.
-     * @var string
-     */
-    protected $signature = 'generate:helpers';
+    protected $signature = 'helper:create';
 
-    /**
-     * The console command description.
-     * @var string
-     */
-    protected $description = 'Generate initial helper files in the App/Helpers directory';
+    protected $description = 'Create helper classes';
 
-    /**
-     * Execute the console command.
-     *
-     * @return void
-     */
+    private $files = [
+        'Arrays.php',
+        'DataTime.php',
+        'File.php',
+        'General.php',
+        'Html.php',
+        'Security.php',
+        'Strings.php',
+    ];
+
     public function handle()
     {
         $helpersPath = app_path('Helpers');
+        File::ensureDirectoryExists($helpersPath);
 
-        if (!File::exists($helpersPath)) {
-            File::makeDirectory($helpersPath);
-            $this->info('Helpers directory created successfully!');
-        } else {
-            $this->info('Helpers directory already exists!');
-        }
-
-        $files = [
-            'Arrays.php',
-            'DataTime.php',
-            'File.php',
-            'General.php',
-            'Html.php',
-            'Security.php',
-            'Strings.php',
-        ];
-
-        if (class_exists('Illuminate\Support\BaseHelpers')) {
-            $originExtends = "Illuminate\Support\BaseHelpers";
-        } else {
-            $originExtends = "Rmunate\LaravelHelpers\BaseHelpers";
-        }
-
-        foreach ($files as $file) {
+        foreach ($this->files as $file) {
             $filePath = $helpersPath . '/' . $file;
             if (!File::exists($filePath)) {
-                $this->createFile($filePath, $originExtends);
-                $this->info($file . ' created successfully!');
+                $this->createFile($filePath);
+                $this->info("Helper class [$filePath] created successfully.");
             } else {
-                $this->info($file . ' already exists!');
+                $this->error("Failed to create helper class [$filePath].");
             }
         }
     }
 
-    /**
-     * Create a new PHP file with the specified namespace and class structure.
-     *
-     * @param string $filePath
-     * @return void
-     */
     private function createFile($filePath)
     {
-        $namespace = 'App\Helpers';
-        $className = $this->getClassName($filePath, $originExtends);
+        $className = $this->getClassName($filePath);
 
         $content = <<<PHP
         <?php
 
-        namespace {$namespace};
+        namespace App\Helpers;
 
-        use {$originExtends};
+        use Rmunate\LaravelHelpers\BaseHelpers;
 
         class {$className} extends BaseHelpers
         {
-            // This is the structure that you must follow each time you create a new helper.
-            // public function helperName(){
-            //     //.. The helper code
-            // }
+            /**
+             * This is the structure that you must follow each time you create a new helper.
+             *
+             * /**
+             *  * Perform a specific task.
+             *  *
+             *  * @return void
+             *  */
+            public function helperName()
+            {
+                //.. The helper code
+            }
         }
 
         PHP;
@@ -124,12 +100,6 @@ class GenerateHelpers extends Command
         File::put($filePath, $content);
     }
 
-    /**
-     * Get the class name from the file path.
-     *
-     * @param string $filePath
-     * @return string
-     */
     private function getClassName($filePath)
     {
         $className = pathinfo($filePath, PATHINFO_FILENAME);
@@ -139,4 +109,3 @@ class GenerateHelpers extends Command
         return $className;
     }
 }
-?>
