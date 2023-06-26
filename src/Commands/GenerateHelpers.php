@@ -36,11 +36,11 @@ namespace Rmunate\LaravelHelpers\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 
-class CreateHelperCommand extends Command
+class GenerateHelpers extends Command
 {
-    protected $signature = 'helper:create';
+    protected $signature = 'generate:helpers';
 
-    protected $description = 'Create helper classes';
+    protected $description = 'Generate initial helper files in the App/Helpers directory';
 
     private $files = [
         'Arrays.php',
