@@ -76,10 +76,16 @@ class GenerateHelpers extends Command
             'Strings.php',
         ];
 
+        if (class_exists('Illuminate\Support\BaseHelpers')) {
+            $originExtends = "Illuminate\Support\BaseHelpers";
+        } else {
+            $originExtends = "Rmunate\LaravelHelpers\BaseHelpers";
+        }
+
         foreach ($files as $file) {
             $filePath = $helpersPath . '/' . $file;
             if (!File::exists($filePath)) {
-                $this->createFile($filePath);
+                $this->createFile($filePath, $originExtends);
                 $this->info($file . ' created successfully!');
             } else {
                 $this->info($file . ' already exists!');
@@ -96,14 +102,14 @@ class GenerateHelpers extends Command
     private function createFile($filePath)
     {
         $namespace = 'App\Helpers';
-        $className = $this->getClassName($filePath);
+        $className = $this->getClassName($filePath, $originExtends);
 
         $content = <<<PHP
         <?php
 
         namespace {$namespace};
 
-        use Rmunate\LaravelHelpers\BaseHelpers;
+        use {$originExtends};
 
         class {$className} extends BaseHelpers
         {

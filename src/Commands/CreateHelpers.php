@@ -66,12 +66,18 @@ class CreateHelpers extends Command
             mkdir($path, 0755, true);
         }
 
+        if (class_exists('Illuminate\Support\BaseHelpers')) {
+            $originExtends = "Illuminate\Support\BaseHelpers";
+        } else {
+            $originExtends = "Rmunate\LaravelHelpers\BaseHelpers";
+        }
+
         $stub = <<<PHP
         <?php
 
         namespace App\Helpers;
 
-        use Rmunate\LaravelHelpers\BaseHelpers;
+        use {$originExtends};
 
         class {$className} extends BaseHelpers
         {
