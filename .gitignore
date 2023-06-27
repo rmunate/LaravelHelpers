@@ -4,9 +4,6 @@
 /.idea
 /.vscode
 
-# Ignore specific files
-/src/Logo.pptx
-
 # Ignore common macOS files and directories
 .DS_Store
 
