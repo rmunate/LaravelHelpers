@@ -58,7 +58,7 @@ class GenerateHelpers extends Command
         File::ensureDirectoryExists($helpersPath);
 
         foreach ($this->files as $file) {
-            $filePath = $helpersPath . '/' . $file;
+            $filePath = $helpersPath.'/'.$file;
             if (!File::exists($filePath)) {
                 $this->createFile($filePath);
                 $this->info("Helper class [$filePath] created successfully.");
@@ -104,7 +104,7 @@ class GenerateHelpers extends Command
     {
         $className = pathinfo($filePath, PATHINFO_FILENAME);
         $namespace = 'App\Helpers\\';
-        $namespace = str_replace('/', '\\', dirname($filePath)) . '\\';
+        $namespace = str_replace('/', '\\', dirname($filePath)).'\\';
 
         return $className;
     }

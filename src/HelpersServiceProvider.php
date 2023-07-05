@@ -37,7 +37,6 @@ use Illuminate\Support\ServiceProvider;
 
 class HelpersServiceProvider extends ServiceProvider
 {
-
     /*
      * Execute the registerCommands method.
      */

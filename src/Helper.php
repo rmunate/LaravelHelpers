@@ -33,7 +33,6 @@
 
 class Helper
 {
-
     /**
      * @param mixed $method
      * @param mixed $args
@@ -48,7 +47,7 @@ class Helper
 
         $class = self::category($category);
         if (!method_exists($class, $realMethod)) {
-            throw new \Exception ("The method '" . $realMethod . "' is not defined in the class '" . get_class($class) . ".php'");
+            throw new \Exception("The method '".$realMethod."' is not defined in the class '".get_class($class).".php'");
         }
 
         // $instance = new $class();
@@ -61,16 +60,17 @@ class Helper
     private static function readCategories()
     {
         /* Directory where the classes are located. */
-        $directory = base_path() . '/app/Helpers/';
+        $directory = base_path().'/app/Helpers/';
 
         /* Get all the PHP files in the directory. */
-        $files = glob($directory . '*.php');
+        $files = glob($directory.'*.php');
 
         /* Create Dynamic Array of Dependencies. */
         $categories = array_reduce($files, function ($carry, $file) {
-            $className = "App\\Helpers\\" . basename($file, '.php');
+            $className = 'App\\Helpers\\'.basename($file, '.php');
             $category = strtoupper(substr($className, strrpos($className, '\\') + 1));
-            $carry[$category] = new $className;
+            $carry[$category] = new $className();
+
             return $carry;
         }, []);
 
@@ -79,6 +79,7 @@ class Helper
 
     /**
      * @param string $category
+     *
      * @return new Instance
      */
     private static function category(string $category)
@@ -94,6 +95,6 @@ class Helper
             return $categoryMap[$category_upper];
         }
 
-        throw new \Exception ("There is no class 'App\\Helpers\\" . ucwords(strtolower($category)) . "' under the 'namespace App\Helpers'");
+        throw new \Exception("There is no class 'App\\Helpers\\".ucwords(strtolower($category))."' under the 'namespace App\Helpers'");
     }
 }

@@ -47,14 +47,14 @@ class CreateHelpers extends Command
     {
         $name = $this->argument('name');
         $className = Str::studly($name);
-        $fileName = $className . '.php';
+        $fileName = $className.'.php';
 
         $path = app_path('Helpers');
         File::ensureDirectoryExists($path);
 
         $stub = $this->generateStub($className);
 
-        $filePath = $path . '/' . $fileName;
+        $filePath = $path.'/'.$fileName;
 
         if (File::put($filePath, $stub)) {
             $this->info("Helper class [$filePath] created successfully.");
