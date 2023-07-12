@@ -2,6 +2,7 @@
 
 ![Logo](https://github.com/rmunate/PHP2JS/assets/91748598/447112ed-7993-4808-bfb8-fd85da3c0010)
 
+[**---- Documentación En Español ----**](README_SPANISH.md)
 ## Table of Contents
 - [Introduction](#introduction)
 - [Installation](#installation)
