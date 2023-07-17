@@ -1,34 +1,47 @@
 # Estándar creación y uso de ayudantes dentro de (Laravel PHP Framework) | v1.x
-**Es hora de estandarizar como crearlos y usarlos.**
-
-[**----Documentation In English----**](README.md)
 
 ![Logotipo](https://github.com/rmunate/PHP2JS/assets/91748598/447112ed-7993-4808-bfb8-fd85da3c0010)
 
-## Creación y uso estándar de ayudantes en el marco de Laravel a través de clases, una forma simple, eficiente y elegante de ejecutar los métodos propios de tu aplicación desde cualquier clase o vista.
+[**----Documentation In English----**](README.md)
+## Tabla de Contenido
+- [Introducción](#introducción)
+- [Instalación](#instalación)
+- [Uso](#uso)
+- [Llamada a Ayudantes](#llamada-a-ayudantes)
+- [Crear una Nueva Categoría](#crear-una-nueva-categoría)
+- [Creador](#creador)
+- [Licencia](#licencia)
 
-- Llama a los ayudantes en las vistas, componentes y clases de tu aplicación sin necesidad de instanciar la clase Helper.
-- Organiza tus ayudantes en clases dedicadas a la gestión de sus funciones, míralo como categorías, tendrás todos los Helpers organizados de acuerdo a su uso.
-- Instancia de forma estática sin necesidad de crear un objeto para llamar cualquier ayudante.
-- Crea las categorías que requiera tu aplicación y personaliza las funciones.
-- Si lo deseas, puedes acceder directamente a la clase que contiene tus métodos desde los controladores con un metodo incluido en esta libreria.
-- Administra un estándar en el proceso de creación y uso de ayudantes dentro de tu aplicación.
+## Introducción
+Este es un estándar para la creación y uso de ayudantes (Helpers) dentro de Laravel. Proporciona una forma simple y elegante de ejecutar métodos personalizados desde cualquier clase o vista de tu aplicación.
 
-## _Instalación a través de Composer_
+Orientaremos el uso de Helpers en objetos por categorías.
+
+Durante muchos años he usado Laravel, creo que es el marco de trabajo que mejor vida le da a PHP. Sin embargo, dentro de este marco no se ha estandarizado la creación de los Helpers (Ayudantes), así que decidí crear un estándar e implementarlo en los diferentes sistemas y empresas para los cuales he trabajado.
+
+**¡Ahora lo tienes como librería!**
+
+Es hora de estandarizar cómo crearlos y usarlos.
+
+## Instalación
+Para instalar la dependencia a través de Composer, ejecuta el siguiente comando:
 
 ```shell
-composer requiere rmunate/laravel_helpers
+composer require rmunate/laravel_helpers
 ```
 
+Esto descargará la última versión disponible del paquete.
 
-## Maneras de Usarlo
-Cuando hayas instalado la dependencia dentro de tu proyecto, puedes iniciar la estructura de tus ayudantes a través del comando:
+## Uso
+Después de instalar la dependencia en tu proyecto, puedes generar la estructura inicial de los ayudantes ejecutando el siguiente comando:
 
 ```shell
 php artisan generate:helpers
 ```
 
-Esto creará dentro de tu proyecto una carpeta dentro de `App/` con el nombre `Helpers`, donde encontrarás las clases estándar sugeridas para la creación de los Helpers propios de tú aplicación, lo ideal es que crees los Helpers dependiendo de la categoría de uso .
+Esto creará una carpeta llamada `Helpers` dentro de `App/`, donde encontrarás clases estándar sugeridas para la creación de tus propios ayudantes.
+
+La estructura de la carpeta `Helpers` será similar a la siguiente:
 
 ```css
 app/
@@ -36,63 +49,52 @@ app/
     └── General.php
     └── Strings.php
     └── Arrays.php
-    //..
-
-```
-Ejemplo, Si vas a crear una función que ajuste cadenas de texto de acuerdo con alguna característica que requiera la aplicación que estas desarrollando, deberías crear el método dentro de la clase `Strings`.
-
-Los métodos que crees dentro de la clase que decidas usar, siempre deben tener su nombre de método comenzando con la primera palabra en 'minúsculas' y desde la segunda en 'mayúsculas'. `(camelCase)`
-
-```php
-<?php
-
-namespace App\Helpers;
-
-use Rmunate\LaravelHelpers\BaseHelpers;
-
-class Strings extends BaseHelpers
-{
-    public function myMethod() {
-        // Your Code…
-    }
-}
-```
-Ahora que has definido los métodos, puedes llamarlos desde cualquier lugar de tú aplicación con la siguiente sintaxis, colocarás la palabra `Helper` seguida de la llamada estática `::` y luego pondrás el nombre de la categoría de ayuda en minúsculas, para este ejemplo `strings` y finalmente el nombre del método en `“PascalCase”`.
-
-Ejemplo de uso del método `myMethod` .
-
-Controladores o Clases:
-
-```php
-
-//Strings es la clase, así que pondremos todo su nombre en mionuscula.
-//Luego desde la segunda Palabra empezaremos con mayúscula.
-Helper::stringsMyMethod();
-```
-Vistas o componentes:
-
-```php
-{{ Helper::stringsMyMethod() }}
+    //...
 ```
 
-De la misma manera, dado que el lugar donde escribes los ayudantes es una clase, puede llamar directamente a la clase que necesitas extendiendola o importando su uso, para este propósito se incluye el método `instance()`, puedes usarlo de la siguiente forma:
+Cada clase representa una categoría de ayudantes.
+Las clases no traerán métodos, aquí empezarás a definir los que tu aplicación requiera.
+
+Puedes organizar tus ayudantes en diferentes categorías, creando clases dedicadas a cada una de ellas. Por ejemplo, si deseas crear funciones relacionadas con cadenas de texto, puedes utilizar la clase `Strings`.
+
+## Llamada a Ayudantes
+Para llamar a los ayudantes desde cualquier lugar de tu aplicación, utiliza la siguiente sintaxis:
+
+- Controladores o Clases:
+  ```php
+  use Helper;
+  
+  Helper::categoriaNombreMetodo();
+  ```
+
+- Vistas o Componentes:
+  ```php
+  {{ Helper::categoriaNombreMetodo() }}
+  ```
+
+También puedes importar y utilizar directamente la clase de la categoría que requieras, para esto utilizaremos el método `instance()` y el metodo `helpers()`. Por ejemplo:
 
 ```php
-//Importas el uso de la clase.
 use App\Helpers\Strings;
 
-//A traves de este llamo estatico puedes llamar los metodos directamente.
-Strings::instance()->myMethod();
+//Usando el metodo Instance
+Strings::instance()->nombreMetodo();
+
+//Usando el metodo Helpers
+Strings::helpers()->nombreMetodo();
 ```
-¿Quieres una categoría que no está en las clases provistas?, ¡Fácil! Simplemente ejecute el siguiente comando para crear la nueva categoría:
+
+## Crear una Nueva Categoría
+Si deseas crear una nueva categoría de ayudantes, ejecuta el siguiente comando:
 
 ```shell
-# replace "Category" with the name you require
-php artisan create:helper Category
+php artisan create:helper NombreCategoria
 ```
-Una forma más eficiente, clara, limpia y elegante de crear y gestionar tus propias funciones.
+Reemplaza `NombreCategoria` con el nombre deseado para la nueva categoría.
 
 ## Creador
-- 🇨🇴Raúl Mauricio Uñate Castro. (raulmauriciounate@gmail.com)
+- 🇨🇴 Raúl Mauricio Uñate Castro
+- Correo electrónico: raulmauriciounate@gmail.com
 
-[![Licencia MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+## Licencia
+Este proyecto se encuentra bajo la [Licencia MIT](https://choosealicense.com/licenses/mit/).

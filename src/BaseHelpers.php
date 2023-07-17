@@ -2,6 +2,8 @@
 
 namespace Rmunate\LaravelHelpers;
 
+use BadMethodCallException;
+
 abstract class BaseHelpers
 {
     /**
@@ -10,7 +12,7 @@ abstract class BaseHelpers
      * @param string $method
      * @param array  $parameters
      *
-     * @throws \BadMethodCallException
+     * @throws BadMethodCallException
      *
      * @return mixed
      */
@@ -24,9 +26,21 @@ abstract class BaseHelpers
     }
 
     /**
-     * @return New Instance Class.
+     * Get a new instance of the class.
+     *
+     * @return static
      */
     public static function instance()
+    {
+        return new static();
+    }
+
+    /**
+     * Get a new instance of the class.
+     *
+     * @return static
+     */
+    public static function helpers()
     {
         return new static();
     }
