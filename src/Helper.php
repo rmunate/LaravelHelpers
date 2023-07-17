@@ -10,9 +10,9 @@ class Helper
      * @param mixed $method
      * @param mixed $args
      *
-     * @return mixed
-     *
      * @throws Exception
+     *
+     * @return mixed
      */
     public static function __callStatic($method, $args)
     {
@@ -54,9 +54,9 @@ class Helper
      *
      * @param string $category
      *
-     * @return mixed
-     *
      * @throws Exception
+     *
+     * @return mixed
      */
     private static function category(string $category)
     {
