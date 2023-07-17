@@ -71,12 +71,17 @@ To call the helpers from anywhere in your application, use the following syntax:
   {{ Helper::categoryMethodName() }}
   ```
 
-You can also import and directly use the class of the required category by utilizing the `instance()` method. For example:
+You can also import and directly use the class of the required category by utilizing the `instance()` or `helpers()` method. For example:
 
 ```php
 use App\Helpers\Strings;
 
+//With Instance method
 Strings::instance()->methodName();
+
+//With Helpers method
+Strings::helpers()->methodName();
+
 ```
 
 ## Creating a New Category

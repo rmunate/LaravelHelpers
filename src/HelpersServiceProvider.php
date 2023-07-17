@@ -6,16 +6,18 @@ use Illuminate\Support\ServiceProvider;
 
 class HelpersServiceProvider extends ServiceProvider
 {
-    /*
-     * Execute the registerCommands method.
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
      */
     public function boot()
     {
         $this->registerCommands();
     }
 
-    /*
-     * Register Commands.
+    /**
+     * Register the commands.
      *
      * @return void
      */

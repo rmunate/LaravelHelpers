@@ -72,12 +72,16 @@ Para llamar a los ayudantes desde cualquier lugar de tu aplicación, utiliza la 
   {{ Helper::categoriaNombreMetodo() }}
   ```
 
-También puedes importar y utilizar directamente la clase de la categoría que requieras, para esto utilizaremos el método `instance()`. Por ejemplo:
+También puedes importar y utilizar directamente la clase de la categoría que requieras, para esto utilizaremos el método `instance()` y el metodo `helpers()`. Por ejemplo:
 
 ```php
 use App\Helpers\Strings;
 
+//Usando el metodo Instance
 Strings::instance()->nombreMetodo();
+
+//Usando el metodo Helpers
+Strings::helpers()->nombreMetodo();
 ```
 
 ## Crear una Nueva Categoría

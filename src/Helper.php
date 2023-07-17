@@ -1,12 +1,18 @@
 <?php
 
+use Exception;
+
 class Helper
 {
     /**
+     * Call a static method dynamically based on the method name.
+     *
      * @param mixed $method
      * @param mixed $args
      *
-     * @return Call Method
+     * @return mixed
+     *
+     * @throws Exception
      */
     public static function __callStatic($method, $args)
     {
@@ -16,25 +22,22 @@ class Helper
 
         $class = self::category($category);
         if (!method_exists($class, $realMethod)) {
-            throw new \Exception("The method '".$realMethod."' is not defined in the class '".get_class($class).".php'");
+            throw new Exception("The method '".$realMethod."' is not defined in the class '".get_class($class).".php'");
         }
 
-        // $instance = new $class();
         return call_user_func_array([$class, $realMethod], $args);
     }
 
     /**
-     * @return New Instance Category Helper
+     * Read and instantiate helper classes from the Helpers directory.
+     *
+     * @return array
      */
     private static function readCategories()
     {
-        /* Directory where the classes are located. */
         $directory = base_path().'/app/Helpers/';
-
-        /* Get all the PHP files in the directory. */
         $files = glob($directory.'*.php');
 
-        /* Create Dynamic Array of Dependencies. */
         $categories = array_reduce($files, function ($carry, $file) {
             $className = 'App\\Helpers\\'.basename($file, '.php');
             $category = strtoupper(substr($className, strrpos($className, '\\') + 1));
@@ -47,23 +50,23 @@ class Helper
     }
 
     /**
+     * Get an instance of the specified category.
+     *
      * @param string $category
      *
-     * @return new Instance
+     * @return mixed
+     *
+     * @throws Exception
      */
     private static function category(string $category)
     {
-        /* Ensure Uppercase */
         $category_upper = strtoupper($category);
-
-        /* Query Loaded Classes */
         $categoryMap = self::readCategories();
 
-        /* Only if the class exists return the instance */
         if (isset($categoryMap[$category_upper])) {
             return $categoryMap[$category_upper];
         }
 
-        throw new \Exception("There is no class 'App\\Helpers\\".ucwords(strtolower($category))."' under the 'namespace App\Helpers'");
+        throw new Exception("There is no class 'App\\Helpers\\".ucwords(strtolower($category))."' under the 'namespace App\Helpers'");
     }
 }
