@@ -1,7 +1,5 @@
 <?php
 
-use Exception;
-
 class Helper
 {
     /**
@@ -22,7 +20,7 @@ class Helper
 
         $class = self::category($category);
         if (!method_exists($class, $realMethod)) {
-            throw new Exception("The method '".$realMethod."' is not defined in the class '".get_class($class).".php'");
+            throw new \Exception("The method '".$realMethod."' is not defined in the class '".get_class($class).".php'");
         }
 
         return call_user_func_array([$class, $realMethod], $args);
@@ -67,6 +65,6 @@ class Helper
             return $categoryMap[$category_upper];
         }
 
-        throw new Exception("There is no class 'App\\Helpers\\".ucwords(strtolower($category))."' under the 'namespace App\Helpers'");
+        throw new \Exception("There is no class 'App\\Helpers\\".ucwords(strtolower($category))."' under the 'namespace App\Helpers'");
     }
 }
