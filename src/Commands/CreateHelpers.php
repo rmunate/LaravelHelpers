@@ -45,11 +45,19 @@ class CreateHelpers extends Command
         $filePath = $path.'/'.$fileName;
 
         // Put the generated content into the file
-        if (File::put($filePath, $stub)) {
-            if (property_exists($this, 'components') && $this->components !== null) {
-                $this->components->info("Helper class [$filePath] created successfully.");
+        if (!File::exists($filePath)) {
+            if (File::put($filePath, $stub)) {
+                if (property_exists($this, 'components') && $this->components !== null) {
+                    $this->components->info("Helper class [$filePath] created successfully.");
+                } else {
+                    $this->info("Helper class [$filePath] created successfully.");
+                }
             } else {
-                $this->info("Helper class [$filePath] created successfully.");
+                if (property_exists($this, 'components') && $this->components !== null) {
+                    $this->components->error("Failed to create helper class [$filePath]. The class already exists");
+                } else {
+                    $this->error("Failed to create helper class [$filePath]. The class already exists");
+                }
             }
         } else {
             if (property_exists($this, 'components') && $this->components !== null) {
