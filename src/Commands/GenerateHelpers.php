@@ -3,10 +3,12 @@
 namespace Rmunate\LaravelHelpers\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\File;
+use Rmunate\LaravelHelpers\Traits\CommandUtilities;
 
 class GenerateHelpers extends Command
 {
+    use CommandUtilities;
+    
     /**
      * The console command signature.
      *
@@ -44,74 +46,29 @@ class GenerateHelpers extends Command
     public function handle()
     {
         // Ensure the Helpers directory exists
-        $helpersPath = app_path('Helpers');
-        File::ensureDirectoryExists($helpersPath);
+        $helpersPath = $this->ensureDirectoryExists('Helpers');
 
         // Generate helper files
         foreach ($this->files as $file) {
-            $filePath = $helpersPath . '/' . $file;
-            if (!File::exists($filePath)) {
-                $this->createFile($filePath);
 
-                if (property_exists($this, 'components') && $this->components !== null) {
-                    $this->components->info("Helper class [$filePath] created successfully.");
+            $filePath = $this->filePath($helpersPath,$file);
+
+            if (!$this->fileExist($filePath)){
+
+                // Get the class name from the file path
+                $className = $this->getClassName($filePath);
+
+                // Get the content from a stub file
+                $stub = $this->getStub($className);
+
+                if($this->filePut($filePath, $stub)) {
+                    $this->notifyInfo("Helper class [$filePath] created successfully.");
                 } else {
-                    $this->info("Helper class [$filePath] created successfully.");
+                    $this->notifyError("Failed to create helper class [$filePath].");
                 }
             } else {
-                if (property_exists($this, 'components') && $this->components !== null) {
-                    $this->components->error("Failed to create helper class [$filePath]. The class already exists");
-                } else {
-                    $this->error("Failed to create helper class [$filePath]. The class already exists");
-                }
+                $this->notifyError("Failed to create helper class [$filePath]. The class already exists");
             }
         }
-    }
-
-    /**
-     * Create a new helper file.
-     *
-     * @param string $filePath
-     * @return void
-     */
-    private function createFile($filePath)
-    {
-        // Get the class name from the file path
-        $className = $this->getClassName($filePath);
-
-        // Get the content from a stub file
-        $stubContent = $this->getStubContent();
-
-        // Replace placeholders with actual data
-        $content = str_replace('{{class}}', $className, $stubContent);
-
-        File::put($filePath, $content);
-    }
-
-    /**
-     * Get the class name from the file path.
-     *
-     * @param string $filePath
-     * @return string
-     */
-    private function getClassName($filePath)
-    {
-        $className = pathinfo($filePath, PATHINFO_FILENAME);
-
-        return $className;
-    }
-
-    /**
-     * Get the content from the stub file.
-     *
-     * @return string
-     */
-    private function getStubContent()
-    {
-        // Read the content from the stub file
-        $stubPath = __DIR__ . '/../Stubs/CategoryHelpers.stub';
-        $stubContent = File::get($stubPath);
-
-        return $stubContent;
     }
 }
