@@ -48,7 +48,7 @@ class CreateHelpers extends Command
         if (File::put($filePath, $stub)) {
             $this->components->info("Helper class [$filePath] created successfully.");
         } else {
-            $this->error("Failed to create helper class [$filePath].");
+            $this->components->error("Failed to create helper class [$filePath].");
         }
     }
 

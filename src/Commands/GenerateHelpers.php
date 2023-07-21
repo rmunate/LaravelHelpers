@@ -52,9 +52,9 @@ class GenerateHelpers extends Command
             $filePath = $helpersPath . '/' . $file;
             if (!File::exists($filePath)) {
                 $this->createFile($filePath);
-                $this->info("Helper class [$filePath] created successfully.");
+                $this->components->info("Helper class [$filePath] created successfully.");
             } else {
-                $this->error("Failed to create helper class [$filePath].");
+                $this->components->error("Failed to create helper class [$filePath].");
             }
         }
     }
