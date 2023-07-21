@@ -8,7 +8,7 @@ use Rmunate\LaravelHelpers\Traits\CommandUtilities;
 class GenerateHelpers extends Command
 {
     use CommandUtilities;
-    
+
     /**
      * The console command signature.
      *
@@ -50,18 +50,16 @@ class GenerateHelpers extends Command
 
         // Generate helper files
         foreach ($this->files as $file) {
+            $filePath = $this->filePath($helpersPath, $file);
 
-            $filePath = $this->filePath($helpersPath,$file);
-
-            if (!$this->fileExist($filePath)){
-
+            if (!$this->fileExist($filePath)) {
                 // Get the class name from the file path
                 $className = $this->getClassName($filePath);
 
                 // Get the content from a stub file
                 $stub = $this->getStub($className);
 
-                if($this->filePut($filePath, $stub)) {
+                if ($this->filePut($filePath, $stub)) {
                     $this->notifyInfo("Helper class [$filePath] created successfully.");
                 } else {
                     $this->notifyError("Failed to create helper class [$filePath].");

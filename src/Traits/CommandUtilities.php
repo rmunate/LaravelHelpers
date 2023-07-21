@@ -11,6 +11,7 @@ trait CommandUtilities
      * Validate the name to contain only letters.
      *
      * @param string $name
+     *
      * @return bool
      */
     private function validateName($name)
@@ -32,6 +33,7 @@ trait CommandUtilities
      * Display an error message using the 'components' property if available, otherwise use the default 'error' method.
      *
      * @param string $message
+     *
      * @return void
      */
     private function notifyError($message)
@@ -47,6 +49,7 @@ trait CommandUtilities
      * Display an info message using the 'components' property if available, otherwise use the default 'info' method.
      *
      * @param string $message
+     *
      * @return void
      */
     private function notifyInfo($message)
@@ -62,6 +65,7 @@ trait CommandUtilities
      * Convert a string to studly case.
      *
      * @param string $name
+     *
      * @return string
      */
     private function studly($name)
@@ -73,11 +77,12 @@ trait CommandUtilities
      * Generate the file name by adding '.php' extension to the given name.
      *
      * @param string $name
+     *
      * @return string
      */
     private function fileName($name)
     {
-        return $name . '.php';
+        return $name.'.php';
     }
 
     /**
@@ -89,6 +94,7 @@ trait CommandUtilities
     {
         $path = app_path($directory);
         File::ensureDirectoryExists($path);
+
         return $path;
     }
 
@@ -97,17 +103,19 @@ trait CommandUtilities
      *
      * @param string $path
      * @param string $fileName
+     *
      * @return string
      */
     private function filePath($path, $fileName)
     {
-        return $path . '/' . $fileName;
+        return $path.'/'.$fileName;
     }
 
     /**
      * Check if the file exists.
      *
      * @param string $filePath
+     *
      * @return bool
      */
     private function fileExist($filePath)
@@ -120,6 +128,7 @@ trait CommandUtilities
      *
      * @param string $filePath
      * @param string $stub
+     *
      * @return bool
      */
     private function filePut($filePath, $stub)
@@ -131,6 +140,7 @@ trait CommandUtilities
      * Get the content of a file.
      *
      * @param string $path
+     *
      * @return string
      */
     private function fileGet($path)
@@ -144,6 +154,7 @@ trait CommandUtilities
      * @param string $search
      * @param string $replace
      * @param string $target
+     *
      * @return string
      */
     private function replaceString($search, $replace, $target)
@@ -155,18 +166,20 @@ trait CommandUtilities
      * Generate the content from the stub file.
      *
      * @param string $className
+     *
      * @return string
      */
     private function getStub($className)
     {
         // Replace the placeholder with the actual class name
-        return $this->replaceString('{{class}}', $className, $this->fileGet(__DIR__ . '/../Stubs/CategoryHelpers.stub'));
+        return $this->replaceString('{{class}}', $className, $this->fileGet(__DIR__.'/../Stubs/CategoryHelpers.stub'));
     }
 
     /**
      * Get the class name from the file path.
      *
      * @param string $filePath
+     *
      * @return string
      */
     private function getClassName($filePath)
