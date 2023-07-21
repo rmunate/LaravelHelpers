@@ -60,9 +60,9 @@ class GenerateHelpers extends Command
                 }
             } else {
                 if (property_exists($this, 'components') && $this->components !== null) {
-                    $this->components->error("Failed to create helper class [$filePath].");
+                    $this->components->error("Failed to create helper class [$filePath]. The class already exists");
                 } else {
-                    $this->error("Failed to create helper class [$filePath].");
+                    $this->error("Failed to create helper class [$filePath]. The class already exists");
                 }
             }
         }
