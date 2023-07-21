@@ -35,7 +35,8 @@ class CreateHelpers extends Command
 
         //Validate Name Class
         if (!$this->validateName($name)) {
-            $this->notifyError("The name that you want to assign to the Helpers category is invalid, it must contain only letters and start each word with a capital letter without spaces or accents.");
+            $this->notifyError('The name that you want to assign to the Helpers category is invalid, it must contain only letters and start each word with a capital letter without spaces or accents.');
+
             return;
         }
 
@@ -45,12 +46,12 @@ class CreateHelpers extends Command
 
         // Ensure the Helpers directory exists
         $path = $this->ensureDirectoryExists('Helpers');
-        
+
         // Generate the content from a stub file
         $stub = $this->getStub($className);
 
         // Set the file path
-        $filePath = $this->filePath($path,$fileName);
+        $filePath = $this->filePath($path, $fileName);
 
         // Put the generated content into the file
         if (!$this->fileExist($filePath) && $this->filePut($filePath, $stub)) {
@@ -59,6 +60,4 @@ class CreateHelpers extends Command
             $this->notifyError("Failed to create helper class [$filePath]. The class already exists");
         }
     }
-
-    
 }

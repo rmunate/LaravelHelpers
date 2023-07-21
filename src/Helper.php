@@ -1,7 +1,7 @@
 <?php
 
-use Rmunate\LaravelHelpers\Traits\HelperUtilities;
 use Rmunate\LaravelHelpers\Exceptions\HelpersGeneralException;
+use Rmunate\LaravelHelpers\Traits\HelperUtilities;
 
 /**
  * The Helper class provides a dynamic method invocation mechanism for helper classes.
@@ -16,9 +16,9 @@ class Helper
      * @param mixed $method
      * @param mixed $args
      *
-     * @return mixed
-     *
      * @throws HelpersGeneralException if the method or category is undefined.
+     *
+     * @return mixed
      */
     public static function __callStatic($method, $args)
     {
@@ -52,6 +52,7 @@ class Helper
             $className = self::parseClassName($file);
             $category = self::parseCategoryName($className);
             $carry[$category] = new $className();
+
             return $carry;
         }, []);
 
@@ -63,9 +64,9 @@ class Helper
      *
      * @param string $category
      *
-     * @return mixed
-     *
      * @throws HelpersGeneralException if the category is undefined.
+     *
+     * @return mixed
      */
     private static function category(string $category)
     {

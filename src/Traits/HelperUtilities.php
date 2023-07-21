@@ -22,7 +22,7 @@ trait HelperUtilities
         // Extract category and real method
         return (object) [
             'category' => strtoupper(trim($parts[0])),
-            'method' => lcfirst(implode('', array_slice($parts, 1)))
+            'method'   => lcfirst(implode('', array_slice($parts, 1))),
         ];
     }
 
@@ -58,6 +58,7 @@ trait HelperUtilities
     public static function readClassesHelpers()
     {
         $directory = base_path().'/app/Helpers/';
+
         return glob($directory.'*.php');
     }
 }
