@@ -53,13 +53,13 @@ class GenerateHelpers extends Command
             if (!File::exists($filePath)) {
                 $this->createFile($filePath);
 
-                if (property_exists($this, 'components') && $this->components !== null && method_exists($this->components, 'info')) {
+                if (property_exists($this, 'components') && $this->components !== null) {
                     $this->components->info("Helper class [$filePath] created successfully.");
                 } else {
                     $this->info("Helper class [$filePath] created successfully.");
                 }
             } else {
-                if (property_exists($this, 'components') && $this->components !== null && method_exists($this->components, 'error')) {
+                if (property_exists($this, 'components') && $this->components !== null) {
                     $this->components->error("Failed to create helper class [$filePath].");
                 } else {
                     $this->error("Failed to create helper class [$filePath].");
