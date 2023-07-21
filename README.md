@@ -1,8 +1,9 @@
-# Standard creation and usage of helpers within (Laravel PHP Framework) | v1.x
+# Standard creation and use of helpers within the Laravel PHP Framework | v1.x
 
 ![Logo](https://github.com/rmunate/PHP2JS/assets/91748598/447112ed-7993-4808-bfb8-fd85da3c0010)
 
-[**---- Documentación En Español ----**](README_SPANISH.md)
+[**----Documentación En Español----**](README_SPANISH.md)
+
 ## Table of Contents
 - [Introduction](#introduction)
 - [Installation](#installation)
@@ -13,18 +14,18 @@
 - [License](#license)
 
 ## Introduction
-This is a standard for the creation and usage of helpers within Laravel. It provides a simple and elegant way to execute custom methods from any class or view in your application.
+Empower your Laravel journey: Unleash the power of helpers! Unlock a world of possibilities with our standard creation and seamless utilization of helpers within the Laravel framework. Our solution offers a simple, efficient, and elegant way to execute your application's custom methods from any class or view, making development a breeze. Supercharge your Laravel project and elevate your coding experience with our Helper Library.
 
-We will guide the usage of helpers in object-oriented categories.
+We will guide the use of Helpers by organizing them into categories.
 
-I have been using Laravel for many years, and I believe it is the framework that gives PHP a better life. However, the creation of helpers has not been standardized within this framework. Therefore, I decided to create a standard and implement it in different systems and companies I have worked for.
+For many years, I have been using Laravel, and I believe it is the framework that brings the best out of PHP. However, the creation of Helpers has not been standardized within this framework. Therefore, I decided to create a standard and implement it in various systems and companies for which I have worked.
 
 **Now you have it as a library!**
 
-It's time to standardize how to create and use helpers.
+It's time to standardize how to create and use them.
 
 ## Installation
-To install the dependency via Composer, execute the following command:
+To install the package via Composer, run the following command:
 
 ```shell
 composer require rmunate/laravel_helpers
@@ -39,22 +40,26 @@ After installing the dependency in your project, you can generate the initial st
 php artisan generate:helpers
 ```
 
-This will create a folder named `Helpers` within `App/`, where you will find suggested standard classes for creating your own helpers.
+This will create a folder called `Helpers` inside `App/`, where you will find suggested standard classes for creating your own helpers.
 
-The structure of the `Helpers` folder will be similar to the following:
+The structure of the `Helpers` folder will be as follows:
 
 ```css
 app/
 └── Helpers/
+    └── DataTime.php
+    └── File.php
     └── General.php
+    └── Html.php
+    └── Security.php
     └── Strings.php
-    └── Arrays.php
     //...
 ```
 
-Each class represents a category of helpers. The classes will not contain methods; you will define the methods your application requires.
+Each class represents a category of helpers.
+The classes will not have methods defined; you will start defining the ones your application requires.
 
-You can organize your helpers into different categories by creating dedicated classes for each category. For example, if you want to create functions related to string manipulation, you can use the `Strings` class.
+You can organize your helpers into different categories by creating dedicated classes for each of them. For example, if you want to create functions related to text strings, you can use the `Strings` class.
 
 ## Calling Helpers
 To call the helpers from anywhere in your application, use the following syntax:
@@ -63,25 +68,21 @@ To call the helpers from anywhere in your application, use the following syntax:
   ```php
   use Helper;
   
-  Helper::categoryMethodName();
+  Helper::categoryNameMethod();
   ```
 
 - Views or Components:
   ```php
-  {{ Helper::categoryMethodName() }}
+  {{ Helper::categoryNameMethod() }}
   ```
 
-You can also import and directly use the class of the required category by utilizing the `instance()` or `helpers()` method. For example:
+You can also import and directly use the class of the required category by using the `helpers()` method. For example:
 
 ```php
 use App\Helpers\Strings;
 
-//With Instance method
-Strings::instance()->methodName();
-
-//With Helpers method
+// Using the helpers() method
 Strings::helpers()->methodName();
-
 ```
 
 ## Creating a New Category
@@ -90,12 +91,11 @@ If you want to create a new category of helpers, execute the following command:
 ```shell
 php artisan create:helper CategoryName
 ```
-
-Replace `CategoryName` with the desired name for the new category.
+Replace `CategoryName` with the desired name for the new category. The name must not contain numbers, accents, or special characters.
 
 ## Creator
 - 🇨🇴 Raúl Mauricio Uñate Castro
 - Email: raulmauriciounate@gmail.com
 
 ## License
-This project is licensed under the [MIT License](https://choosealicense.com/licenses/mit/).
+This project is under the [MIT License](https://choosealicense.com/licenses/mit/).

@@ -1,31 +1,40 @@
 <?php
 
-use Exception;
+use Rmunate\LaravelHelpers\Exceptions\HelpersGeneralException;
+use Rmunate\LaravelHelpers\Traits\HelperUtilities;
 
+/**
+ * The Helper class provides a dynamic method invocation mechanism for helper classes.
+ */
 class Helper
 {
+    use HelperUtilities;
+
     /**
      * Call a static method dynamically based on the method name.
      *
      * @param mixed $method
      * @param mixed $args
      *
-     * @throws Exception
+     * @throws HelpersGeneralException if the method or category is undefined.
      *
      * @return mixed
      */
     public static function __callStatic($method, $args)
     {
-        $parts = preg_split('/(?<=\p{Ll})(?=\p{Lu})/u', $method);
-        $category = strtoupper(trim($parts[0]));
-        $realMethod = lcfirst(implode('', array_slice($parts, 1)));
+        // Parse the requested method
+        $request = self::parseMethod($method);
 
-        $class = self::category($category);
-        if (!method_exists($class, $realMethod)) {
-            throw new Exception("The method '".$realMethod."' is not defined in the class '".get_class($class).".php'");
+        // Get the class of the specified category
+        $class = self::category($request->category);
+
+        // If the method does not exist, throw an exception
+        if (!method_exists($class, $request->method)) {
+            throw HelpersGeneralException::methodUndefined($request->method, $class);
         }
 
-        return call_user_func_array([$class, $realMethod], $args);
+        // If the method exists, call it and return the result
+        return call_user_func_array([$class, $request->method], $args);
     }
 
     /**
@@ -35,12 +44,13 @@ class Helper
      */
     private static function readCategories()
     {
-        $directory = base_path().'/app/Helpers/';
-        $files = glob($directory.'*.php');
+        // Get the list of helper class files
+        $files = self::readClassesHelpers();
 
+        // Create an array of category instances
         $categories = array_reduce($files, function ($carry, $file) {
-            $className = 'App\\Helpers\\'.basename($file, '.php');
-            $category = strtoupper(substr($className, strrpos($className, '\\') + 1));
+            $className = self::parseClassName($file);
+            $category = self::parseCategoryName($className);
             $carry[$category] = new $className();
 
             return $carry;
@@ -54,19 +64,24 @@ class Helper
      *
      * @param string $category
      *
-     * @throws Exception
+     * @throws HelpersGeneralException if the category is undefined.
      *
      * @return mixed
      */
     private static function category(string $category)
     {
+        // Convert the category name to uppercase
         $category_upper = strtoupper($category);
+
+        // Retrieve the categories map
         $categoryMap = self::readCategories();
 
+        // If the category exists, return the corresponding instance
         if (isset($categoryMap[$category_upper])) {
             return $categoryMap[$category_upper];
         }
 
-        throw new Exception("There is no class 'App\\Helpers\\".ucwords(strtolower($category))."' under the 'namespace App\Helpers'");
+        // If the category does not exist, throw an exception
+        throw HelpersGeneralException::classUndefined($category);
     }
 }

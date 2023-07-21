@@ -1,11 +1,12 @@
+# Ignore common macOS files and directories
+**/.DS_Store
+
 # Ignore automatically generated files and directories
 /vendor/
 /.fleet
 /.idea
 /.vscode
 
-# Ignore common macOS files and directories
-.DS_Store
 
 # Ignore Composer generated directory and files
 /vendor

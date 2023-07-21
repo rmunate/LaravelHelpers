@@ -13,7 +13,7 @@
 - [Licencia](#licencia)
 
 ## Introducción
-Este es un estándar para la creación y uso de ayudantes (Helpers) dentro de Laravel. Proporciona una forma simple y elegante de ejecutar métodos personalizados desde cualquier clase o vista de tu aplicación.
+Potencia tu viaje de Laravel: ¡Libera el poder de los ayudantes! Desbloquea un mundo de posibilidades con nuestra creación estándar y la utilización perfecta de ayudantes dentro del marco de Laravel. Nuestra solución ofrece una manera simple, eficiente y elegante de ejecutar los métodos personalizados de tu aplicación desde cualquier clase o vista, lo que hace que el desarrollo sea muy sencillo. Mejora tu proyecto de Laravel y eleva tu experiencia de codificación con nuestra Biblioteca.
 
 Orientaremos el uso de Helpers en objetos por categorías.
 
@@ -41,14 +41,17 @@ php artisan generate:helpers
 
 Esto creará una carpeta llamada `Helpers` dentro de `App/`, donde encontrarás clases estándar sugeridas para la creación de tus propios ayudantes.
 
-La estructura de la carpeta `Helpers` será similar a la siguiente:
+La estructura de la carpeta `Helpers` será la siguiente:
 
 ```css
 app/
 └── Helpers/
+    └── DataTime.php
+    └── File.php
     └── General.php
+    └── Html.php
+    └── Security.php
     └── Strings.php
-    └── Arrays.php
     //...
 ```
 
@@ -72,16 +75,14 @@ Para llamar a los ayudantes desde cualquier lugar de tu aplicación, utiliza la 
   {{ Helper::categoriaNombreMetodo() }}
   ```
 
-También puedes importar y utilizar directamente la clase de la categoría que requieras, para esto utilizaremos el método `instance()` y el metodo `helpers()`. Por ejemplo:
+También puedes importar y utilizar directamente la clase de la categoría que requieras, para esto utilizaremos el metodo `helpers()`. Por ejemplo:
 
 ```php
 use App\Helpers\Strings;
 
-//Usando el metodo Instance
-Strings::instance()->nombreMetodo();
-
 //Usando el metodo Helpers
 Strings::helpers()->nombreMetodo();
+
 ```
 
 ## Crear una Nueva Categoría
@@ -90,7 +91,7 @@ Si deseas crear una nueva categoría de ayudantes, ejecuta el siguiente comando:
 ```shell
 php artisan create:helper NombreCategoria
 ```
-Reemplaza `NombreCategoria` con el nombre deseado para la nueva categoría.
+Reemplaza `NombreCategoria` con el nombre deseado para la nueva categoría. El nombre no podrá contener números, acentos o caracteres especiales.
 
 ## Creador
 - 🇨🇴 Raúl Mauricio Uñate Castro

@@ -3,14 +3,31 @@
 namespace Rmunate\LaravelHelpers\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\File;
+use Rmunate\LaravelHelpers\Traits\CommandUtilities;
 
 class GenerateHelpers extends Command
 {
+    use CommandUtilities;
+
+    /**
+     * The console command signature.
+     *
+     * @var string
+     */
     protected $signature = 'generate:helpers';
 
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
     protected $description = 'Generate initial helper files in the App/Helpers directory';
 
+    /**
+     * Array of helper files to be generated.
+     *
+     * @var array
+     */
     private $files = [
         'Arrays.php',
         'DataTime.php',
@@ -21,56 +38,35 @@ class GenerateHelpers extends Command
         'Strings.php',
     ];
 
+    /**
+     * Execute the console command.
+     *
+     * @return void
+     */
     public function handle()
     {
-        $helpersPath = app_path('Helpers');
-        File::ensureDirectoryExists($helpersPath);
+        // Ensure the Helpers directory exists
+        $helpersPath = $this->ensureDirectoryExists('Helpers');
 
+        // Generate helper files
         foreach ($this->files as $file) {
-            $filePath = $helpersPath.'/'.$file;
-            if (!File::exists($filePath)) {
-                $this->createFile($filePath);
-                $this->info("Helper class [$filePath] created successfully.");
+            $filePath = $this->filePath($helpersPath, $file);
+
+            if (!$this->fileExist($filePath)) {
+                // Get the class name from the file path
+                $className = $this->getClassName($filePath);
+
+                // Get the content from a stub file
+                $stub = $this->getStub($className);
+
+                if ($this->filePut($filePath, $stub)) {
+                    $this->notifyInfo("Helper class [$filePath] created successfully.");
+                } else {
+                    $this->notifyError("Failed to create helper class [$filePath].");
+                }
             } else {
-                $this->error("Failed to create helper class [$filePath].");
+                $this->notifyError("Failed to create helper class [$filePath]. The class already exists");
             }
         }
-    }
-
-    private function createFile($filePath)
-    {
-        $className = $this->getClassName($filePath);
-
-        $content = <<<PHP
-        <?php
-
-        namespace App\Helpers;
-
-        use Rmunate\LaravelHelpers\BaseHelpers;
-
-        class {$className} extends BaseHelpers
-        {
-            /**
-             * This is the standard structure to follow when creating a new helper.
-             * 
-             * @return void
-             */
-            public function helperName()
-            {
-                //.. The helper code
-            }
-        }
-        PHP;
-
-        File::put($filePath, $content);
-    }
-
-    private function getClassName($filePath)
-    {
-        $className = pathinfo($filePath, PATHINFO_FILENAME);
-        $namespace = 'App\Helpers\\';
-        $namespace = str_replace('/', '\\', dirname($filePath)).'\\';
-
-        return $className;
     }
 }
