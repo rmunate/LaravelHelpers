@@ -1,6 +1,6 @@
 {
     "name": "rmunate/laravel_helpers",
-    "description": "Standard creation and use of helpers within the Laravel framework through classes, a simple, efficient, and elegant way to execute your application's own methods from any class or view.",
+    "description": "Empower Your Laravel Journey: Unleash the Power of Helpers! Unlock a world of possibilities with our standard creation and seamless utilization of helpers within the Laravel framework. Our solution offers a simple, efficient, and elegant way to execute your application's custom methods from any class or view, making development a breeze. Supercharge your Laravel project and elevate your coding experience with our Helper Library.",
     "keywords": [
         "rmunate",
         "artisan",
@@ -22,8 +22,8 @@
         {
             "name": "Raul Mauricio Uñate Castro",
             "email": "raulmauriciounate@gmail.com",
-            "role": "owner",
-            "homepage": "https://github.com/rmunate"
+            "homepage": "https://github.com/rmunate",
+            "role": "owner"
         }
     ],
     "require": {
@@ -31,11 +31,9 @@
         "illuminate/support": "^9.0|^10.0",
         "illuminate/console": "^9.0|^10.0"
     },
-    "require-dev": {
-
-    },
-    "extra" : {
-        "branch-alias" : {
+    "require-dev": {},
+    "extra": {
+        "branch-alias": {
             "dev-main": "1.0.x-dev"
         },
         "laravel": {

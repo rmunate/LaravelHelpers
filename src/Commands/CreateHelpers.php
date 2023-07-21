@@ -8,23 +8,43 @@ use Illuminate\Support\Str;
 
 class CreateHelpers extends Command
 {
+    /**
+     * The console command signature.
+     *
+     * @var string
+     */
     protected $signature = 'create:helper {name}';
 
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
     protected $description = 'Create a new class that contains all the helpers of a single category.';
 
+    /**
+     * Execute the console command.
+     *
+     * @return void
+     */
     public function handle()
     {
+        // Get the name of the helper class from the command argument
         $name = $this->argument('name');
         $className = Str::studly($name);
         $fileName = $className.'.php';
 
+        // Ensure the Helpers directory exists
         $path = app_path('Helpers');
         File::ensureDirectoryExists($path);
 
+        // Generate the content from a stub file
         $stub = $this->generateStub($className);
 
+        // Set the file path
         $filePath = $path.'/'.$fileName;
 
+        // Put the generated content into the file
         if (File::put($filePath, $stub)) {
             $this->info("Helper class [$filePath] created successfully.");
         } else {
@@ -32,27 +52,21 @@ class CreateHelpers extends Command
         }
     }
 
+    /**
+     * Generate the content from the stub file.
+     *
+     * @param string $className
+     * @return string
+     */
     private function generateStub($className)
     {
-        return <<<PHP
-        <?php
+        // Read the content from the stub file
+        $stubPath = __DIR__.'/../Stubs/CategoryHelpers.stub';
+        $stubContent = File::get($stubPath);
 
-        namespace App\Helpers;
+        // Replace the placeholder with the actual class name
+        $stubContent = str_replace('{{class}}', $className, $stubContent);
 
-        use Rmunate\LaravelHelpers\BaseHelpers;
-
-        class {$className} extends BaseHelpers
-        {
-            /**
-             * This is the standard structure to follow when creating a new helper.
-             * 
-             * @return void
-             */
-            public function helperName()
-            {
-                //.. The helper code
-            }
-        }
-        PHP;
+        return $stubContent;
     }
 }

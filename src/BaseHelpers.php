@@ -2,7 +2,7 @@
 
 namespace Rmunate\LaravelHelpers;
 
-use BadMethodCallException;
+use Rmunate\LaravelHelpers\Exceptions\HelpersCallException;
 
 abstract class BaseHelpers
 {
@@ -12,17 +12,13 @@ abstract class BaseHelpers
      * @param string $method
      * @param array  $parameters
      *
-     * @throws BadMethodCallException
+     * @throws HelpersCallException
      *
      * @return mixed
      */
     public function __call($method, $parameters)
     {
-        throw new BadMethodCallException(sprintf(
-            'Method %s::%s does not exist.',
-            static::class,
-            $method
-        ));
+        throw HelpersCallException::create($method, static::class);
     }
 
     /**

@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Helpers;
+
+use Rmunate\LaravelHelpers\BaseHelpers;
+
+class {{class}} extends BaseHelpers
+{
+    /**
+     * This is the standard structure to follow when creating a new helper.
+     * 
+     * @return void
+     */
+    public function helperName()
+    {
+        //.. The helper code
+    }
+}
