@@ -19,7 +19,7 @@ class HelpersGeneralException extends Exception
      */
     public static function methodUndefined($method, $class)
     {
-        $message = "The method '{$method}' is not defined in the class '" . get_class($class) . ".php'";
+        $message = "The method '{$method}' is not defined in the class '".get_class($class).".php'";
 
         return new static($message);
     }
@@ -33,7 +33,7 @@ class HelpersGeneralException extends Exception
      */
     public static function classUndefined($category)
     {
-        $message = "There is no class 'App\\Helpers\\" . ucwords(strtolower($category)) . "' under the 'namespace App\Helpers'";
+        $message = "There is no class 'App\\Helpers\\".ucwords(strtolower($category))."' under the 'namespace App\Helpers'";
 
         return new static($message);
     }
