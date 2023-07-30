@@ -16,8 +16,10 @@ class HelpersCallException extends BadMethodCallException
      */
     public static function create($method, $class)
     {
-        $message = sprintf('Method %s::%s does not exist.', $class, $method);
-
-        return new static($message);
+        return new static(sprintf(
+            'Method %s::%s does not exist.',
+            $class,
+            $method
+        ));
     }
 }
