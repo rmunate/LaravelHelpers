@@ -22,7 +22,7 @@ abstract class BaseHelpers
     }
 
     /**
-     * Get a new instance of the class. DEPRECATED
+     * Get a new instance of the class. DEPRECATED.
      *
      * @return static
      */

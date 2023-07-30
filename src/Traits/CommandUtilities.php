@@ -82,7 +82,7 @@ trait CommandUtilities
      */
     private function fileName($name)
     {
-        return $name . '.php';
+        return $name.'.php';
     }
 
     /**
@@ -108,7 +108,7 @@ trait CommandUtilities
      */
     private function filePath($path, $fileName)
     {
-        return $path . '/' . $fileName;
+        return $path.'/'.$fileName;
     }
 
     /**
@@ -172,7 +172,7 @@ trait CommandUtilities
     private function getStub($className)
     {
         // Replace the placeholder with the actual class name
-        return $this->replaceString('{{class}}', $className, $this->fileGet(__DIR__ . '/../Stubs/CategoryHelpers.stub'));
+        return $this->replaceString('{{class}}', $className, $this->fileGet(__DIR__.'/../Stubs/CategoryHelpers.stub'));
     }
 
     /**
