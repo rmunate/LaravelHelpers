@@ -66,7 +66,7 @@ Las clases no traerán métodos, aquí empezarás a definir los que tu aplicaci�
 Puedes organizar tus ayudantes en diferentes categorías, creando clases dedicadas a cada una de ellas. Por ejemplo, si deseas crear funciones relacionadas con cadenas de texto, puedes utilizar la clase `Strings`.
 
 ## Llamada a Ayudantes
-Para llamar a los ayudantes desde cualquier lugar de tu aplicación, utiliza la siguiente sintaxis:
+Para invocar a los ayudantes desde cualquier lugar de tu aplicación, utiliza la siguiente sintaxis:
 
 - Controladores o Clases:
   ```php
