@@ -1,4 +1,4 @@
-# Estándar para la Creación y Uso de Ayudantes en Laravel PHP Framework | v1.x
+# Estándar para la Creación y Uso de Ayudantes en Laravel PHP Framework | v2.x
 
 ⚙️ Esta librería es compatible con versiones de Laravel 8.0 y superiores ⚙️
 

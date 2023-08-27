@@ -1,6 +1,6 @@
 Here's the provided markdown translated into English:
 
-# Standard for Creating and Using Helpers in Laravel PHP Framework | v1.x
+# Standard for Creating and Using Helpers in Laravel PHP Framework | v2.x
 
 ⚙️ This library is compatible with Laravel versions 8.0 and higher ⚙️
 
@@ -10,7 +10,7 @@ Here's the provided markdown translated into English:
 
 ![Logo](https://github.com/rmunate/PHP2JS/assets/91748598/447112ed-7993-4808-bfb8-fd85da3c0010)
 
-📖 [**ENGLISH DOCUMENTATION**](README.md) 📖
+📖 [**DOCUMENTACIÓN EN ESPAÑOL**](README_SPANISH.md) 📖
 
 ## Table of Contents
 
