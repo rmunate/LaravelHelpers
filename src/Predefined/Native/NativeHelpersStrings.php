@@ -14,7 +14,8 @@ trait NativeHelpersStrings
     /**
      * Get a new stringable object from the given string.
      *
-     * @param  string  $string
+     * @param string $string
+     *
      * @return \Illuminate\Support\Stringable
      */
     public function of($string)
@@ -29,8 +30,9 @@ trait NativeHelpersStrings
     /**
      * Return the remainder of a string after the first occurrence of a given value.
      *
-     * @param  string  $subject
-     * @param  string  $search
+     * @param string $subject
+     * @param string $search
+     *
      * @return string
      */
     public function after(string $subject, string $search)
@@ -45,8 +47,9 @@ trait NativeHelpersStrings
     /**
      * Return the remainder of a string after the last occurrence of a given value.
      *
-     * @param  string  $subject
-     * @param  string  $search
+     * @param string $subject
+     * @param string $search
+     *
      * @return string
      */
     public function afterLast(string $subject, string $search)
@@ -61,8 +64,9 @@ trait NativeHelpersStrings
     /**
      * Transliterate a UTF-8 value to ASCII.
      *
-     * @param  string  $value
-     * @param  string  $language
+     * @param string $value
+     * @param string $language
+     *
      * @return string
      */
     public function ascii(string $value, string $language = 'en')
@@ -77,9 +81,10 @@ trait NativeHelpersStrings
     /**
      * Transliterate a string to its closest ASCII representation.
      *
-     * @param  string  $string
-     * @param  string|null  $unknown
-     * @param  bool|null  $strict
+     * @param string      $string
+     * @param string|null $unknown
+     * @param bool|null   $strict
+     *
      * @return string
      */
     public function transliterate(string $string, $unknown = '?', $strict = false)
@@ -94,8 +99,9 @@ trait NativeHelpersStrings
     /**
      * Get the portion of a string before the first occurrence of a given value.
      *
-     * @param  string  $subject
-     * @param  string  $search
+     * @param string $subject
+     * @param string $search
+     *
      * @return string
      */
     public function before(string $subject, string $search)
@@ -110,8 +116,9 @@ trait NativeHelpersStrings
     /**
      * Get the portion of a string before the last occurrence of a given value.
      *
-     * @param  string  $subject
-     * @param  string  $search
+     * @param string $subject
+     * @param string $search
+     *
      * @return string
      */
     public function beforeLast(string $subject, string $search)
@@ -126,9 +133,10 @@ trait NativeHelpersStrings
     /**
      * Get the portion of a string between two given values.
      *
-     * @param  string  $subject
-     * @param  string  $from
-     * @param  string  $to
+     * @param string $subject
+     * @param string $from
+     * @param string $to
+     *
      * @return string
      */
     public function between(string $subject, string $from, string $to)
@@ -143,12 +151,12 @@ trait NativeHelpersStrings
     /**
      * Get the smallest possible portion of a string between two given values.
      *
-     * @param  string  $subject
-     * @param  string  $from
-     * @param  string  $to
+     * @param string $subject
+     * @param string $from
+     * @param string $to
+     *
      * @return string
      */
-
     public function betweenFirst(string $subject, string $from, string $to)
     {
         try {
@@ -161,7 +169,8 @@ trait NativeHelpersStrings
     /**
      * Convert a value to camel case.
      *
-     * @param  string  $value
+     * @param string $value
+     *
      * @return string
      */
     public function camel(string $value)
@@ -176,14 +185,15 @@ trait NativeHelpersStrings
     /**
      * Get the character at the specified index.
      *
-     * @param  string  $subject
-     * @param  int  $index
+     * @param string $subject
+     * @param int    $index
+     *
      * @return string|false
      */
     public function charAt(string $subject, int $index)
     {
         try {
-            return Str::charAt($subject,$index);
+            return Str::charAt($subject, $index);
         } catch (\Throwable $th) {
             throw HelpersGeneralException::methodUndefined('charAt', 'App\\Helpers\\Strings');
         }
@@ -192,9 +202,10 @@ trait NativeHelpersStrings
     /**
      * Determine if a given string contains a given substring.
      *
-     * @param  string  $haystack
-     * @param  string|iterable<string>  $needles
-     * @param  bool  $ignoreCase
+     * @param string                  $haystack
+     * @param string|iterable<string> $needles
+     * @param bool                    $ignoreCase
+     *
      * @return bool
      */
     public function contains(string $haystack, $needles, $ignoreCase = false)
@@ -209,9 +220,10 @@ trait NativeHelpersStrings
     /**
      * Determine if a given string contains all array values.
      *
-     * @param  string  $haystack
-     * @param  array  $needles
-     * @param  bool  $ignoreCase
+     * @param string $haystack
+     * @param array  $needles
+     * @param bool   $ignoreCase
+     *
      * @return bool
      */
     public function containsAll(string $haystack, array $needles, $ignoreCase = false)
@@ -226,8 +238,9 @@ trait NativeHelpersStrings
     /**
      * Determine if a given string ends with a given substring.
      *
-     * @param  string  $haystack
-     * @param  string|iterable<string>  $needles
+     * @param string                  $haystack
+     * @param string|iterable<string> $needles
+     *
      * @return bool
      */
     public function endsWith(string $haystack, $needles)
@@ -242,9 +255,10 @@ trait NativeHelpersStrings
     /**
      * Extracts an excerpt from text that matches the first instance of a phrase.
      *
-     * @param  string  $text
-     * @param  string  $phrase
-     * @param  array  $options
+     * @param string $text
+     * @param string $phrase
+     * @param array  $options
+     *
      * @return string|null
      */
     public function excerpt(string $text, string $phrase = '', array $options = [])
@@ -259,8 +273,9 @@ trait NativeHelpersStrings
     /**
      * Cap a string with a single instance of a given value.
      *
-     * @param  string  $value
-     * @param  string  $cap
+     * @param string $value
+     * @param string $cap
+     *
      * @return string
      */
     public function finish(string $value, string $cap)
@@ -275,9 +290,10 @@ trait NativeHelpersStrings
     /**
      * Wrap the string with the given strings.
      *
-     * @param  string  $value
-     * @param  string  $before
-     * @param  string|null  $after
+     * @param string      $value
+     * @param string      $before
+     * @param string|null $after
+     *
      * @return string
      */
     public function wrap(string $value, string $before, $after = null)
@@ -292,8 +308,9 @@ trait NativeHelpersStrings
     /**
      * Determine if a given string matches a given pattern.
      *
-     * @param  string|iterable<string>  $pattern
-     * @param  string  $value
+     * @param string|iterable<string> $pattern
+     * @param string                  $value
+     *
      * @return bool
      */
     public function is($pattern, string $value)
@@ -308,7 +325,8 @@ trait NativeHelpersStrings
     /**
      * Determine if a given string is 7 bit ASCII.
      *
-     * @param  string  $value
+     * @param string $value
+     *
      * @return bool
      */
     public function isAscii(string $value)
@@ -323,7 +341,8 @@ trait NativeHelpersStrings
     /**
      * Determine if a given value is valid JSON.
      *
-     * @param  mixed  $value
+     * @param mixed $value
+     *
      * @return bool
      */
     public function isJson($value)
@@ -338,8 +357,9 @@ trait NativeHelpersStrings
     /**
      * Determine if a given value is a valid URL.
      *
-     * @param  mixed  $value
-     * @param  array  $protocols
+     * @param mixed $value
+     * @param array $protocols
+     *
      * @return bool
      */
     public function isUrl($value, array $protocols = [])
@@ -354,7 +374,8 @@ trait NativeHelpersStrings
     /**
      * Determine if a given value is a valid UUID.
      *
-     * @param  mixed  $value
+     * @param mixed $value
+     *
      * @return bool
      */
     public function isUuid($value)
@@ -369,7 +390,8 @@ trait NativeHelpersStrings
     /**
      * Determine if a given value is a valid ULID.
      *
-     * @param  mixed  $value
+     * @param mixed $value
+     *
      * @return bool
      */
     public function isUlid($value)
@@ -384,7 +406,8 @@ trait NativeHelpersStrings
     /**
      * Convert a string to kebab case.
      *
-     * @param  string  $value
+     * @param string $value
+     *
      * @return string
      */
     public function kebab(string $value)
@@ -399,8 +422,9 @@ trait NativeHelpersStrings
     /**
      * Return the length of the given string.
      *
-     * @param  string  $value
-     * @param  string|null  $encoding
+     * @param string      $value
+     * @param string|null $encoding
+     *
      * @return int
      */
     public function length(string $value, $encoding = null)
@@ -415,9 +439,10 @@ trait NativeHelpersStrings
     /**
      * Limit the number of characters in a string.
      *
-     * @param  string  $value
-     * @param  int  $limit
-     * @param  string  $end
+     * @param string $value
+     * @param int    $limit
+     * @param string $end
+     *
      * @return string
      */
     public function limit(string $value, int $limit = 100, string $end = '...')
@@ -432,8 +457,9 @@ trait NativeHelpersStrings
     /**
      * Convert the given string to lower-case.
      *
-     * @param  string  $value
-     * @param  string  $encoding
+     * @param string $value
+     * @param string $encoding
+     *
      * @return string
      */
     public function lower(string $value)
@@ -448,9 +474,10 @@ trait NativeHelpersStrings
     /**
      * Limit the number of words in a string.
      *
-     * @param  string  $value
-     * @param  int  $words
-     * @param  string  $end
+     * @param string $value
+     * @param int    $words
+     * @param string $end
+     *
      * @return string
      */
     public function words(string $value, int $words = 100, string $end = '...')
@@ -465,8 +492,9 @@ trait NativeHelpersStrings
     /**
      * Converts GitHub flavored Markdown into HTML.
      *
-     * @param  string  $string
-     * @param  array  $options
+     * @param string $string
+     * @param array  $options
+     *
      * @return string
      */
     public function markdown(string $string, array $options = [])
@@ -481,8 +509,9 @@ trait NativeHelpersStrings
     /**
      * Converts inline Markdown into HTML.
      *
-     * @param  string  $string
-     * @param  array  $options
+     * @param string $string
+     * @param array  $options
+     *
      * @return string
      */
     public function inlineMarkdown(string $string, array $options = [])
@@ -497,11 +526,12 @@ trait NativeHelpersStrings
     /**
      * Masks a portion of a string with a repeated character.
      *
-     * @param  string  $string
-     * @param  string  $character
-     * @param  int  $index
-     * @param  int|null  $length
-     * @param  string  $encoding
+     * @param string   $string
+     * @param string   $character
+     * @param int      $index
+     * @param int|null $length
+     * @param string   $encoding
+     *
      * @return string
      */
     public function mask(string $string, string $character, int $index, $length = null, string $encoding = 'UTF-8')
@@ -516,8 +546,9 @@ trait NativeHelpersStrings
     /**
      * Get the string matching the given pattern.
      *
-     * @param  string  $pattern
-     * @param  string  $subject
+     * @param string $pattern
+     * @param string $subject
+     *
      * @return string
      */
     public function match(string $pattern, string $subject)
@@ -532,8 +563,9 @@ trait NativeHelpersStrings
     /**
      * Determine if a given string matches a given pattern.
      *
-     * @param  string|iterable<string>  $pattern
-     * @param  string  $value
+     * @param string|iterable<string> $pattern
+     * @param string                  $value
+     *
      * @return bool
      */
     public function isMatch($pattern, string $value)
@@ -548,8 +580,9 @@ trait NativeHelpersStrings
     /**
      * Get the string matching the given pattern.
      *
-     * @param  string  $pattern
-     * @param  string  $subject
+     * @param string $pattern
+     * @param string $subject
+     *
      * @return \Illuminate\Support\Collection
      */
     public function matchAll($pattern, $subject)
@@ -564,9 +597,10 @@ trait NativeHelpersStrings
     /**
      * Pad both sides of a string with another.
      *
-     * @param  string  $value
-     * @param  int  $length
-     * @param  string  $pad
+     * @param string $value
+     * @param int    $length
+     * @param string $pad
+     *
      * @return string
      */
     public function padBoth(string $value, int $length, string $pad = ' ')
@@ -581,9 +615,10 @@ trait NativeHelpersStrings
     /**
      * Pad the left side of a string with another.
      *
-     * @param  string  $value
-     * @param  int  $length
-     * @param  string  $pad
+     * @param string $value
+     * @param int    $length
+     * @param string $pad
+     *
      * @return string
      */
     public function padLeft(string $value, int $length, string $pad = ' ')
@@ -598,9 +633,10 @@ trait NativeHelpersStrings
     /**
      * Pad the right side of a string with another.
      *
-     * @param  string  $value
-     * @param  int  $length
-     * @param  string  $pad
+     * @param string $value
+     * @param int    $length
+     * @param string $pad
+     *
      * @return string
      */
     public function padRight(string $value, int $length, string $pad = ' ')
@@ -615,8 +651,9 @@ trait NativeHelpersStrings
     /**
      * Parse a Class[@]method style callback into class and method.
      *
-     * @param  string  $callback
-     * @param  string|null  $default
+     * @param string      $callback
+     * @param string|null $default
+     *
      * @return array<int, string|null>
      */
     public function parseCallback($callback, $default = null)
@@ -627,12 +664,13 @@ trait NativeHelpersStrings
             throw HelpersGeneralException::methodUndefined('parseCallback', 'App\\Helpers\\Strings');
         }
     }
-    
+
     /**
      * Get the plural form of an English word.
      *
-     * @param  string  $value
-     * @param  int|array|\Countable  $count
+     * @param string               $value
+     * @param int|array|\Countable $count
+     *
      * @return string
      */
     public function plural(string $value, $count = 2)
@@ -647,8 +685,9 @@ trait NativeHelpersStrings
     /**
      * Pluralize the last word of an English, studly caps case string.
      *
-     * @param  string  $value
-     * @param  int|array|\Countable  $count
+     * @param string               $value
+     * @param int|array|\Countable $count
+     *
      * @return string
      */
     public function pluralStudly(string $value, $count = 2)
@@ -663,11 +702,12 @@ trait NativeHelpersStrings
     /**
      * Generate a random, secure password.
      *
-     * @param  int  $length
-     * @param  bool  $letters
-     * @param  bool  $numbers
-     * @param  bool  $symbols
-     * @param  bool  $spaces
+     * @param int  $length
+     * @param bool $letters
+     * @param bool $numbers
+     * @param bool $symbols
+     * @param bool $spaces
+     *
      * @return string
      */
     public function password(int $length = 32, $letters = true, $numbers = true, $symbols = true, $spaces = false)
@@ -682,7 +722,8 @@ trait NativeHelpersStrings
     /**
      * Generate a more truly "random" alpha-numeric string.
      *
-     * @param  int  $length
+     * @param int $length
+     *
      * @return string
      */
     public function random(int $length = 16)
@@ -697,7 +738,8 @@ trait NativeHelpersStrings
     /**
      * Set the callable that will be used to generate random strings.
      *
-     * @param  callable|null  $factory
+     * @param callable|null $factory
+     *
      * @return void
      */
     public function createRandomStringsUsing(callable $factory = null)
@@ -712,8 +754,9 @@ trait NativeHelpersStrings
     /**
      * Set the sequence that will be used to generate random strings.
      *
-     * @param  array  $sequence
-     * @param  callable|null  $whenMissing
+     * @param array         $sequence
+     * @param callable|null $whenMissing
+     *
      * @return void
      */
     public function createRandomStringsUsingSequence(array $sequence, $whenMissing = null)
@@ -742,8 +785,9 @@ trait NativeHelpersStrings
     /**
      * Repeat the given string.
      *
-     * @param  string  $string
-     * @param  int  $times
+     * @param string $string
+     * @param int    $times
+     *
      * @return string
      */
     public function repeat(string $string, int $times)
@@ -758,9 +802,10 @@ trait NativeHelpersStrings
     /**
      * Replace a given value in the string sequentially with an array.
      *
-     * @param  string  $search
-     * @param  iterable<string>  $replace
-     * @param  string  $subject
+     * @param string           $search
+     * @param iterable<string> $replace
+     * @param string           $subject
+     *
      * @return string
      */
     public function replaceArray(string $search, $replace, string $subject)
@@ -775,10 +820,11 @@ trait NativeHelpersStrings
     /**
      * Replace the given value in the given string.
      *
-     * @param  string|iterable<string>  $search
-     * @param  string|iterable<string>  $replace
-     * @param  string|iterable<string>  $subject
-     * @param  bool  $caseSensitive
+     * @param string|iterable<string> $search
+     * @param string|iterable<string> $replace
+     * @param string|iterable<string> $subject
+     * @param bool                    $caseSensitive
+     *
      * @return string|string[]
      */
     public function replace($search, $replace, $subject, $caseSensitive = true)
@@ -793,9 +839,10 @@ trait NativeHelpersStrings
     /**
      * Replace the first occurrence of a given value in the string.
      *
-     * @param  string  $search
-     * @param  string  $replace
-     * @param  string  $subject
+     * @param string $search
+     * @param string $replace
+     * @param string $subject
+     *
      * @return string
      */
     public function replaceFirst(string $search, string $replace, string $subject)
@@ -810,9 +857,10 @@ trait NativeHelpersStrings
     /**
      * Replace the first occurrence of the given value if it appears at the start of the string.
      *
-     * @param  string  $search
-     * @param  string  $replace
-     * @param  string  $subject
+     * @param string $search
+     * @param string $replace
+     * @param string $subject
+     *
      * @return string
      */
     public function replaceStart(string $search, string $replace, string $subject)
@@ -827,9 +875,10 @@ trait NativeHelpersStrings
     /**
      * Replace the last occurrence of a given value in the string.
      *
-     * @param  string  $search
-     * @param  string  $replace
-     * @param  string  $subject
+     * @param string $search
+     * @param string $replace
+     * @param string $subject
+     *
      * @return string
      */
     public function replaceLast(string $search, string $replace, string $subject)
@@ -844,9 +893,10 @@ trait NativeHelpersStrings
     /**
      * Replace the last occurrence of a given value if it appears at the end of the string.
      *
-     * @param  string  $search
-     * @param  string  $replace
-     * @param  string  $subject
+     * @param string $search
+     * @param string $replace
+     * @param string $subject
+     *
      * @return string
      */
     public function replaceEnd(string $search, string $replace, string $subject)
@@ -861,9 +911,10 @@ trait NativeHelpersStrings
     /**
      * Remove any occurrence of the given string in the subject.
      *
-     * @param  string|iterable<string>  $search
-     * @param  string|iterable<string>  $subject
-     * @param  bool  $caseSensitive
+     * @param string|iterable<string> $search
+     * @param string|iterable<string> $subject
+     * @param bool                    $caseSensitive
+     *
      * @return string
      */
     public function remove($search, $subject, $caseSensitive = true)
@@ -878,7 +929,8 @@ trait NativeHelpersStrings
     /**
      * Reverse the given string.
      *
-     * @param  string  $value
+     * @param string $value
+     *
      * @return string
      */
     public function reverse(string $value)
@@ -893,8 +945,9 @@ trait NativeHelpersStrings
     /**
      * Begin a string with a single instance of a given value.
      *
-     * @param  string  $value
-     * @param  string  $prefix
+     * @param string $value
+     * @param string $prefix
+     *
      * @return string
      */
     public function start(string $value, string $prefix)
@@ -909,7 +962,8 @@ trait NativeHelpersStrings
     /**
      * Convert the given string to upper-case.
      *
-     * @param  string  $value
+     * @param string $value
+     *
      * @return string
      */
     public function upper(string $value)
@@ -924,7 +978,8 @@ trait NativeHelpersStrings
     /**
      * Convert the given string to title case.
      *
-     * @param  string  $value
+     * @param string $value
+     *
      * @return string
      */
     public function title(string $value)
@@ -939,7 +994,8 @@ trait NativeHelpersStrings
     /**
      * Convert the given string to title case for each word.
      *
-     * @param  string  $value
+     * @param string $value
+     *
      * @return string
      */
     public function headline(string $value)
@@ -954,7 +1010,8 @@ trait NativeHelpersStrings
     /**
      * Get the singular form of an English word.
      *
-     * @param  string  $value
+     * @param string $value
+     *
      * @return string
      */
     public function singular(string $value)
@@ -965,14 +1022,15 @@ trait NativeHelpersStrings
             throw HelpersGeneralException::methodUndefined('singular', 'App\\Helpers\\Strings');
         }
     }
-    
+
     /**
      * Generate a URL friendly "slug" from a given string.
      *
-     * @param  string  $title
-     * @param  string  $separator
-     * @param  string|null  $language
-     * @param  array<string, string>  $dictionary
+     * @param string                $title
+     * @param string                $separator
+     * @param string|null           $language
+     * @param array<string, string> $dictionary
+     *
      * @return string
      */
     public function slug(string $title, string $separator = '-', $language = 'en', $dictionary = ['@' => 'at'])
@@ -987,8 +1045,9 @@ trait NativeHelpersStrings
     /**
      * Convert a string to snake case.
      *
-     * @param  string  $value
-     * @param  string  $delimiter
+     * @param string $value
+     * @param string $delimiter
+     *
      * @return string
      */
     public function snake(string $value, string $delimiter = '_')
@@ -1003,7 +1062,8 @@ trait NativeHelpersStrings
     /**
      * Remove all "extra" blank space from the given string.
      *
-     * @param  string  $value
+     * @param string $value
+     *
      * @return string
      */
     public function squish(string $value)
@@ -1018,8 +1078,9 @@ trait NativeHelpersStrings
     /**
      * Determine if a given string starts with a given substring.
      *
-     * @param  string  $haystack
-     * @param  string|iterable<string>  $needles
+     * @param string                  $haystack
+     * @param string|iterable<string> $needles
+     *
      * @return bool
      */
     public function startsWith(string $haystack, $needles)
@@ -1034,7 +1095,8 @@ trait NativeHelpersStrings
     /**
      * Convert a value to studly caps case.
      *
-     * @param  string  $value
+     * @param string $value
+     *
      * @return string
      */
     public function studly(string $value)
@@ -1049,10 +1111,11 @@ trait NativeHelpersStrings
     /**
      * Returns the portion of the string specified by the start and length parameters.
      *
-     * @param  string  $string
-     * @param  int  $start
-     * @param  int|null  $length
-     * @param  string  $encoding
+     * @param string   $string
+     * @param int      $start
+     * @param int|null $length
+     * @param string   $encoding
+     *
      * @return string
      */
     public function substr(string $string, int $start, $length = null, string $encoding = 'UTF-8')
@@ -1067,10 +1130,11 @@ trait NativeHelpersStrings
     /**
      * Returns the number of substring occurrences.
      *
-     * @param  string  $haystack
-     * @param  string  $needle
-     * @param  int  $offset
-     * @param  int|null  $length
+     * @param string   $haystack
+     * @param string   $needle
+     * @param int      $offset
+     * @param int|null $length
+     *
      * @return int
      */
     public function substrCount(string $haystack, string $needle, int $offset = 0, $length = null)
@@ -1085,10 +1149,11 @@ trait NativeHelpersStrings
     /**
      * Replace text within a portion of a string.
      *
-     * @param  string|string[]  $string
-     * @param  string|string[]  $replace
-     * @param  int|int[]  $offset
-     * @param  int|int[]|null  $length
+     * @param string|string[] $string
+     * @param string|string[] $replace
+     * @param int|int[]       $offset
+     * @param int|int[]|null  $length
+     *
      * @return string|string[]
      */
     public function substrReplace($string, $replace, $offset = 0, $length = null)
@@ -1103,8 +1168,9 @@ trait NativeHelpersStrings
     /**
      * Swap multiple keywords in a string with other keywords.
      *
-     * @param  array  $map
-     * @param  string  $subject
+     * @param array  $map
+     * @param string $subject
+     *
      * @return string
      */
     public function swap(array $map, string $subject)
@@ -1119,7 +1185,8 @@ trait NativeHelpersStrings
     /**
      * Make a string's first character lowercase.
      *
-     * @param  string  $string
+     * @param string $string
+     *
      * @return string
      */
     public function lcfirst(string $string)
@@ -1134,7 +1201,8 @@ trait NativeHelpersStrings
     /**
      * Make a string's first character uppercase.
      *
-     * @param  string  $string
+     * @param string $string
+     *
      * @return string
      */
     public function ucfirst(string $string)
@@ -1149,7 +1217,8 @@ trait NativeHelpersStrings
     /**
      * Split a string into pieces by uppercase characters.
      *
-     * @param  string  $string
+     * @param string $string
+     *
      * @return string[]
      */
     public function ucsplit(string $string)
@@ -1164,8 +1233,9 @@ trait NativeHelpersStrings
     /**
      * Get the number of words a string contains.
      *
-     * @param  string  $string
-     * @param  string|null  $characters
+     * @param string      $string
+     * @param string|null $characters
+     *
      * @return int
      */
     public function wordCount(string $string, $characters = null)
@@ -1180,10 +1250,11 @@ trait NativeHelpersStrings
     /**
      * Wrap a string to a given number of characters.
      *
-     * @param  string  $string
-     * @param  int  $characters
-     * @param  string  $break
-     * @param  bool  $cutLongWords
+     * @param string $string
+     * @param int    $characters
+     * @param string $break
+     * @param bool   $cutLongWords
+     *
      * @return string
      */
     public function wordWrap(string $string, int $characters = 75, string $break = "\n", $cutLongWords = false)
@@ -1226,7 +1297,8 @@ trait NativeHelpersStrings
     /**
      * Set the callable that will be used to generate UUIDs.
      *
-     * @param  callable|null  $factory
+     * @param callable|null $factory
+     *
      * @return void
      */
     public function createUuidsUsing(callable $factory = null)
@@ -1241,8 +1313,9 @@ trait NativeHelpersStrings
     /**
      * Set the sequence that will be used to generate UUIDs.
      *
-     * @param  array  $sequence
-     * @param  callable|null  $whenMissing
+     * @param array         $sequence
+     * @param callable|null $whenMissing
+     *
      * @return void
      */
     public function createUuidsUsingSequence(array $sequence, $whenMissing = null)
@@ -1257,7 +1330,8 @@ trait NativeHelpersStrings
     /**
      * Always return the same UUID when generating new UUIDs.
      *
-     * @param  \Closure|null  $callback
+     * @param \Closure|null $callback
+     *
      * @return \Ramsey\Uuid\UuidInterface
      */
     public function freezeUuids($callback)
@@ -1286,7 +1360,8 @@ trait NativeHelpersStrings
     /**
      * Generate a ULID.
      *
-     * @param  \DateTimeInterface|null  $time
+     * @param \DateTimeInterface|null $time
+     *
      * @return \Symfony\Component\Uid\Ulid
      */
     public function ulid($time = null)
@@ -1311,5 +1386,4 @@ trait NativeHelpersStrings
             throw HelpersGeneralException::methodUndefined('flushCache', 'App\\Helpers\\Strings');
         }
     }
-
 }

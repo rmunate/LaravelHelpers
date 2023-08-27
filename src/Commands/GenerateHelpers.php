@@ -50,11 +50,9 @@ class GenerateHelpers extends Command
 
         // Generate helper files
         foreach ($this->files as $file) {
-            
             $filePath = $this->filePath($helpersPath, $file);
 
             if (!$this->fileExist($filePath)) {
-
                 // Get the class name from the file path
                 $className = $this->getClassName($filePath);
 
@@ -65,11 +63,8 @@ class GenerateHelpers extends Command
                 } else {
                     $this->notifyError("Failed to create helper class [$filePath].");
                 }
-
             } else {
-
                 $this->notifyError("Failed to create helper class [$filePath]. The class already exists");
-                
             }
         }
     }
