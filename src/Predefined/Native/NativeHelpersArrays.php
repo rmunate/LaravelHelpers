@@ -13,7 +13,8 @@ trait NativeHelpersArrays
     /**
      * Determine whether the given value is array accessible.
      *
-     * @param  mixed  $value
+     * @param mixed $value
+     *
      * @return bool
      */
     public function accessible($value)
@@ -28,9 +29,10 @@ trait NativeHelpersArrays
     /**
      * Add an element to an array using "dot" notation if it doesn't exist.
      *
-     * @param  array  $array
-     * @param  string|int|float  $key
-     * @param  mixed  $value
+     * @param array            $array
+     * @param string|int|float $key
+     * @param mixed            $value
+     *
      * @return array
      */
     public function add(array $array, $key, $value)
@@ -45,7 +47,8 @@ trait NativeHelpersArrays
     /**
      * Collapse an array of arrays into a single array.
      *
-     * @param  iterable  $array
+     * @param iterable $array
+     *
      * @return array
      */
     public function collapse($array)
@@ -60,7 +63,8 @@ trait NativeHelpersArrays
     /**
      * Cross join the given arrays, returning all possible permutations.
      *
-     * @param  iterable  ...$arrays
+     * @param iterable ...$arrays
+     *
      * @return array
      */
     public function crossJoin(...$arrays)
@@ -75,7 +79,8 @@ trait NativeHelpersArrays
     /**
      * Divide an array into two arrays. One with keys and the other with values.
      *
-     * @param  array  $array
+     * @param array $array
+     *
      * @return array
      */
     public function divide(array $array)
@@ -90,8 +95,9 @@ trait NativeHelpersArrays
     /**
      * Flatten a multi-dimensional associative array with dots.
      *
-     * @param  iterable  $array
-     * @param  string  $prepend
+     * @param iterable $array
+     * @param string   $prepend
+     *
      * @return array
      */
     public function dot($array, string $prepend = '')
@@ -106,7 +112,8 @@ trait NativeHelpersArrays
     /**
      * Convert a flatten "dot" notation array into an expanded array.
      *
-     * @param  iterable  $array
+     * @param iterable $array
+     *
      * @return array
      */
     public function undot($array)
@@ -121,8 +128,9 @@ trait NativeHelpersArrays
     /**
      * Get all of the given array except for a specified array of keys.
      *
-     * @param  array  $array
-     * @param  array|string|int|float  $keys
+     * @param array                  $array
+     * @param array|string|int|float $keys
+     *
      * @return array
      */
     public function except(array $array, $keys)
@@ -137,8 +145,9 @@ trait NativeHelpersArrays
     /**
      * Determine if the given key exists in the provided array.
      *
-     * @param  \ArrayAccess|array  $array
-     * @param  string|int  $key
+     * @param \ArrayAccess|array $array
+     * @param string|int         $key
+     *
      * @return bool
      */
     public function exists($array, $key)
@@ -153,9 +162,10 @@ trait NativeHelpersArrays
     /**
      * Return the first element in an array passing a given truth test.
      *
-     * @param  iterable  $array
-     * @param  callable|null  $callback
-     * @param  mixed  $default
+     * @param iterable      $array
+     * @param callable|null $callback
+     * @param mixed         $default
+     *
      * @return mixed
      */
     public function first($array, callable $callback = null, $default = null)
@@ -170,9 +180,10 @@ trait NativeHelpersArrays
     /**
      * Return the last element in an array passing a given truth test.
      *
-     * @param  array  $array
-     * @param  callable|null  $callback
-     * @param  mixed  $default
+     * @param array         $array
+     * @param callable|null $callback
+     * @param mixed         $default
+     *
      * @return mixed
      */
     public function last(array $array, callable $callback = null, $default = null)
@@ -187,8 +198,9 @@ trait NativeHelpersArrays
     /**
      * Flatten a multi-dimensional array into a single level.
      *
-     * @param  iterable  $array
-     * @param  int  $depth
+     * @param iterable $array
+     * @param int      $depth
+     *
      * @return array
      */
     public function flatten($array, int $depth = INF)
@@ -203,8 +215,9 @@ trait NativeHelpersArrays
     /**
      * Remove one or many array items from a given array using "dot" notation.
      *
-     * @param  array  $array
-     * @param  array|string|int|float  $keys
+     * @param array                  $array
+     * @param array|string|int|float $keys
+     *
      * @return void
      */
     public function forget(&$array, $keys)
@@ -219,9 +232,10 @@ trait NativeHelpersArrays
     /**
      * Get an item from an array using "dot" notation.
      *
-     * @param  \ArrayAccess|array  $array
-     * @param  string|int|null  $key
-     * @param  mixed  $default
+     * @param \ArrayAccess|array $array
+     * @param string|int|null    $key
+     * @param mixed              $default
+     *
      * @return mixed
      */
     public function get($array, $key, $default = null)
@@ -236,8 +250,9 @@ trait NativeHelpersArrays
     /**
      * Check if an item or items exist in an array using "dot" notation.
      *
-     * @param  \ArrayAccess|array  $array
-     * @param  string|array  $keys
+     * @param \ArrayAccess|array $array
+     * @param string|array       $keys
+     *
      * @return bool
      */
     public function has($array, $keys)
@@ -252,8 +267,9 @@ trait NativeHelpersArrays
     /**
      * Determine if any of the keys exist in an array using "dot" notation.
      *
-     * @param  \ArrayAccess|array  $array
-     * @param  string|array  $keys
+     * @param \ArrayAccess|array $array
+     * @param string|array       $keys
+     *
      * @return bool
      */
     public function hasAny($array, $keys)
@@ -270,7 +286,8 @@ trait NativeHelpersArrays
      *
      * An array is "associative" if it doesn't have sequential numerical keys beginning with zero.
      *
-     * @param  array  $array
+     * @param array $array
+     *
      * @return bool
      */
     public function isAssoc(array $array)
@@ -287,7 +304,8 @@ trait NativeHelpersArrays
      *
      * An array is a "list" if all array keys are sequential integers starting from 0 with no gaps in between.
      *
-     * @param  array  $array
+     * @param array $array
+     *
      * @return bool
      */
     public function isList(array $array)
@@ -302,9 +320,10 @@ trait NativeHelpersArrays
     /**
      * Join all items using a string. The final items can use a separate glue string.
      *
-     * @param  array  $array
-     * @param  string  $glue
-     * @param  string  $finalGlue
+     * @param array  $array
+     * @param string $glue
+     * @param string $finalGlue
+     *
      * @return string
      */
     public function join(array $array, string $glue, string $finalGlue = '')
@@ -319,8 +338,9 @@ trait NativeHelpersArrays
     /**
      * Key an associative array by a field or using a callback.
      *
-     * @param  array  $array
-     * @param  callable|array|string  $keyBy
+     * @param array                 $array
+     * @param callable|array|string $keyBy
+     *
      * @return array
      */
     public function keyBy(array $array, $keyBy)
@@ -335,8 +355,9 @@ trait NativeHelpersArrays
     /**
      * Prepend the key names of an associative array.
      *
-     * @param  array  $array
-     * @param  string  $prependWith
+     * @param array  $array
+     * @param string $prependWith
+     *
      * @return array
      */
     public function prependKeysWith(array $array, string $prependWith)
@@ -351,8 +372,9 @@ trait NativeHelpersArrays
     /**
      * Get a subset of the items from the given array.
      *
-     * @param  array  $array
-     * @param  array|string  $keys
+     * @param array        $array
+     * @param array|string $keys
+     *
      * @return array
      */
     public function only(array $array, $keys)
@@ -367,9 +389,10 @@ trait NativeHelpersArrays
     /**
      * Pluck an array of values from an array.
      *
-     * @param  iterable  $array
-     * @param  string|array|int|null  $value
-     * @param  string|array|null  $key
+     * @param iterable              $array
+     * @param string|array|int|null $value
+     * @param string|array|null     $key
+     *
      * @return array
      */
     public function pluck($array, $value, $key = null)
@@ -384,8 +407,9 @@ trait NativeHelpersArrays
     /**
      * Explode the "value" and "key" arguments passed to "pluck".
      *
-     * @param  string|array  $value
-     * @param  string|array|null  $key
+     * @param string|array      $value
+     * @param string|array|null $key
+     *
      * @return array
      */
     public function explodePluckParameters($value, $key)
@@ -400,8 +424,9 @@ trait NativeHelpersArrays
     /**
      * Run a map over each of the items in the array.
      *
-     * @param  array  $array
-     * @param  callable  $callback
+     * @param array    $array
+     * @param callable $callback
+     *
      * @return array
      */
     public function map(array $array, callable $callback)
@@ -423,8 +448,9 @@ trait NativeHelpersArrays
      * @template TMapWithKeysKey of array-key
      * @template TMapWithKeysValue
      *
-     * @param  array<TKey, TValue>  $array
-     * @param  callable(TValue, TKey): array<TMapWithKeysKey, TMapWithKeysValue>  $callback
+     * @param array<TKey, TValue>                                               $array
+     * @param callable(TValue, TKey): array<TMapWithKeysKey, TMapWithKeysValue> $callback
+     *
      * @return array
      */
     public function mapWithKeys(array $array, callable $callback)
@@ -439,9 +465,10 @@ trait NativeHelpersArrays
     /**
      * Push an item onto the beginning of an array.
      *
-     * @param  array  $array
-     * @param  mixed  $value
-     * @param  mixed  $key
+     * @param array $array
+     * @param mixed $value
+     * @param mixed $key
+     *
      * @return array
      */
     public function prepend(array $array, $value, $key = null)
@@ -456,9 +483,10 @@ trait NativeHelpersArrays
     /**
      * Get a value from the array, and remove it.
      *
-     * @param  array  $array
-     * @param  string|int  $key
-     * @param  mixed  $default
+     * @param array      $array
+     * @param string|int $key
+     * @param mixed      $default
+     *
      * @return mixed
      */
     public function pull(&$array, $key, $default = null)
@@ -473,7 +501,8 @@ trait NativeHelpersArrays
     /**
      * Convert the array into a query string.
      *
-     * @param  array  $array
+     * @param array $array
+     *
      * @return string
      */
     public function query(array $array)
@@ -488,12 +517,13 @@ trait NativeHelpersArrays
     /**
      * Get one or a specified number of random values from an array.
      *
-     * @param  array  $array
-     * @param  int|null  $number
-     * @param  bool  $preserveKeys
-     * @return mixed
+     * @param array    $array
+     * @param int|null $number
+     * @param bool     $preserveKeys
      *
      * @throws \InvalidArgumentException
+     *
+     * @return mixed
      */
     public function random(array $array, $number = null, $preserveKeys = false)
     {
@@ -509,9 +539,10 @@ trait NativeHelpersArrays
      *
      * If no key is given to the method, the entire array will be replaced.
      *
-     * @param  array  $array
-     * @param  string|int|null  $key
-     * @param  mixed  $value
+     * @param array           $array
+     * @param string|int|null $key
+     * @param mixed           $value
+     *
      * @return array
      */
     public function set(&$array, $key, $value)
@@ -526,8 +557,9 @@ trait NativeHelpersArrays
     /**
      * Shuffle the given array and return the result.
      *
-     * @param  array  $array
-     * @param  int|null  $seed
+     * @param array    $array
+     * @param int|null $seed
+     *
      * @return array
      */
     public function shuffle(array $array, $seed = null)
@@ -542,8 +574,9 @@ trait NativeHelpersArrays
     /**
      * Sort the array using the given callback or "dot" notation.
      *
-     * @param  array  $array
-     * @param  callable|array|string|null  $callback
+     * @param array                      $array
+     * @param callable|array|string|null $callback
+     *
      * @return array
      */
     public function sort(array $array, $callback = null)
@@ -558,8 +591,9 @@ trait NativeHelpersArrays
     /**
      * Sort the array in descending order using the given callback or "dot" notation.
      *
-     * @param  array  $array
-     * @param  callable|array|string|null  $callback
+     * @param array                      $array
+     * @param callable|array|string|null $callback
+     *
      * @return array
      */
     public function sortDesc(array $array, $callback = null)
@@ -574,9 +608,10 @@ trait NativeHelpersArrays
     /**
      * Recursively sort an array by keys and values.
      *
-     * @param  array  $array
-     * @param  int  $options
-     * @param  bool  $descending
+     * @param array $array
+     * @param int   $options
+     * @param bool  $descending
+     *
      * @return array
      */
     public function sortRecursive(array $array, int $options = SORT_REGULAR, $descending = false)
@@ -591,8 +626,9 @@ trait NativeHelpersArrays
     /**
      * Recursively sort an array by keys and values in descending order.
      *
-     * @param  array  $array
-     * @param  int  $options
+     * @param array $array
+     * @param int   $options
+     *
      * @return array
      */
     public function sortRecursiveDesc(array $array, int $options = SORT_REGULAR)
@@ -607,7 +643,8 @@ trait NativeHelpersArrays
     /**
      * Conditionally compile classes from an array into a CSS class list.
      *
-     * @param  array  $array
+     * @param array $array
+     *
      * @return string
      */
     public function toCssClasses(array $array)
@@ -622,7 +659,8 @@ trait NativeHelpersArrays
     /**
      * Conditionally compile styles from an array into a style list.
      *
-     * @param  array  $array
+     * @param array $array
+     *
      * @return string
      */
     public function toCssStyles(array $array)
@@ -637,8 +675,9 @@ trait NativeHelpersArrays
     /**
      * Filter the array using the given callback.
      *
-     * @param  array  $array
-     * @param  callable  $callback
+     * @param array    $array
+     * @param callable $callback
+     *
      * @return array
      */
     public function where(array $array, callable $callback)
@@ -653,7 +692,8 @@ trait NativeHelpersArrays
     /**
      * Filter items where the value is not null.
      *
-     * @param  array  $array
+     * @param array $array
+     *
      * @return array
      */
     public function whereNotNull(array $array)
@@ -668,7 +708,8 @@ trait NativeHelpersArrays
     /**
      * If the given value is not an array and not null, wrap it in one.
      *
-     * @param  mixed  $value
+     * @param mixed $value
+     *
      * @return array
      */
     public function wrap($value)
@@ -679,5 +720,4 @@ trait NativeHelpersArrays
             throw HelpersGeneralException::methodUndefined('wrap', 'App\\Helpers\\Arrays');
         }
     }
-
 }

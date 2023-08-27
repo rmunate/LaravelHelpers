@@ -7,5 +7,4 @@ namespace Rmunate\LaravelHelpers\Predefined\Native;
  */
 trait NativeHelpersGeneral
 {
-
 }
