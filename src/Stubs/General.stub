@@ -2,7 +2,7 @@
 
 namespace App\Helpers;
 
-use Rmunate\LaravelHelpers\BaseHelpers;
+use Rmunate\LaravelHelpers\Bases\BaseHelpers;
 use Rmunate\LaravelHelpers\Predefined\Native\NativeHelpersGeneral;
 use Rmunate\LaravelHelpers\Predefined\Additional\AdditionalHelpersGeneral;
 

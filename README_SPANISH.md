@@ -1,6 +1,7 @@
-# Estándar creación y uso de ayudantes dentro de (Laravel PHP Framework) | v2.x
-⚙️ Esta librería es compatible con versiones de Laravel 9.0 y superiores ⚙️
+# Estándar creación y uso de ayudantes dentro de (Laravel PHP Framework) | v1.x
+⚙️ Esta librería es compatible con versiones de Laravel 8.0 y superiores ⚙️
 
+[![Laravel 8.0+](https://img.shields.io/badge/Laravel-8.0%2B-orange.svg)](https://laravel.com)
 [![Laravel 9.0+](https://img.shields.io/badge/Laravel-9.0%2B-orange.svg)](https://laravel.com)
 [![Laravel 10.0+](https://img.shields.io/badge/Laravel-10.0%2B-orange.svg)](https://laravel.com)
 
@@ -24,9 +25,10 @@ Orientaremos el uso de Helpers en objetos por categorías.
 
 Durante muchos años he usado Laravel, creo que es el marco de trabajo que mejor vida le da a PHP. Sin embargo, dentro de este marco no se ha estandarizado la creación de los Helpers (Ayudantes), así que decidí crear un estándar e implementarlo en los diferentes sistemas y empresas para los cuales he trabajado.
 
-**¡Ahora lo tienes como librería!**
+**¿Y los Helpers que ya existen en el marco?**
+Pensando en centralizar el uso de los helpers existentes en el marco, este paquete incluye las funcionalidades nativas de Laravel accecibles a traves de `Str::` y `Arr::` en su respectiva clase de acuerdo a la categoria del Helper.
 
-Es hora de estandarizar cómo crearlos y usarlos.
+Es hora de estandarizar cómo crear y usar ayudantes en nuestros proyectos.
 
 ## Instalación
 Para instalar la dependencia a través de Composer, ejecuta el siguiente comando:
@@ -44,14 +46,14 @@ Después de instalar la dependencia en tu proyecto, puedes generar la estructura
 php artisan generate:helpers
 ```
 
-Esto creará una carpeta llamada `Helpers` dentro de `App/`, donde encontrarás clases estándar sugeridas para la creación de tus propios ayudantes.
+Esto creará una carpeta llamada `Helpers` dentro de `App\`, donde encontrarás clases estándar sugeridas para la creación de tus propios ayudantes.
 
 La estructura de la carpeta `Helpers` será la siguiente:
 
 ```css
 app/
 └── Helpers/
-    └── DateTime.php
+    └── DataTime.php
     └── File.php
     └── General.php
     └── Html.php
@@ -61,7 +63,7 @@ app/
 ```
 
 Cada clase representa una categoría de ayudantes.
-Las clases no traerán métodos, aquí empezarás a definir los que tu aplicación requiera.
+Las clases traerán algunos métodos que se presentarán en esta documentacion, aquí empezarás a definir los que tu aplicación requiera.
 
 Puedes organizar tus ayudantes en diferentes categorías, creando clases dedicadas a cada una de ellas. Por ejemplo, si deseas crear funciones relacionadas con cadenas de texto, puedes utilizar la clase `Strings`.
 

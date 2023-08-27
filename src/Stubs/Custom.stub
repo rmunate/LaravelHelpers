@@ -2,7 +2,7 @@
 
 namespace App\Helpers;
 
-use Rmunate\LaravelHelpers\BaseHelpers;
+use Rmunate\LaravelHelpers\Bases\BaseHelpers;
 
 class {{class}} extends BaseHelpers
 {
