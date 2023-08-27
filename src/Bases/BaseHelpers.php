@@ -1,6 +1,6 @@
 <?php
 
-namespace Rmunate\LaravelHelpers;
+namespace Rmunate\LaravelHelpers\Bases;
 
 use Rmunate\LaravelHelpers\Exceptions\HelpersCallException;
 
@@ -37,6 +37,16 @@ abstract class BaseHelpers
      * @return static
      */
     public static function helpers()
+    {
+        return new static();
+    }
+
+    /**
+     * Get a new instance of the class.
+     *
+     * @return static
+     */
+    public static function helper()
     {
         return new static();
     }

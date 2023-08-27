@@ -1,13 +1,13 @@
-# Estándar creación y uso de ayudantes dentro de (Laravel PHP Framework) | v1.x
-⚙️ Esta librería es compatible con versiones de Laravel 8.0 y superiores ⚙️
+# Estándar creación y uso de ayudantes dentro de (Laravel PHP Framework) | v2.x
+⚙️ Esta librería es compatible con versiones de Laravel 9.0 y superiores ⚙️
 
-[![Laravel 8.0+](https://img.shields.io/badge/Laravel-8.0%2B-orange.svg)](https://laravel.com)
 [![Laravel 9.0+](https://img.shields.io/badge/Laravel-9.0%2B-orange.svg)](https://laravel.com)
 [![Laravel 10.0+](https://img.shields.io/badge/Laravel-10.0%2B-orange.svg)](https://laravel.com)
 
 ![Logotipo](https://github.com/rmunate/PHP2JS/assets/91748598/447112ed-7993-4808-bfb8-fd85da3c0010)
 
-[**----Documentation In English----**](README.md)
+📖 [**DOCUMENTACIÓN EN INGLÉS**](README.md) 📖
+
 ## Tabla de Contenido
 - [Introducción](#introducción)
 - [Instalación](#instalación)
@@ -51,7 +51,7 @@ La estructura de la carpeta `Helpers` será la siguiente:
 ```css
 app/
 └── Helpers/
-    └── DataTime.php
+    └── DateTime.php
     └── File.php
     └── General.php
     └── Html.php
@@ -80,13 +80,13 @@ Para llamar a los ayudantes desde cualquier lugar de tu aplicación, utiliza la 
   {{ Helper::categoriaNombreMetodo() }}
   ```
 
-También puedes importar y utilizar directamente la clase de la categoría que requieras, para esto utilizaremos el metodo `helpers()`. Por ejemplo:
+También puedes importar y utilizar directamente la clase de la categoría que requieras, para esto utilizaremos el metodo `helpers()` o `helper()`. Por ejemplo:
 
 ```php
 use App\Helpers\Strings;
 
-//Usando el metodo Helpers
-Strings::helpers()->nombreMetodo();
+//Usando el metodo helpers() o helper()
+Strings::helpers()->nombreMetodo(); //Strings::helper()->nombreMetodo();
 
 ```
 
@@ -104,3 +104,9 @@ Reemplaza `NombreCategoria` con el nombre deseado para la nueva categoría. El n
 
 ## Licencia
 Este proyecto se encuentra bajo la [Licencia MIT](https://choosealicense.com/licenses/mit/).
+
+🌟 ¡Apoya Mis Proyectos! 🚀
+
+¡Realiza las contribuciones que veas necesarias, el código es totalmente tuyo. Juntos podemos hacer cosas asombrosas y mejorar el mundo del desarrollo. Tu apoyo es invaluable. 💖✨
+
+Si tienes ideas, sugerencias o simplemente deseas colaborar, ¡estamos abiertos a todo! ¡Únete a nuestra comunidad y forma parte de nuestro viaje hacia el éxito! 🌐👩‍💻👨‍💻

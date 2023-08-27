@@ -2,9 +2,6 @@
 
 namespace Rmunate\LaravelHelpers\Traits;
 
-/**
- * The HelperUtilities trait provides utility methods used in the Helper class.
- */
 trait HelperUtilities
 {
     /**

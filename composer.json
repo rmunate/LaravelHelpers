@@ -38,7 +38,7 @@
         },
         "laravel": {
             "providers": [
-                "Rmunate\\LaravelHelpers\\HelpersServiceProvider"
+                "Rmunate\\LaravelHelpers\\Providers\\HelpersServiceProvider"
             ]
         }
     },

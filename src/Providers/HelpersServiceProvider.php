@@ -1,6 +1,6 @@
 <?php
 
-namespace Rmunate\LaravelHelpers;
+namespace Rmunate\LaravelHelpers\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -26,8 +26,8 @@ class HelpersServiceProvider extends ServiceProvider
     {
         // Register the custom Artisan commands
         $this->commands([
-            Commands\GenerateHelpers::class,
-            Commands\CreateHelpers::class,
+            \Rmunate\LaravelHelpers\Commands\GenerateHelpers::class,
+            \Rmunate\LaravelHelpers\Commands\CreateHelpers::class,
         ]);
     }
 }

@@ -7,12 +7,12 @@ use Rmunate\LaravelHelpers\BaseHelpers;
 class {{class}} extends BaseHelpers
 {
     /**
-     * This is the standard structure to follow when creating a new helper.
+     * Describe what this helper does.
      * 
      * @return void
      */
-    public function helperName()
+    public function helperMethod()
     {
-        //.. The helper code
+        // Your helper code goes here
     }
 }

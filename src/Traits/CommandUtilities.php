@@ -171,8 +171,21 @@ trait CommandUtilities
      */
     private function getStub($className)
     {
-        // Replace the placeholder with the actual class name
-        return $this->replaceString('{{class}}', $className, $this->fileGet(__DIR__.'/../Stubs/CategoryHelpers.stub'));
+        $stubs = [
+            'Arrays'    => '/../Stubs/Arrays.stub',
+            'DateTime'  => '/../Stubs/DateTime.stub',
+            'File'      => '/../Stubs/File.stub',
+            'General'   => '/../Stubs/General.stub',
+            'Html'      => '/../Stubs/Html.stub',
+            'Security'  => '/../Stubs/Security.stub',
+            'Strings'   => '/../Stubs/Strings.stub',
+        ];
+
+        if (isset($stubs[$className])) {
+            return $this->fileGet(__DIR__.$stubs[$className]);
+        } else {
+            return $this->replaceString('{{class}}', $className, $this->fileGet(__DIR__.'/../Stubs/Custom.stub'));
+        }
     }
 
     /**

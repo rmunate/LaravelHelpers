@@ -30,7 +30,7 @@ class GenerateHelpers extends Command
      */
     private $files = [
         'Arrays.php',
-        'DataTime.php',
+        'DateTime.php',
         'File.php',
         'General.php',
         'Html.php',
@@ -50,22 +50,26 @@ class GenerateHelpers extends Command
 
         // Generate helper files
         foreach ($this->files as $file) {
+            
             $filePath = $this->filePath($helpersPath, $file);
 
             if (!$this->fileExist($filePath)) {
+
                 // Get the class name from the file path
                 $className = $this->getClassName($filePath);
 
                 // Get the content from a stub file
                 $stub = $this->getStub($className);
-
                 if ($this->filePut($filePath, $stub)) {
                     $this->notifyInfo("Helper class [$filePath] created successfully.");
                 } else {
                     $this->notifyError("Failed to create helper class [$filePath].");
                 }
+
             } else {
+
                 $this->notifyError("Failed to create helper class [$filePath]. The class already exists");
+                
             }
         }
     }

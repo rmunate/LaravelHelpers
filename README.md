@@ -1,4 +1,4 @@
-# Standard creation and use of helpers within the Laravel PHP Framework | v1.x
+# Standard creation and use of helpers within the Laravel PHP Framework | v2.x
 ⚙️ This library is compatible with Laravel versions 8.0 and above ⚙️
 
 [![Laravel 8.0+](https://img.shields.io/badge/Laravel-8.0%2B-orange.svg)](https://laravel.com)
@@ -7,7 +7,7 @@
 
 ![Logo](https://github.com/rmunate/PHP2JS/assets/91748598/447112ed-7993-4808-bfb8-fd85da3c0010)
 
-[**----Documentación En Español----**](README_SPANISH.md)
+📖 [**DOCUMENTACIÓN EN ESPAÑOL**](README_SPANISH.md) 📖
 
 ## Table of Contents
 - [Introduction](#introduction)
@@ -52,7 +52,7 @@ The structure of the `Helpers` folder will be as follows:
 ```css
 app/
 └── Helpers/
-    └── DataTime.php
+    └── DateTime.php
     └── File.php
     └── General.php
     └── Html.php
@@ -81,13 +81,16 @@ To call the helpers from anywhere in your application, use the following syntax:
   {{ Helper::categoryNameMethod() }}
   ```
 
-You can also import and directly use the class of the required category by using the `helpers()` method. For example:
+You can also import and directly use the class of the required category by using the `helpers()` or `helper()` method. For example:
 
 ```php
 use App\Helpers\Strings;
 
-// Using the helpers() method
-Strings::helpers()->methodName();
+/**
+ * Using the helpers() or helper() method
+ */
+Strings::helpers()->methodName(); //Strings::helper()->methodName();
+
 ```
 
 ## Creating a New Category
@@ -104,3 +107,9 @@ Replace `CategoryName` with the desired name for the new category. The name must
 
 ## License
 This project is under the [MIT License](https://choosealicense.com/licenses/mit/).
+
+🌟 Support My Projects! 🚀
+
+Make any contributions you see fit; the code is entirely yours. Together, we can do amazing things and improve the world of development. Your support is invaluable. ✨
+
+If you have ideas, suggestions, or just want to collaborate, we are open to everything! Join our community and be part of our journey to success! 🌐👩‍💻👨‍💻
