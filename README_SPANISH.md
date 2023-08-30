@@ -6,7 +6,7 @@
 [![Laravel 9.0+](https://img.shields.io/badge/Laravel-9.0%2B-orange.svg)](https://laravel.com)
 [![Laravel 10.0+](https://img.shields.io/badge/Laravel-10.0%2B-orange.svg)](https://laravel.com)
 
-![Logotipo](https://github.com/rmunate/PHP2JS/assets/91748598/447112ed-7993-4808-bfb8-fd85da3c0010)
+![LaravelHelpers](https://github.com/rmunate/LaravelHelpers/assets/91748598/8bf1ee66-bd47-40d1-8ea6-a1712cb6ed02)
 
 📖 [**DOCUMENTATION IN ENGLISH**](README.md) 📖
 
