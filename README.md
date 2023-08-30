@@ -105,7 +105,7 @@ class DateTime extends BaseHelpers
      * @param string $date
      * @return bool
      */
-    public function isMonday($date)
+    public function isMonday(string $date) : bool
     {
       return date('N', strtotime($date)) == 1;
     }
@@ -128,14 +128,14 @@ Helper::categoryMethodName();
 /**
  * For example, to invoke the example method from this guide:
  */
-Helper::datetimeIsMonday();
+Helper::datetimeIsMonday('2023-08-28');
 
 ```
 
 **Views or Components:**
 ```php
 {{ Helper::categoryMethodName() }}
-// {{ Helper::datetimeIsMonday() }}
+// {{ Helper::datetimeIsMonday('2023-08-28') }}
 ```
 
 You can also import and directly use the class from the category you require using the `helpers()` or `helper()` method. For example:
@@ -143,8 +143,8 @@ You can also import and directly use the class from the category you require usi
 ```php
 use App\Helpers\DateTime;
 
-DateTime::helpers()->isMonday();
-// DateTime::helper()->isMonday();
+DateTime::helpers()->isMonday('2023-08-28');
+// DateTime::helper()->isMonday('2023-08-28');
 ```
 
 ### Invoking Methods Already Available in Laravel

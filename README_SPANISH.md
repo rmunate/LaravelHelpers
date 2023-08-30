@@ -62,7 +62,7 @@ La estructura de la carpeta `Helpers` será la siguiente:
 ```css
 app/
 └── Helpers/
-    └── DataTime.php
+    └── DateTime.php
     └── File.php
     └── General.php
     └── Html.php
@@ -128,14 +128,14 @@ Helper::categoriaNombreMetodo();
 /**
  * Por ejemplo, para invocar el metodo de ejemplo de este manual:
  */
-Helper::datetimeEsLunes();
+Helper::datetimeEsLunes('2023-08-28');
 
 ```
 
 **Vistas o Componentes:**
 ```php
 {{ Helper::categoriaNombreMetodo() }}
-// {{ Helper::datetimeEsLunes() }}
+// {{ Helper::datetimeEsLunes('2023-08-28') }}
 ```
 
 También puedes importar y utilizar directamente la clase de la categoría que requieras, para esto utilizaremos el metodo `helpers()` o `helper()`. Por ejemplo:
@@ -143,8 +143,8 @@ También puedes importar y utilizar directamente la clase de la categoría que r
 ```php
 use App\Helpers\DateTime;
 
-DateTime::helpers()->esLunes();
-// DateTime::helper()->esLunes();
+DateTime::helpers()->esLunes('2023-08-28');
+// DateTime::helper()->esLunes('2023-08-28');
 ```
 
 ### Invocar los metodos ya disponibles en Laravel
