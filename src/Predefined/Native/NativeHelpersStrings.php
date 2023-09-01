@@ -236,6 +236,19 @@ trait NativeHelpersStrings
     }
 
     /**
+     * Convert the case of a string.
+     *
+     * @param  string  $string
+     * @param  int  $mode
+     * @param  string  $encoding
+     * @return string
+     */
+    public function convertCase(string $string, int $mode = MB_CASE_FOLD, ?string $encoding = 'UTF-8')
+    {
+        return mb_convert_case($string, $mode, $encoding);
+    }
+
+    /**
      * Determine if a given string ends with a given substring.
      *
      * @param string                  $haystack
