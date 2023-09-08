@@ -238,9 +238,10 @@ trait NativeHelpersStrings
     /**
      * Convert the case of a string.
      *
-     * @param  string  $string
-     * @param  int  $mode
-     * @param  string  $encoding
+     * @param string $string
+     * @param int    $mode
+     * @param string $encoding
+     *
      * @return string
      */
     public function convertCase(string $string, int $mode = MB_CASE_FOLD, ?string $encoding = 'UTF-8')
