@@ -14,7 +14,7 @@ class GenerateHelpers extends Command
      *
      * @var string
      */
-    protected $signature = 'generate:helpers';
+    protected $signature = 'helpers:init';
 
     /**
      * The console command description.

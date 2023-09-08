@@ -14,7 +14,7 @@ class CreateHelpers extends Command
      *
      * @var string
      */
-    protected $signature = 'create:helper {name}';
+    protected $signature = 'helpers:create {name}';
 
     /**
      * The console command description.

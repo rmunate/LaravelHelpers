@@ -53,7 +53,7 @@ Desde la version +2.0 se inicio con la consolidacion de diversas nuevas solucion
 Después de instalar la dependencia en tu proyecto, puedes generar la estructura inicial de los ayudantes ejecutando el siguiente comando:
 
 ```shell
-php artisan generate:helpers
+php artisan helpers:init
 ```
 
 Esto creará una carpeta llamada `Helpers` dentro de la carpeta `app\`, donde encontrarás clases estándar sugeridas para la creación de tus propios ayudantes.
@@ -80,7 +80,7 @@ En estas clases, podrás iniciar a definir los metodos que serán propios de tu 
 Si deseas crear una nueva categoría de ayudantes, ejecuta el siguiente comando:
 
 ```shell
-php artisan create:helper NombreCategoria
+php artisan helpers:create NombreCategoria
 ```
 
 Reemplaza `NombreCategoria` con el nombre deseado para la nueva categoría. Este nombre no podrá contener números, acentos o caracteres especiales.

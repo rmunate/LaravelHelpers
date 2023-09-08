@@ -54,7 +54,7 @@ This will download the latest available version of the package. Starting from ve
 After installing the dependency in your project, you can generate the initial structure of helpers by running the following command:
 
 ```shell
-php artisan generate:helpers
+php artisan helpers:init
 ```
 
 This will create a folder called `Helpers` inside the `app\` folder, where you will find suggested standard classes for creating your own helpers. The structure of the `Helpers` folder will be as follows:
@@ -78,7 +78,7 @@ Each class represents a category of helpers. These classes will, by default, imp
 If you want to create a new category of helpers, run the following command:
 
 ```shell
-php artisan create:helper CategoryName
+php artisan helpers:create CategoryName
 ```
 
 Replace `CategoryName` with the desired name for the new category. This name should not contain numbers, accents, or special characters. This will create a new file at the path `App\Helpers\CategoryName.php`, where you can start defining the methods you need.
