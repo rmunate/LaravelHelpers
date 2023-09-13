@@ -113,11 +113,12 @@ class DateTime extends BaseHelpers
 ```
 
 ### Calling Helpers
-
 To call helpers from anywhere in your application, use the following syntax:
 
 **Controllers or Classes:**
 ```php
+use Helper;
+
 /**
  * Syntax:
  * First Word => full class name in lowercase
@@ -143,8 +144,8 @@ You can also import and directly use the class from the category you require usi
 ```php
 use App\Helpers\DateTime;
 
-DateTime::helpers()->isMonday('2023-08-28');
-// DateTime::helper()->isMonday('2023-08-28');
+DateTime::helper()->isMonday('2023-08-28');
+// DateTime::helpers()->isMonday('2023-08-28');
 ```
 
 ### Invoking Methods Already Available in Laravel

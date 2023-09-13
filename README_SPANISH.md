@@ -118,6 +118,8 @@ Para llamar a los ayudantes desde cualquier lugar de tu aplicación, utiliza la 
 
 **Controladores o Clases:**
 ```php
+use Helper;
+
 /**
  * Sintaxis:
  * Primer Palabra => nombre completo de la clase en minuscula
@@ -143,8 +145,8 @@ También puedes importar y utilizar directamente la clase de la categoría que r
 ```php
 use App\Helpers\DateTime;
 
-DateTime::helpers()->esLunes('2023-08-28');
-// DateTime::helper()->esLunes('2023-08-28');
+DateTime::helper()->esLunes('2023-08-28');
+// DateTime::helpers()->esLunes('2023-08-28');
 ```
 
 ### Invocar los metodos ya disponibles en Laravel
