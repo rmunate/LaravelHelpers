@@ -189,7 +189,144 @@ Helper::stringsUuid();
 
 ### Nuevos Ayudantes Por Categoria
 
-Estaremos progresivamente agregando soluciones para tus proyectos...
+#### Cadenas De Texto
+
+##### Metodo: isAlphanumeric()
+Chequea si todos los caracteres en la string entregada, son alfanuméricos.
+
+```php
+Helper::stringIsAlphanumeric('AbCd1zyZ9'); //true
+Helper::stringIsAlphanumeric('foo!#$bar'); //false
+
+Strings::helpers()->isAlphanumeric('AbCd1zyZ9'); //true
+Strings::helpers()->isAlphanumeric('foo!#$bar'); //false
+```
+
+##### Metodo: isAlpha()
+Verifica si todos los caracteres en la string entregada, son alfabéticos `[A-Za-z]`.
+
+```php
+Helper::stringIsAlpha('KjgWZC'); //true
+Helper::stringIsAlpha('arf12'); //false
+
+Strings::helpers()->isAlpha('KjgWZC'); //true
+Strings::helpers()->isAlpha('arf12'); //false
+```
+
+##### Metodo: isControl()
+Verifica si todos los caracteres en la string entregada, son caracteres de control. Los caracteres de control son, por ejemplo, la alimentación de línea, el tabulador, escape.
+
+```php
+Helper::stringIsControl("\n\r\t"); //true
+Helper::stringIsControl('arf12'); //false
+
+Strings::helpers()->isControl("\n\r\t"); //true
+Strings::helpers()->isControl('arf12'); //false
+```
+
+##### Metodo: isDigit()
+Verifica si todos los caracteres en la string entregada, son numéricos.
+
+```php
+Helper::stringIsDigit('10002'); //true
+Helper::stringIsDigit('1820.20'); //false
+Helper::stringIsDigit('wsl!12'); //false
+
+Strings::helpers()->isDigit('10002'); //true
+Strings::helpers()->isDigit('1820.20'); //false
+Strings::helpers()->isDigit('wsl!12'); //false
+```
+
+##### Metodo: isGraph()
+Verifica si todos los caracteres en la string entregada, text, generan una salida visible.
+
+```php
+Helper::stringIsGraph('arf12'); //true
+Helper::stringIsGraph('LKA#@%.54'); //true
+Helper::stringIsGraph("asdf\n\r\t"); //false
+
+Strings::helpers()->isGraph('arf12'); //true
+Strings::helpers()->isGraph('LKA#@%.54'); //true
+Strings::helpers()->isGraph("asdf\n\r\t"); //false
+```
+
+##### Metodo: isLower()
+Verifica si todos los caracteres en la string entregada, son letras minúsculas.
+
+```php
+Helper::stringIsLower('qiutoas'); //true
+Helper::stringIsLower('aac123'); //false
+Helper::stringIsLower('QASsdks'); //false
+
+Strings::helpers()->isLower('qiutoas'); //true
+Strings::helpers()->isLower('aac123'); //false
+Strings::helpers()->isLower('QASsdks'); //false
+```
+
+##### Metodo: isPrint()
+Devuelve `true` si cada caracter del texto genera realmente alguna salida (incluyendo los espacios). Devuelve `false` si el texto incluye caracteres de control o caracteres que no producen ninguna salida ni realizan función de control alguna después de todo.
+
+```php
+Helper::stringIsPrint('arf12'); //true
+Helper::stringIsPrint('LKA#@%.54'); //true
+Helper::stringIsPrint("asdf\n\r\t"); //false
+
+Strings::helpers()->isPrint('arf12'); //true
+Strings::helpers()->isPrint('LKA#@%.54'); //true
+Strings::helpers()->isPrint("asdf\n\r\t"); //false
+```
+
+##### Metodo: isPunct()
+Verifica si todos los caracteres en la string entregada, son caracteres de puntuación.
+
+```php
+Helper::stringIsPunct('*&$()'); //true
+Helper::stringIsPunct('!@ # $'); //false
+Helper::stringIsPunct('ABasdk!@!$#'); //false
+
+Strings::helpers()->isPunct('*&$()'); //true
+Strings::helpers()->isPunct('!@ # $'); //false
+Strings::helpers()->isPunct('ABasdk!@!$#'); //false
+```
+
+##### Metodo: isSpace()
+Verifica si todos los caracteres en la string entregada, crean espacios en blanco. Devuelve `true` si cada caracter del string genera cierto tipo de espacio en blanco, o `false` de lo contrario. Junto con el caracter regular de espacio en blanco, también se consideran espacios a los caracteres de tabulación, tabulación vertical, avance de línea, retorno de carro y avance de formulario.
+
+```php
+Helper::stringIsSpace("\n\r\t"); //true
+Helper::stringIsSpace("\narf12"); //false
+Helper::stringIsSpace('\n\r\t'); //false // note las comillas simples
+
+Strings::helpers()->isSpace("\n\r\t"); //true
+Strings::helpers()->isSpace("\narf12"); //false
+Strings::helpers()->isSpace('\n\r\t'); //false // note las comillas simples
+```
+
+##### Metodo: isUpper()
+Verifica si todos los caracteres en la string entregada, son letras minúsculas.
+
+```php
+Helper::stringIsUpper('LMNSDO'); //true
+Helper::stringIsUpper('AKLWC139'); //false
+Helper::stringIsUpper('akwSKWsm'); //false
+
+Strings::helpers()->isUpper('LMNSDO'); //true
+Strings::helpers()->isUpper('AKLWC139'); //false
+Strings::helpers()->isUpper('akwSKWsm'); //false
+```
+
+##### Metodo: isHex()
+Verifica si todos los caracteres de la string entregada, son 'dígitos' hexadecimales.
+
+```php
+Helper::stringIsUpper('AB10BC99'); //true
+Helper::stringIsUpper('ab12bc99'); //true
+Helper::stringIsUpper('AR1012'); //false
+
+Strings::helpers()->isUpper('AB10BC99'); //true
+Strings::helpers()->isUpper('ab12bc99'); //true
+Strings::helpers()->isUpper('AR1012'); //false
+```
 
 ## ¿Como Contribuir?
 Tu contribucion es muy importante en este paquete, el proceso de contribucion es simple. Puedes crear un `fork` de este proyecto con total confianza, luego cuando ya tengas la bifurcacion en tu perfil, podras empezar a aportar los nuevos metodos que consideres utiles en los `traits` que se encuentran dentro de la ruta `src/Predefined/Additional/` recuerda siempre comentariar de acuerdo al estandar phpDoc cada uno de los metodos que sugieras, luego aplica un Pull Request a la rama principal de este repositorio.

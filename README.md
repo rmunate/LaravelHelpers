@@ -188,7 +188,144 @@ Helper::stringsUuid();
 
 ### New Helpers by Category
 
-We will progressively add solutions for your projects...
+#### Text Strings
+
+##### Method: isAlphanumeric()
+Checks if all characters in the given string are alphanumeric.
+
+```php
+Helper::isAlphanumeric('AbCd1zyZ9'); //true
+Helper::isAlphanumeric('foo!#$bar'); //false
+
+Strings::helpers()->isAlphanumeric('AbCd1zyZ9'); //true
+Strings::helpers()->isAlphanumeric('foo!#$bar'); //false
+```
+
+##### Method: isAlpha()
+Verifies if all characters in the given string are alphabetic `[A-Za-z]`.
+
+```php
+Helper::isAlpha('KjgWZC'); //true
+Helper::isAlpha('arf12'); //false
+
+Strings::helpers()->isAlpha('KjgWZC'); //true
+Strings::helpers()->isAlpha('arf12'); //false
+```
+
+##### Method: isControl()
+Checks if all characters in the given string are control characters. Control characters include, for example, line feed, tab, escape.
+
+```php
+Helper::isControl("\n\r\t"); //true
+Helper::isControl('arf12'); //false
+
+Strings::helpers()->isControl("\n\r\t"); //true
+Strings::helpers()->isControl('arf12'); //false
+```
+
+##### Method: isDigit()
+Verifies if all characters in the given string are numeric.
+
+```php
+Helper::isDigit('10002'); //true
+Helper::isDigit('1820.20'); //false
+Helper::isDigit('wsl!12'); //false
+
+Strings::helpers()->isDigit('10002'); //true
+Strings::helpers()->isDigit('1820.20'); //false
+Strings::helpers()->isDigit('wsl!12'); //false
+```
+
+##### Method: isGraph()
+Checks if all characters in the given string, `text`, generate visible output.
+
+```php
+Helper::isGraph('arf12'); //true
+Helper::isGraph('LKA#@%.54'); //true
+Helper::isGraph("asdf\n\r\t"); //false
+
+Strings::helpers()->isGraph('arf12'); //true
+Strings::helpers()->isGraph('LKA#@%.54'); //true
+Strings::helpers()->isGraph("asdf\n\r\t"); //false
+```
+
+##### Method: isLower()
+Verifies if all characters in the given string are lowercase letters.
+
+```php
+Helper::isLower('qiutoas'); //true
+Helper::isLower('aac123'); //false
+Helper::isLower('QASsdks'); //false
+
+Strings::helpers()->isLower('qiutoas'); //true
+Strings::helpers()->isLower('aac123'); //false
+Strings::helpers()->isLower('QASsdks'); //false
+```
+
+##### Method: isPrint()
+Returns `true` if each character in the text actually generates some output (including spaces). Returns `false` if the text includes control characters or characters that do not produce any output or perform any control function after all.
+
+```php
+Helper::isPrint('arf12'); //true
+Helper::isPrint('LKA#@%.54'); //true
+Helper::isPrint("asdf\n\r\t"); //false
+
+Strings::helpers()->isPrint('arf12'); //true
+Strings::helpers()->isPrint('LKA#@%.54'); //true
+Strings::helpers()->isPrint("asdf\n\r\t"); //false
+```
+
+##### Method: isPunct()
+Checks if all characters in the given string are punctuation characters.
+
+```php
+Helper::isPunct('*&$()'); //true
+Helper::isPunct('!@ # $'); //false
+Helper::isPunct('ABasdk!@!$#'); //false
+
+Strings::helpers()->isPunct('*&$()'); //true
+Strings::helpers()->isPunct('!@ # $'); //false
+Strings::helpers()->isPunct('ABasdk!@!$#'); //false
+```
+
+##### Method: isSpace()
+Verifies if all characters in the given string create white spaces. Returns `true` if each character in the string generates some form of white space, or `false` otherwise. Along with the regular space character, tab, vertical tab, line feed, carriage return, and form feed characters are also considered spaces.
+
+```php
+Helper::isSpace("\n\r\t"); //true
+Helper::isSpace("\narf12"); //false
+Helper::isSpace('\n\r\t'); //false // note the single quotes
+
+Strings::helpers()->isSpace("\n\r\t"); //true
+Strings::helpers()->isSpace("\narf12"); //false
+Strings::helpers()->isSpace('\n\r\t'); //false // note the single quotes
+```
+
+##### Method: isUpper()
+Verifies if all characters in the given string are uppercase letters.
+
+```php
+Helper::isUpper('LMNSDO'); //true
+Helper::isUpper('AKLWC139'); //false
+Helper::isUpper('akwSKWsm'); //false
+
+Strings::helpers()->isUpper('LMNSDO'); //true
+Strings::helpers()->isUpper('AKLWC139'); //false
+Strings::helpers()->isUpper('akwSKWsm'); //false
+```
+
+##### Method: isHex()
+Checks if all characters in the given string are hexadecimal digits.
+
+```php
+Helper::isHex('AB10BC99'); //true
+Helper::isHex('ab12bc99'); //true
+Helper::isHex('AR1012'); //false
+
+Strings::helpers()->isHex('AB10BC99'); //true
+Strings::helpers()->isHex('ab12bc99'); //true
+Strings::helpers()->isHex('AR1012'); //false
+```
 
 ## How to Contribute?
 
