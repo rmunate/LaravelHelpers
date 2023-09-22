@@ -23,7 +23,7 @@ abstract class BaseHelpers
 
     /**
      * Get a new instance of the class. DEPRECATED.
-     * This scenario is only to support the v1.X version
+     * This scenario is only to support the v1.X version.
      *
      * @return static
      */

@@ -31,24 +31,19 @@ class Helper
         //Validate Traits
         $uses = class_uses($class);
         if (count($uses) > 0) {
-
             foreach ($uses as $use) {
-                
                 if (method_exists($use, '__call')) {
-
                     $method = $request->method;
-                    return $class->$method(...$args);
 
+                    return $class->$method(...$args);
                 } else {
-                    
                     if (method_exists($use, $request->method)) {
                         call_user_func_array([$class, $request->method], $args);
                         break;
                     }
                 }
             }
-
-        } 
+        }
 
         // If the method does not exist, throw an exception
         if (!method_exists($class, $request->method)) {
