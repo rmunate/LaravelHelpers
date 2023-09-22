@@ -95,14 +95,13 @@ Here, we will create an example helper to provide a better understanding of the 
 ```php
 class DateTime extends BaseHelpers
 {
-   
 
  use NativeHelpersDateTime, AdditionalHelpersDateTime;
     
     /**
      * This example helper will be used to determine if a given date belongs to a Monday.
      *
-     * @param string $date
+     * @param  string $date
      * @return bool
      */
     public function isMonday(string $date) : bool
@@ -115,28 +114,22 @@ class DateTime extends BaseHelpers
 ### Calling Helpers
 To call helpers from anywhere in your application, use the following syntax:
 
+**First Word:** `full class name in lowercase` | **Starting from the Second Word:** `method name with each word capitalized` `Helper::categoryMethodName();`
+
 **Controllers or Classes:**
+
 ```php
+/* For example, to invoke the example method from this guide */
 use Helper;
 
-/**
- * Syntax:
- * First Word => full class name in lowercase
- * Starting from the Second Word => method name with each word capitalized
- */
-Helper::categoryMethodName();
-
-/**
- * For example, to invoke the example method from this guide:
- */
-Helper::datetimeIsMonday('2023-08-28');
-
+Helper::datetimeIsMonday('2023-08-14'); //true
+Helper::datetimeIsMonday('2023-08-16'); //false
 ```
 
 **Views or Components:**
 ```php
 {{ Helper::categoryMethodName() }}
-// {{ Helper::datetimeIsMonday('2023-08-28') }}
+// {{ Helper::datetimeIsMonday('2023-08-14') }}
 ```
 
 You can also import and directly use the class from the category you require using the `helpers()` or `helper()` method. For example:
@@ -144,188 +137,221 @@ You can also import and directly use the class from the category you require usi
 ```php
 use App\Helpers\DateTime;
 
-DateTime::helper()->isMonday('2023-08-28');
-// DateTime::helpers()->isMonday('2023-08-28');
+// With helper()
+DateTime::helper()->isMonday('2023-08-14'); //true
+DateTime::helper()->isMonday('2023-08-15'); //false
+
+// With helpers() alias helper()
+DateTime::helpers()->isMonday('2023-08-14'); //true
+DateTime::helpers()->isMonday('2023-08-15'); //false
 ```
 
 ### Invoking Methods Already Available in Laravel
-If you need to use any of the solutions currently available in the official Laravel documentation (https://laravel.com/docs/10.x/helpers), you can do so as follows:
+If you need to use any of the solutions currently available in the official Laravel documentation (https://laravel.com/docs/10.x/helpers) and (https://laravel.com/docs/10.x/strings), you can do so as follows:
 
 *Keep in mind that you only have access to methods invoked through Str:: and Arr:: classes.*
 
-**Example of Using Array Helpers** 
+**Example of Using Laravel Array Helpers** 
+[Available Methods](https://laravel.com/docs/10.x/helpers)
 
 Using `Arr::exists();` as an example:
 
 ```php
-$array = ['name' => 'John Doe', 'age' => 17];
+$array = [
+  'name' => 'Taylor Otwell',
+  'age' => 37
+];
 
 /* Native Laravel way */
-Arr::exists($array, 'name');
+use Illuminate\Support\Arr;
+
+Arr::exists($array, 'name');    //true
+Arr::exists($array, 'salary');  //false
 
 /* Method through the Helpers class */
-Arrays::helpers()->exists($array, 'name');
+use App\Helpers\Arrays;
+
+Arrays::helper()->exists($array, 'name');   //true
+Arrays::helper()->exists($array, 'salary'); //false
 
 /* Provided method for standardizing the call from anywhere */
-Helper::arraysExists($array, 'name');
+use Helper;
 
+Helper::arraysExists($array, 'name');   //true
+Helper::arraysExists($array, 'salary'); //false
+
+/* In Blade */
+{{ Helper::arraysExists($array, 'salary') }}
 ```
 
-**Example of Using String Helpers** 
+**Example of Using Laravel String Helpers** 
+[Available Methods](https://laravel.com/docs/10.x/strings)
 
 Using `Str::uuid();` as an example:
 
 ```php
 /* Native Laravel way */
-Str::uuid();
+use Illuminate\Support\Str;
+
+Str::camel('foo_bar'); // fooBar
+Str::contains('This is my name', 'my'); // true
 
 /* Method through the Helpers class */
-Strings::helpers()->uuid();
+use App\Helpers\Strings;
+
+Strings::helper()->camel('foo_bar'); // fooBar
+Strings::helper()->contains('This is my name', 'my'); // true
 
 /* Provided method for standardizing the call from anywhere */
-Helper::stringsUuid();
+Helper::stringsCamel('foo_bar'); // fooBar
+Helper::stringsContains('This is my name', 'my'); // true
+
+/* In Blade */
+{{ Helper::stringsCamel('foo_bar') }}
 ```
 
-### New Helpers by Category
+## New Helpers by Category
 
-#### Text Strings
+### **Strings**
 
-##### Method: `isAlphanumeric()`
+#### Method: `isAlphanumeric()`
 Checks if all characters in the given string are alphanumeric.
 
 ```php
-Helper::isAlphanumeric('AbCd1zyZ9'); //true
-Helper::isAlphanumeric('foo!#$bar'); //false
+Helper::stringsIsAlphanumeric('AbCd1zyZ9'); //true
+Helper::stringsIsAlphanumeric('foo!#$bar'); //false
 
 Strings::helpers()->isAlphanumeric('AbCd1zyZ9'); //true
 Strings::helpers()->isAlphanumeric('foo!#$bar'); //false
 ```
 
-##### Method: `isAlpha()`
+#### Method: `isAlpha()`
 Verifies if all characters in the given string are alphabetic `[A-Za-z]`.
 
 ```php
-Helper::isAlpha('KjgWZC'); //true
-Helper::isAlpha('arf12'); //false
+Helper::stringsIsAlpha('KjgWZC'); //true
+Helper::stringsIsAlpha('arf12'); //false
 
 Strings::helpers()->isAlpha('KjgWZC'); //true
 Strings::helpers()->isAlpha('arf12'); //false
 ```
 
-##### Method: `isControl()`
+#### Method: `isControl()`
 Checks if all characters in the given string are control characters. Control characters include, for example, line feed, tab, escape.
 
 ```php
-Helper::isControl("\n\r\t"); //true
-Helper::isControl('arf12'); //false
+Helper::stringsIsControl("\n\r\t"); //true
+Helper::stringsIsControl('arf12'); //false
 
 Strings::helpers()->isControl("\n\r\t"); //true
 Strings::helpers()->isControl('arf12'); //false
 ```
 
-##### Method: `isDigit()`
+#### Method: `isDigit()`
 Verifies if all characters in the given string are numeric.
 
 ```php
-Helper::isDigit('10002'); //true
-Helper::isDigit('1820.20'); //false
-Helper::isDigit('wsl!12'); //false
+Helper::stringsIsDigit('10002'); //true
+Helper::stringsIsDigit('1820.20'); //false
+Helper::stringsIsDigit('wsl!12'); //false
 
 Strings::helpers()->isDigit('10002'); //true
 Strings::helpers()->isDigit('1820.20'); //false
 Strings::helpers()->isDigit('wsl!12'); //false
 ```
 
-##### Method: `isGraph()`
+#### Method: `isGraph()`
 Checks if all characters in the given string, `text`, generate visible output.
 
 ```php
-Helper::isGraph('arf12'); //true
-Helper::isGraph('LKA#@%.54'); //true
-Helper::isGraph("asdf\n\r\t"); //false
+Helper::stringsIsGraph('arf12'); //true
+Helper::stringsIsGraph('LKA#@%.54'); //true
+Helper::stringsIsGraph("asdf\n\r\t"); //false
 
 Strings::helpers()->isGraph('arf12'); //true
 Strings::helpers()->isGraph('LKA#@%.54'); //true
 Strings::helpers()->isGraph("asdf\n\r\t"); //false
 ```
 
-##### Method: `isLower()`
+#### Method: `isLower()`
 Verifies if all characters in the given string are lowercase letters.
 
 ```php
-Helper::isLower('qiutoas'); //true
-Helper::isLower('aac123'); //false
-Helper::isLower('QASsdks'); //false
+Helper::stringsIsLower('qiutoas'); //true
+Helper::stringsIsLower('aac123'); //false
+Helper::stringsIsLower('QASsdks'); //false
 
 Strings::helpers()->isLower('qiutoas'); //true
 Strings::helpers()->isLower('aac123'); //false
 Strings::helpers()->isLower('QASsdks'); //false
 ```
 
-##### Method: `isPrint()`
+#### Method: `isPrint()`
 Returns `true` if each character in the text actually generates some output (including spaces). Returns `false` if the text includes control characters or characters that do not produce any output or perform any control function after all.
 
 ```php
-Helper::isPrint('arf12'); //true
-Helper::isPrint('LKA#@%.54'); //true
-Helper::isPrint("asdf\n\r\t"); //false
+Helper::stringsIsPrint('arf12'); //true
+Helper::stringsIsPrint('LKA#@%.54'); //true
+Helper::stringsIsPrint("asdf\n\r\t"); //false
 
 Strings::helpers()->isPrint('arf12'); //true
 Strings::helpers()->isPrint('LKA#@%.54'); //true
 Strings::helpers()->isPrint("asdf\n\r\t"); //false
 ```
 
-##### Method: `isPunct()`
+#### Method: `isPunct()`
 Checks if all characters in the given string are punctuation characters.
 
 ```php
-Helper::isPunct('*&$()'); //true
-Helper::isPunct('!@ # $'); //false
-Helper::isPunct('ABasdk!@!$#'); //false
+Helper::stringsIsPunct('*&$()'); //true
+Helper::stringsIsPunct('!@ # $'); //false
+Helper::stringsIsPunct('ABasdk!@!$#'); //false
 
 Strings::helpers()->isPunct('*&$()'); //true
 Strings::helpers()->isPunct('!@ # $'); //false
 Strings::helpers()->isPunct('ABasdk!@!$#'); //false
 ```
 
-##### Method: `isSpace()`
+#### Method: `isSpace()`
 Verifies if all characters in the given string create white spaces. Returns `true` if each character in the string generates some form of white space, or `false` otherwise. Along with the regular space character, tab, vertical tab, line feed, carriage return, and form feed characters are also considered spaces.
 
 ```php
-Helper::isSpace("\n\r\t"); //true
-Helper::isSpace("\narf12"); //false
-Helper::isSpace('\n\r\t'); //false // note the single quotes
+Helper::stringsIsSpace("\n\r\t"); //true
+Helper::stringsIsSpace("\narf12"); //false
+Helper::stringsIsSpace('\n\r\t'); //false // note the single quotes
 
 Strings::helpers()->isSpace("\n\r\t"); //true
 Strings::helpers()->isSpace("\narf12"); //false
 Strings::helpers()->isSpace('\n\r\t'); //false // note the single quotes
 ```
 
-##### Method: `isUpper()`
+#### Method: `isUpper()`
 Verifies if all characters in the given string are uppercase letters.
 
 ```php
-Helper::isUpper('LMNSDO'); //true
-Helper::isUpper('AKLWC139'); //false
-Helper::isUpper('akwSKWsm'); //false
+Helper::stringsIsUpper('LMNSDO'); //true
+Helper::stringsIsUpper('AKLWC139'); //false
+Helper::stringsIsUpper('akwSKWsm'); //false
 
 Strings::helpers()->isUpper('LMNSDO'); //true
 Strings::helpers()->isUpper('AKLWC139'); //false
 Strings::helpers()->isUpper('akwSKWsm'); //false
 ```
 
-##### Method: `isHex()`
+#### Method: `isHex()`
 Checks if all characters in the given string are hexadecimal digits.
 
 ```php
-Helper::isHex('AB10BC99'); //true
-Helper::isHex('ab12bc99'); //true
-Helper::isHex('AR1012'); //false
+Helper::stringsIsHex('AB10BC99'); //true
+Helper::stringsIsHex('ab12bc99'); //true
+Helper::stringsIsHex('AR1012'); //false
 
 Strings::helpers()->isHex('AB10BC99'); //true
 Strings::helpers()->isHex('ab12bc99'); //true
 Strings::helpers()->isHex('AR1012'); //false
 ```
+
+Creating new methods...
 
 ## How to Contribute?
 
