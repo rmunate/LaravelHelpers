@@ -95,8 +95,7 @@ Here, we will create an example helper to provide a better understanding of the 
 ```php
 class DateTime extends BaseHelpers
 {
-
- use NativeHelpersDateTime, AdditionalHelpersDateTime;
+    use NativeHelpersDateTime, AdditionalHelpersDateTime;
     
     /**
      * This example helper will be used to determine if a given date belongs to a Monday.
@@ -193,13 +192,13 @@ Using `Str::uuid();` as an example:
 /* Native Laravel way */
 use Illuminate\Support\Str;
 
-Str::camel('foo_bar'); // fooBar
+Str::camel('foo_bar');                  // fooBar
 Str::contains('This is my name', 'my'); // true
 
 /* Method through the Helpers class */
 use App\Helpers\Strings;
 
-Strings::helper()->camel('foo_bar'); // fooBar
+Strings::helper()->camel('foo_bar');                  // fooBar
 Strings::helper()->contains('This is my name', 'my'); // true
 
 /* Provided method for standardizing the call from anywhere */
@@ -251,38 +250,38 @@ Strings::helpers()->isControl('arf12'); //false
 Verifies if all characters in the given string are numeric.
 
 ```php
-Helper::stringsIsDigit('10002'); //true
-Helper::stringsIsDigit('1820.20'); //false
-Helper::stringsIsDigit('wsl!12'); //false
+Helper::stringsIsDigit('10002');    //true
+Helper::stringsIsDigit('1820.20');  //false
+Helper::stringsIsDigit('wsl!12');   //false
 
-Strings::helpers()->isDigit('10002'); //true
+Strings::helpers()->isDigit('10002');   //true
 Strings::helpers()->isDigit('1820.20'); //false
-Strings::helpers()->isDigit('wsl!12'); //false
+Strings::helpers()->isDigit('wsl!12');  //false
 ```
 
 #### Method: `isGraph()`
 Checks if all characters in the given string, `text`, generate visible output.
 
 ```php
-Helper::stringsIsGraph('arf12'); //true
-Helper::stringsIsGraph('LKA#@%.54'); //true
+Helper::stringsIsGraph('arf12');      //true
+Helper::stringsIsGraph('LKA#@%.54');  //true
 Helper::stringsIsGraph("asdf\n\r\t"); //false
 
-Strings::helpers()->isGraph('arf12'); //true
-Strings::helpers()->isGraph('LKA#@%.54'); //true
-Strings::helpers()->isGraph("asdf\n\r\t"); //false
+Strings::helpers()->isGraph('arf12');       //true
+Strings::helpers()->isGraph('LKA#@%.54');   //true
+Strings::helpers()->isGraph("asdf\n\r\t");  //false
 ```
 
 #### Method: `isLower()`
 Verifies if all characters in the given string are lowercase letters.
 
 ```php
-Helper::stringsIsLower('qiutoas'); //true
-Helper::stringsIsLower('aac123'); //false
-Helper::stringsIsLower('QASsdks'); //false
+Helper::stringsIsLower('qiutoas');  //true
+Helper::stringsIsLower('aac123');   //false
+Helper::stringsIsLower('QASsdks');  //false
 
 Strings::helpers()->isLower('qiutoas'); //true
-Strings::helpers()->isLower('aac123'); //false
+Strings::helpers()->isLower('aac123');  //false
 Strings::helpers()->isLower('QASsdks'); //false
 ```
 
@@ -290,25 +289,25 @@ Strings::helpers()->isLower('QASsdks'); //false
 Returns `true` if each character in the text actually generates some output (including spaces). Returns `false` if the text includes control characters or characters that do not produce any output or perform any control function after all.
 
 ```php
-Helper::stringsIsPrint('arf12'); //true
-Helper::stringsIsPrint('LKA#@%.54'); //true
+Helper::stringsIsPrint('arf12');      //true
+Helper::stringsIsPrint('LKA#@%.54');  //true
 Helper::stringsIsPrint("asdf\n\r\t"); //false
 
-Strings::helpers()->isPrint('arf12'); //true
-Strings::helpers()->isPrint('LKA#@%.54'); //true
-Strings::helpers()->isPrint("asdf\n\r\t"); //false
+Strings::helpers()->isPrint('arf12');       //true
+Strings::helpers()->isPrint('LKA#@%.54');   //true
+Strings::helpers()->isPrint("asdf\n\r\t");  //false
 ```
 
 #### Method: `isPunct()`
 Checks if all characters in the given string are punctuation characters.
 
 ```php
-Helper::stringsIsPunct('*&$()'); //true
-Helper::stringsIsPunct('!@ # $'); //false
-Helper::stringsIsPunct('ABasdk!@!$#'); //false
+Helper::stringsIsPunct('*&$()');        //true
+Helper::stringsIsPunct('!@ # $');       //false
+Helper::stringsIsPunct('ABasdk!@!$#');  //false
 
-Strings::helpers()->isPunct('*&$()'); //true
-Strings::helpers()->isPunct('!@ # $'); //false
+Strings::helpers()->isPunct('*&$()');       //true
+Strings::helpers()->isPunct('!@ # $');      //false
 Strings::helpers()->isPunct('ABasdk!@!$#'); //false
 ```
 
@@ -316,26 +315,26 @@ Strings::helpers()->isPunct('ABasdk!@!$#'); //false
 Verifies if all characters in the given string create white spaces. Returns `true` if each character in the string generates some form of white space, or `false` otherwise. Along with the regular space character, tab, vertical tab, line feed, carriage return, and form feed characters are also considered spaces.
 
 ```php
-Helper::stringsIsSpace("\n\r\t"); //true
-Helper::stringsIsSpace("\narf12"); //false
-Helper::stringsIsSpace('\n\r\t'); //false // note the single quotes
+Helper::stringsIsSpace("\n\r\t");   //true
+Helper::stringsIsSpace("\narf12");  //false
+Helper::stringsIsSpace('\n\r\t');   //false // note the single quotes
 
-Strings::helpers()->isSpace("\n\r\t"); //true
+Strings::helpers()->isSpace("\n\r\t");  //true
 Strings::helpers()->isSpace("\narf12"); //false
-Strings::helpers()->isSpace('\n\r\t'); //false // note the single quotes
+Strings::helpers()->isSpace('\n\r\t');  //false // note the single quotes
 ```
 
 #### Method: `isUpper()`
 Verifies if all characters in the given string are uppercase letters.
 
 ```php
-Helper::stringsIsUpper('LMNSDO'); //true
+Helper::stringsIsUpper('LMNSDO');   //true
 Helper::stringsIsUpper('AKLWC139'); //false
 Helper::stringsIsUpper('akwSKWsm'); //false
 
-Strings::helpers()->isUpper('LMNSDO'); //true
-Strings::helpers()->isUpper('AKLWC139'); //false
-Strings::helpers()->isUpper('akwSKWsm'); //false
+Strings::helpers()->isUpper('LMNSDO');    //true
+Strings::helpers()->isUpper('AKLWC139');  //false
+Strings::helpers()->isUpper('akwSKWsm');  //false
 ```
 
 #### Method: `isHex()`
@@ -344,11 +343,11 @@ Checks if all characters in the given string are hexadecimal digits.
 ```php
 Helper::stringsIsHex('AB10BC99'); //true
 Helper::stringsIsHex('ab12bc99'); //true
-Helper::stringsIsHex('AR1012'); //false
+Helper::stringsIsHex('AR1012');   //false
 
-Strings::helpers()->isHex('AB10BC99'); //true
-Strings::helpers()->isHex('ab12bc99'); //true
-Strings::helpers()->isHex('AR1012'); //false
+Strings::helpers()->isHex('AB10BC99');  //true
+Strings::helpers()->isHex('ab12bc99');  //true
+Strings::helpers()->isHex('AR1012');    //false
 ```
 
 Creating new methods...
