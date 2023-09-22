@@ -172,13 +172,13 @@ trait CommandUtilities
     private function getStub($className)
     {
         $stubs = [
-            'Arrays'    => '/../Stubs/Arrays.stub',
-            'DateTime'  => '/../Stubs/DateTime.stub',
-            'File'      => '/../Stubs/File.stub',
-            'General'   => '/../Stubs/General.stub',
-            'Html'      => '/../Stubs/Html.stub',
-            'Security'  => '/../Stubs/Security.stub',
-            'Strings'   => '/../Stubs/Strings.stub',
+            'Arrays'    => __DIR__.'/../Stubs/Arrays.stub',
+            'DateTime'  => __DIR__.'/../Stubs/DateTime.stub',
+            'File'      => __DIR__.'/../Stubs/File.stub',
+            'General'   => __DIR__.'/../Stubs/General.stub',
+            'Html'      => __DIR__.'/../Stubs/Html.stub',
+            'Security'  => __DIR__.'/../Stubs/Security.stub',
+            'Strings'   => __DIR__.'/../Stubs/Strings.stub',
         ];
 
         if (isset($stubs[$className])) {

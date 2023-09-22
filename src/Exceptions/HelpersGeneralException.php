@@ -21,9 +21,9 @@ class HelpersGeneralException extends Exception
     {
         $class = is_object($class) ? get_class($class) : $class;
 
-        $message = "The method '{$method}' is not defined in either the '{$class}.php' class";
+        $message = "The method '{$method}' is not defined in the '{$class}.php' class";
         if (!empty($otherClass)) {
-            $message .= " or the '{$otherClass}.php' class";
+            $message .= " or in the '{$otherClass}.php' class";
         }
 
         return new static($message);
@@ -38,7 +38,7 @@ class HelpersGeneralException extends Exception
      */
     public static function classUndefined($category)
     {
-        $message = "There is no class 'App\\Helpers\\".ucwords(strtolower($category))."' under the 'namespace App\Helpers'";
+        $message = "There is no class 'App\\Helpers\\".mb_convert_case($category, MB_CASE_TITLE)."' under the 'namespace App\Helpers'";
 
         return new static($message);
     }

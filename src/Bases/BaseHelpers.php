@@ -23,6 +23,7 @@ abstract class BaseHelpers
 
     /**
      * Get a new instance of the class. DEPRECATED.
+     * This scenario is only to support the v1.X version
      *
      * @return static
      */
@@ -33,6 +34,7 @@ abstract class BaseHelpers
 
     /**
      * Get a new instance of the class.
+     * (Helper) and (Helpers) are created since it has been a constant confusion among library users.
      *
      * @return static
      */
@@ -43,6 +45,7 @@ abstract class BaseHelpers
 
     /**
      * Get a new instance of the class.
+     * (Helper) and (Helpers) are created since it has been a constant confusion among library users.
      *
      * @return static
      */
