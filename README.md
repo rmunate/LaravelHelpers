@@ -204,7 +204,7 @@ Helper::stringsCamel('foo_bar'); // fooBar
 Helper::stringsContains('This is my name', 'my'); // true
 
 /* In Blade */
-{{ Helper::stringsCamel('foo_bar') }}
+{{ Helper::stringsCamel('foo_bar') }} // fooBar
 ```
 
 ## New Helpers by Category

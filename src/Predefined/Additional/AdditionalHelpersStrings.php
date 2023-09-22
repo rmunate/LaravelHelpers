@@ -13,7 +13,7 @@ trait AdditionalHelpersStrings
      */
     public function isAlphanumeric(string $string)
     {
-        return ctype_alnum($text);
+        return ctype_alnum($string);
     }
 
     /**
@@ -25,7 +25,7 @@ trait AdditionalHelpersStrings
      */
     public function isAlpha(string $string)
     {
-        return ctype_alpha($text);
+        return ctype_alpha($string);
     }
 
     /**
@@ -37,7 +37,7 @@ trait AdditionalHelpersStrings
      */
     public function isControl(string $string)
     {
-        return ctype_cntrl($text);
+        return ctype_cntrl($string);
     }
 
     /**
@@ -49,7 +49,7 @@ trait AdditionalHelpersStrings
      */
     public function isDigit(string $string)
     {
-        return ctype_digit($text);
+        return ctype_digit($string);
     }
 
     /**
@@ -61,7 +61,7 @@ trait AdditionalHelpersStrings
      */
     public function isGraph(string $string)
     {
-        return ctype_graph($text);
+        return ctype_graph($string);
     }
 
     /**
@@ -73,7 +73,7 @@ trait AdditionalHelpersStrings
      */
     public function isLower(string $string)
     {
-        return ctype_lower($text);
+        return ctype_lower($string);
     }
 
     /**
@@ -85,7 +85,7 @@ trait AdditionalHelpersStrings
      */
     public function isPrint(string $string)
     {
-        return ctype_print($text);
+        return ctype_print($string);
     }
 
     /**
@@ -97,7 +97,7 @@ trait AdditionalHelpersStrings
      */
     public function isPunct(string $string)
     {
-        return ctype_punct($text);
+        return ctype_punct($string);
     }
 
     /**
@@ -109,7 +109,7 @@ trait AdditionalHelpersStrings
      */
     public function isSpace(string $string)
     {
-        return ctype_space($text);
+        return ctype_space($string);
     }
 
     /**
@@ -121,7 +121,7 @@ trait AdditionalHelpersStrings
      */
     public function isUpper(string $string)
     {
-        return ctype_upper($text);
+        return ctype_upper($string);
     }
 
     /**
@@ -133,6 +133,6 @@ trait AdditionalHelpersStrings
      */
     public function isHex(string $string)
     {
-        return ctype_xdigit($text);
+        return ctype_xdigit($string);
     }
 }
