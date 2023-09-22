@@ -190,7 +190,7 @@ Helper::stringsUuid();
 
 #### Text Strings
 
-##### Method: isAlphanumeric()
+##### Method: `isAlphanumeric()`
 Checks if all characters in the given string are alphanumeric.
 
 ```php
@@ -201,7 +201,7 @@ Strings::helpers()->isAlphanumeric('AbCd1zyZ9'); //true
 Strings::helpers()->isAlphanumeric('foo!#$bar'); //false
 ```
 
-##### Method: isAlpha()
+##### Method: `isAlpha()`
 Verifies if all characters in the given string are alphabetic `[A-Za-z]`.
 
 ```php
@@ -212,7 +212,7 @@ Strings::helpers()->isAlpha('KjgWZC'); //true
 Strings::helpers()->isAlpha('arf12'); //false
 ```
 
-##### Method: isControl()
+##### Method: `isControl()`
 Checks if all characters in the given string are control characters. Control characters include, for example, line feed, tab, escape.
 
 ```php
@@ -223,7 +223,7 @@ Strings::helpers()->isControl("\n\r\t"); //true
 Strings::helpers()->isControl('arf12'); //false
 ```
 
-##### Method: isDigit()
+##### Method: `isDigit()`
 Verifies if all characters in the given string are numeric.
 
 ```php
@@ -236,7 +236,7 @@ Strings::helpers()->isDigit('1820.20'); //false
 Strings::helpers()->isDigit('wsl!12'); //false
 ```
 
-##### Method: isGraph()
+##### Method: `isGraph()`
 Checks if all characters in the given string, `text`, generate visible output.
 
 ```php
@@ -249,7 +249,7 @@ Strings::helpers()->isGraph('LKA#@%.54'); //true
 Strings::helpers()->isGraph("asdf\n\r\t"); //false
 ```
 
-##### Method: isLower()
+##### Method: `isLower()`
 Verifies if all characters in the given string are lowercase letters.
 
 ```php
@@ -262,7 +262,7 @@ Strings::helpers()->isLower('aac123'); //false
 Strings::helpers()->isLower('QASsdks'); //false
 ```
 
-##### Method: isPrint()
+##### Method: `isPrint()`
 Returns `true` if each character in the text actually generates some output (including spaces). Returns `false` if the text includes control characters or characters that do not produce any output or perform any control function after all.
 
 ```php
@@ -275,7 +275,7 @@ Strings::helpers()->isPrint('LKA#@%.54'); //true
 Strings::helpers()->isPrint("asdf\n\r\t"); //false
 ```
 
-##### Method: isPunct()
+##### Method: `isPunct()`
 Checks if all characters in the given string are punctuation characters.
 
 ```php
@@ -288,7 +288,7 @@ Strings::helpers()->isPunct('!@ # $'); //false
 Strings::helpers()->isPunct('ABasdk!@!$#'); //false
 ```
 
-##### Method: isSpace()
+##### Method: `isSpace()`
 Verifies if all characters in the given string create white spaces. Returns `true` if each character in the string generates some form of white space, or `false` otherwise. Along with the regular space character, tab, vertical tab, line feed, carriage return, and form feed characters are also considered spaces.
 
 ```php
@@ -301,7 +301,7 @@ Strings::helpers()->isSpace("\narf12"); //false
 Strings::helpers()->isSpace('\n\r\t'); //false // note the single quotes
 ```
 
-##### Method: isUpper()
+##### Method: `isUpper()`
 Verifies if all characters in the given string are uppercase letters.
 
 ```php
@@ -314,7 +314,7 @@ Strings::helpers()->isUpper('AKLWC139'); //false
 Strings::helpers()->isUpper('akwSKWsm'); //false
 ```
 
-##### Method: isHex()
+##### Method: `isHex()`
 Checks if all characters in the given string are hexadecimal digits.
 
 ```php
