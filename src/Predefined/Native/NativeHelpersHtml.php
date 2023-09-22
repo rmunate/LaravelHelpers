@@ -7,4 +7,5 @@ namespace Rmunate\LaravelHelpers\Predefined\Native;
  */
 trait NativeHelpersHtml
 {
+    //..
 }

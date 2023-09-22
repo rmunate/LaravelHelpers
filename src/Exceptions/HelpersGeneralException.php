@@ -17,9 +17,14 @@ class HelpersGeneralException extends Exception
      *
      * @return static
      */
-    public static function methodUndefined($method, $class)
+    public static function methodUndefined($method, $class, $otherClass = null)
     {
-        $message = "The method '{$method}' is not defined in the class '".get_class($class).".php'";
+        $class = is_object($class) ? get_class($class) : $class;
+
+        $message = "The method '{$method}' is not defined in either the '{$class}.php' class";
+        if (!empty($otherClass)) {
+            $message .= " or the '{$otherClass}.php' class";
+        }
 
         return new static($message);
     }
