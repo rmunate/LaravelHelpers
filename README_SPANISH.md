@@ -155,8 +155,6 @@ Si requieres emplear cualquiera de las soluciones actualmente vigentes en la doc
 **Ejemplo Uso Ayudantes De Arreglos Nativos De Laravel** 
 [Metodos Disponibles](https://laravel.com/docs/10.x/helpers)
 
-Ejemplo uso `Arr::exists();`
-
 ```php
 $array = [
   'name' => 'Taylor Otwell',
@@ -187,8 +185,6 @@ Helper::arraysExists($array, 'salary'); //false
 
 **Ejemplo Uso Ayudantes De Strings** 
 [Available Methods](https://laravel.com/docs/10.x/strings)
-
-Ejemplo uso `Str::uuid();`
 
 ```php
 /* Forma nativa de laravel */

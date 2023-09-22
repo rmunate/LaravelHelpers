@@ -153,8 +153,6 @@ If you need to use any of the solutions currently available in the official Lara
 **Example of Using Laravel Array Helpers** 
 [Available Methods](https://laravel.com/docs/10.x/helpers)
 
-Using `Arr::exists();` as an example:
-
 ```php
 $array = [
   'name' => 'Taylor Otwell',
@@ -185,8 +183,6 @@ Helper::arraysExists($array, 'salary'); //false
 
 **Example of Using Laravel String Helpers** 
 [Available Methods](https://laravel.com/docs/10.x/strings)
-
-Using `Str::uuid();` as an example:
 
 ```php
 /* Native Laravel way */
