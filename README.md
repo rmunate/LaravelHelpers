@@ -1,5 +1,3 @@
-Here's the provided markdown translated into English:
-
 # Standard for Creating and Using Helpers in Laravel PHP Framework | v2.x
 
 ⚙️ This library is compatible with Laravel versions 8.0 and higher ⚙️
