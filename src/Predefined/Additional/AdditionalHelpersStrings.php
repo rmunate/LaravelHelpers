@@ -5,9 +5,10 @@ namespace Rmunate\LaravelHelpers\Predefined\Additional;
 trait AdditionalHelpersStrings
 {
     /**
-     * Chequear posibles caracteres alfanuméricos 
+     * Chequear posibles caracteres alfanuméricos.
+     *
      * @param string $string
-     * 
+     *
      * @return bool
      */
     public function isAlphanumeric(string $string)
@@ -16,9 +17,10 @@ trait AdditionalHelpersStrings
     }
 
     /**
-     * Chequear posibles caracteres alfabéticos
+     * Chequear posibles caracteres alfabéticos.
+     *
      * @param string $string
-     * 
+     *
      * @return bool
      */
     public function isAlpha(string $string)
@@ -27,9 +29,10 @@ trait AdditionalHelpersStrings
     }
 
     /**
-     * Chequear posibles caracteres de control
+     * Chequear posibles caracteres de control.
+     *
      * @param string $string
-     * 
+     *
      * @return bool
      */
     public function isControl(string $string)
@@ -38,9 +41,10 @@ trait AdditionalHelpersStrings
     }
 
     /**
-     * Chequear posibles caracteres numéricos
+     * Chequear posibles caracteres numéricos.
+     *
      * @param string $string
-     * 
+     *
      * @return bool
      */
     public function isDigit(string $string)
@@ -49,9 +53,10 @@ trait AdditionalHelpersStrings
     }
 
     /**
-     * Chequear posibles caracteres imprimibles, con excepción de los espacios
+     * Chequear posibles caracteres imprimibles, con excepción de los espacios.
+     *
      * @param string $string
-     * 
+     *
      * @return bool
      */
     public function isGraph(string $string)
@@ -60,9 +65,10 @@ trait AdditionalHelpersStrings
     }
 
     /**
-     * Chequear posibles caracteres en minúscula
+     * Chequear posibles caracteres en minúscula.
+     *
      * @param string $string
-     * 
+     *
      * @return bool
      */
     public function isLower(string $string)
@@ -71,9 +77,10 @@ trait AdditionalHelpersStrings
     }
 
     /**
-     * Chequear posibles caracteres imprimibles
+     * Chequear posibles caracteres imprimibles.
+     *
      * @param string $string
-     * 
+     *
      * @return bool
      */
     public function isPrint(string $string)
@@ -82,20 +89,22 @@ trait AdditionalHelpersStrings
     }
 
     /**
-     * Chequear posibles caracteres imprimibles que no son ni espacios en blanco ni caracteres alfanuméricos
+     * Chequear posibles caracteres imprimibles que no son ni espacios en blanco ni caracteres alfanuméricos.
+     *
      * @param string $string
-     * 
+     *
      * @return bool
      */
     public function isPunct(string $string)
     {
         return ctype_punct($text);
     }
-    
+
     /**
-     * Chequear posibles caracteres de espacio en blanco
+     * Chequear posibles caracteres de espacio en blanco.
+     *
      * @param string $string
-     * 
+     *
      * @return bool
      */
     public function isSpace(string $string)
@@ -104,9 +113,10 @@ trait AdditionalHelpersStrings
     }
 
     /**
-     * Chequear posibles caracteres de espacio en blanco
+     * Chequear posibles caracteres de espacio en blanco.
+     *
      * @param string $string
-     * 
+     *
      * @return bool
      */
     public function isUpper(string $string)
@@ -115,14 +125,14 @@ trait AdditionalHelpersStrings
     }
 
     /**
-     * Chequear posibles caracteres de espacio en blanco
+     * Chequear posibles caracteres de espacio en blanco.
+     *
      * @param string $string
-     * 
+     *
      * @return bool
      */
     public function isHex(string $string)
     {
         return ctype_xdigit($text);
     }
-
 }
