@@ -192,16 +192,18 @@ Using `Str::uuid();` as an example:
 /* Native Laravel way */
 use Illuminate\Support\Str;
 
-Str::camel('foo_bar');                  // fooBar
+Str::camel('foo_bar'); // fooBar
 Str::contains('This is my name', 'my'); // true
 
 /* Method through the Helpers class */
 use App\Helpers\Strings;
 
-Strings::helper()->camel('foo_bar');                  // fooBar
+Strings::helper()->camel('foo_bar'); // fooBar
 Strings::helper()->contains('This is my name', 'my'); // true
 
 /* Provided method for standardizing the call from anywhere */
+use Helper;
+
 Helper::stringsCamel('foo_bar'); // fooBar
 Helper::stringsContains('This is my name', 'my'); // true
 

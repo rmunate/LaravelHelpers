@@ -116,28 +116,21 @@ class DateTime extends BaseHelpers
 
 Para llamar a los ayudantes desde cualquier lugar de tu aplicación, utiliza la siguiente sintaxis:
 
+**Primer Palabra:** `nombre completo de la clase en minuscula` | **Desde La Segunda Palabra:** `nombre del metodo iniciando cada palabra en mayuscula` `Helper::categoriaNombreMetodo();`
+
 **Controladores o Clases:**
 ```php
+/* Por ejemplo, para invocar el metodo de ejemplo de este manual */
 use Helper;
 
-/**
- * Sintaxis:
- * Primer Palabra => nombre completo de la clase en minuscula
- * Desde La Segunda Palabra => nombre del metodo iniciando cada palabra en mayuscula
- */
-Helper::categoriaNombreMetodo();
-
-/**
- * Por ejemplo, para invocar el metodo de ejemplo de este manual:
- */
-Helper::datetimeEsLunes('2023-08-28');
-
+Helper::datetimeEsLunes('2023-08-14'); //true
+Helper::datetimeEsLunes('2023-08-16'); //false
 ```
 
 **Vistas o Componentes:**
 ```php
 {{ Helper::categoriaNombreMetodo() }}
-// {{ Helper::datetimeEsLunes('2023-08-28') }}
+// {{ Helper::datetimeEsLunes('2023-08-14') }}
 ```
 
 También puedes importar y utilizar directamente la clase de la categoría que requieras, para esto utilizaremos el metodo `helpers()` o `helper()`. Por ejemplo:
@@ -145,53 +138,86 @@ También puedes importar y utilizar directamente la clase de la categoría que r
 ```php
 use App\Helpers\DateTime;
 
-DateTime::helper()->esLunes('2023-08-28');
-// DateTime::helpers()->esLunes('2023-08-28');
+// Con helper()
+DateTime::helper()->esLunes('2023-08-14'); //true
+DateTime::helper()->esLunes('2023-08-15'); //false
+
+// Con helpers() alias helper()
+DateTime::helpers()->esLunes('2023-08-14'); //true
+DateTime::helpers()->esLunes('2023-08-15'); //false
 ```
 
 ### Invocar los metodos ya disponibles en Laravel
-Si requieres emplear cualquiera de las soluciones actualmente vigentes en la documentacion oficial de laravel (https://laravel.com/docs/10.x/helpers), podras hacerlo de la siguiente forma:
+Si requieres emplear cualquiera de las soluciones actualmente vigentes en la documentacion oficial de laravel (https://laravel.com/docs/10.x/helpers) y/o (https://laravel.com/docs/10.x/strings), podras hacerlo de la siguiente forma:
 
 *Ten presente que solo se tiene acceso a los metodos que se invocan a traves de clases Str:: y Arr::*
 
-**Ejemplo Uso Ayudantes De Arreglos** 
+**Ejemplo Uso Ayudantes De Arreglos Nativos De Laravel** 
+[Metodos Disponibles](https://laravel.com/docs/10.x/helpers)
 
 Ejemplo uso `Arr::exists();`
 
 ```php
-$array = ['name' => 'John Doe', 'age' => 17];
+$array = [
+  'name' => 'Taylor Otwell',
+  'age' => 37
+];
 
 /* Forma nativa de laravel */
-Arr::exists($array, 'name');
+use Illuminate\Support\Arr;
+
+Arr::exists($array, 'name');    //true
+Arr::exists($array, 'salary');  //false
 
 /* Metodo a traves de la clase de Helpers */
-Arrays::helpers()->exists($array, 'name');
+use App\Helpers\Arrays;
+
+Arrays::helper()->exists($array, 'name');   //true
+Arrays::helper()->exists($array, 'salary'); //false
 
 /* Metodo suministrado para estandarizar el llamado desde cualquier lugar */
-Helper::arraysExists($array, 'name');
+use Helper;
 
+Helper::arraysExists($array, 'name');   //true
+Helper::arraysExists($array, 'salary'); //false
+
+/* En vistas blade */
+{{ Helper::arraysExists($array, 'salary') }}
 ```
 
 **Ejemplo Uso Ayudantes De Strings** 
+[Available Methods](https://laravel.com/docs/10.x/strings)
 
 Ejemplo uso `Str::uuid();`
 
 ```php
 /* Forma nativa de laravel */
-Str::uuid();
+use Illuminate\Support\Str;
+
+Str::camel('foo_bar');                  // fooBar
+Str::contains('This is my name', 'my'); // true
 
 /* Metodo a traves de la clase de Helpers */
-Strings::helpers()->uuid();
+use App\Helpers\Strings;
+
+Strings::helper()->camel('foo_bar');                  // fooBar
+Strings::helper()->contains('This is my name', 'my'); // true
 
 /* Metodo suministrado para estandarizar el llamado desde cualquier lugar */
-Helper::stringsUuid();
+use Helper;
+
+Helper::stringsCamel('foo_bar'); // fooBar
+Helper::stringsContains('This is my name', 'my'); // true
+
+/* En vistas Blade */
+{{ Helper::stringsCamel('foo_bar') }}
 ```
 
-### Nuevos Ayudantes Por Categoria
+## Nuevos Ayudantes Por Categoria
 
-#### Cadenas De Texto
+### Cadenas De Texto
 
-##### Metodo: `isAlphanumeric()`
+#### Metodo: `isAlphanumeric()`
 Chequea si todos los caracteres en la string entregada, son alfanuméricos.
 
 ```php
@@ -202,7 +228,7 @@ Strings::helpers()->isAlphanumeric('AbCd1zyZ9'); //true
 Strings::helpers()->isAlphanumeric('foo!#$bar'); //false
 ```
 
-##### Metodo: `isAlpha()`
+#### Metodo: `isAlpha()`
 Verifica si todos los caracteres en la string entregada, son alfabéticos `[A-Za-z]`.
 
 ```php
@@ -213,7 +239,7 @@ Strings::helpers()->isAlpha('KjgWZC'); //true
 Strings::helpers()->isAlpha('arf12'); //false
 ```
 
-##### Metodo: `isControl()`
+#### Metodo: `isControl()`
 Verifica si todos los caracteres en la string entregada, son caracteres de control. Los caracteres de control son, por ejemplo, la alimentación de línea, el tabulador, escape.
 
 ```php
@@ -224,7 +250,7 @@ Strings::helpers()->isControl("\n\r\t"); //true
 Strings::helpers()->isControl('arf12'); //false
 ```
 
-##### Metodo: `isDigit()`
+#### Metodo: `isDigit()`
 Verifica si todos los caracteres en la string entregada, son numéricos.
 
 ```php
@@ -237,7 +263,7 @@ Strings::helpers()->isDigit('1820.20'); //false
 Strings::helpers()->isDigit('wsl!12'); //false
 ```
 
-##### Metodo: `isGraph()`
+#### Metodo: `isGraph()`
 Verifica si todos los caracteres en la string entregada, text, generan una salida visible.
 
 ```php
@@ -250,7 +276,7 @@ Strings::helpers()->isGraph('LKA#@%.54'); //true
 Strings::helpers()->isGraph("asdf\n\r\t"); //false
 ```
 
-##### Metodo: `isLower()`
+#### Metodo: `isLower()`
 Verifica si todos los caracteres en la string entregada, son letras minúsculas.
 
 ```php
@@ -263,7 +289,7 @@ Strings::helpers()->isLower('aac123'); //false
 Strings::helpers()->isLower('QASsdks'); //false
 ```
 
-##### Metodo: `isPrint()`
+#### Metodo: `isPrint()`
 Devuelve `true` si cada caracter del texto genera realmente alguna salida (incluyendo los espacios). Devuelve `false` si el texto incluye caracteres de control o caracteres que no producen ninguna salida ni realizan función de control alguna después de todo.
 
 ```php
@@ -276,7 +302,7 @@ Strings::helpers()->isPrint('LKA#@%.54'); //true
 Strings::helpers()->isPrint("asdf\n\r\t"); //false
 ```
 
-##### Metodo: `isPunct()`
+#### Metodo: `isPunct()`
 Verifica si todos los caracteres en la string entregada, son caracteres de puntuación.
 
 ```php
@@ -289,7 +315,7 @@ Strings::helpers()->isPunct('!@ # $'); //false
 Strings::helpers()->isPunct('ABasdk!@!$#'); //false
 ```
 
-##### Metodo: `isSpace()`
+#### Metodo: `isSpace()`
 Verifica si todos los caracteres en la string entregada, crean espacios en blanco. Devuelve `true` si cada caracter del string genera cierto tipo de espacio en blanco, o `false` de lo contrario. Junto con el caracter regular de espacio en blanco, también se consideran espacios a los caracteres de tabulación, tabulación vertical, avance de línea, retorno de carro y avance de formulario.
 
 ```php
@@ -302,7 +328,7 @@ Strings::helpers()->isSpace("\narf12"); //false
 Strings::helpers()->isSpace('\n\r\t'); //false // note las comillas simples
 ```
 
-##### Metodo: `isUpper()`
+#### Metodo: `isUpper()`
 Verifica si todos los caracteres en la string entregada, son letras minúsculas.
 
 ```php
@@ -315,7 +341,7 @@ Strings::helpers()->isUpper('AKLWC139'); //false
 Strings::helpers()->isUpper('akwSKWsm'); //false
 ```
 
-##### Metodo: `isHex()`
+#### Metodo: `isHex()`
 Verifica si todos los caracteres de la string entregada, son 'dígitos' hexadecimales.
 
 ```php
@@ -327,6 +353,8 @@ Strings::helpers()->isUpper('AB10BC99'); //true
 Strings::helpers()->isUpper('ab12bc99'); //true
 Strings::helpers()->isUpper('AR1012'); //false
 ```
+
+Construyendo nuevas soluciones...
 
 ## ¿Como Contribuir?
 Tu contribucion es muy importante en este paquete, el proceso de contribucion es simple. Puedes crear un `fork` de este proyecto con total confianza, luego cuando ya tengas la bifurcacion en tu perfil, podras empezar a aportar los nuevos metodos que consideres utiles en los `traits` que se encuentran dentro de la ruta `src/Predefined/Additional/` recuerda siempre comentariar de acuerdo al estandar phpDoc cada uno de los metodos que sugieras, luego aplica un Pull Request a la rama principal de este repositorio.
