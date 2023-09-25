@@ -17,7 +17,8 @@ class Arrayable
     /**
      * Create a new instance of the class.
      *
-     * @param  string|array  $values
+     * @param string|array $values
+     *
      * @return void
      */
     public function __construct(string|array $values)
@@ -38,8 +39,9 @@ class Arrayable
     /**
      * Add an element to an array using "dot" notation if it doesn't exist.
      *
-     * @param  string|int|float  $key
-     * @param  mixed  $value
+     * @param string|int|float $key
+     * @param mixed            $value
+     *
      * @return static
      */
     public function add($key, $value)
@@ -52,14 +54,15 @@ class Arrayable
     /**
      * Collapse an array of arrays into a single array.
      *
-     * @param  iterable  $array
+     * @param iterable $array
+     *
      * @return static
      */
     public function collapse($array = [])
     {
         $this->value = Arr::collapse($this->value);
 
-        if (! empty($array)) {
+        if (!empty($array)) {
             $this->value = Arr::collapse([$this->value, ...$array]);
         }
 
@@ -69,7 +72,8 @@ class Arrayable
     /**
      * Cross join the given arrays, returning all possible permutations.
      *
-     * @param  iterable  ...$arrays
+     * @param iterable ...$arrays
+     *
      * @return static
      */
     public function crossJoin(...$arrays)
@@ -92,7 +96,8 @@ class Arrayable
     /**
      * Flatten a multi-dimensional associative array with dots.
      *
-     * @param  string  $prepend
+     * @param string $prepend
+     *
      * @return array
      */
     public function dot($prepend = '')
@@ -103,7 +108,8 @@ class Arrayable
     /**
      * Get all of the given array except for a specified array of keys.
      *
-     * @param  array|string|int|float  $keys
+     * @param array|string|int|float $keys
+     *
      * @return array
      */
     public function except(...$keys)
@@ -116,7 +122,8 @@ class Arrayable
     /**
      * Determine if the given key exists in the provided array.
      *
-     * @param  string|int  $key
+     * @param string|int $key
+     *
      * @return bool
      */
     public function exists(string $key)
@@ -127,8 +134,9 @@ class Arrayable
     /**
      * Return the first element in an array passing a given truth test.
      *
-     * @param  callable|null  $callback
-     * @param  mixed  $default
+     * @param callable|null $callback
+     * @param mixed         $default
+     *
      * @return mixed
      */
     public function first($callback = null, $default = null)
@@ -139,7 +147,8 @@ class Arrayable
     /**
      * Flatten a multi-dimensional array into a single level.
      *
-     * @param  int  $depth
+     * @param int $depth
+     *
      * @return array
      */
     public function flatten($depth = INF)
@@ -152,7 +161,8 @@ class Arrayable
     /**
      * Remove one or many array items from a given array using "dot" notation.
      *
-     * @param  array|string|int|float  $keys
+     * @param array|string|int|float $keys
+     *
      * @return void
      */
     public function forget($keys)
@@ -165,8 +175,9 @@ class Arrayable
     /**
      * Get an item from an array using "dot" notation.
      *
-     * @param  string|int|null  $key
-     * @param  mixed  $default
+     * @param string|int|null $key
+     * @param mixed           $default
+     *
      * @return mixed
      */
     public function get($key, $default = null)
@@ -177,7 +188,8 @@ class Arrayable
     /**
      * Check if an item or items exist in an array using "dot" notation.
      *
-     * @param  string|array  $keys
+     * @param string|array $keys
+     *
      * @return bool
      */
     public function has($keys)
@@ -188,7 +200,8 @@ class Arrayable
     /**
      * Determine if any of the keys exist in an array using "dot" notation.
      *
-     * @param  string|array  $keys
+     * @param string|array $keys
+     *
      * @return bool
      */
     public function hasAny($keys)
@@ -223,8 +236,9 @@ class Arrayable
     /**
      * Join all items using a string. The final items can use a separate glue string.
      *
-     * @param  string  $glue
-     * @param  string  $finalGlue
+     * @param string $glue
+     * @param string $finalGlue
+     *
      * @return string
      */
     public function join($glue, $finalGlue = '')
@@ -235,7 +249,8 @@ class Arrayable
     /**
      * Key an associative array by a field or using a callback.
      *
-     * @param  callable|array|string  $keyBy
+     * @param callable|array|string $keyBy
+     *
      * @return array
      */
     public function keyBy($keyBy)
@@ -248,8 +263,9 @@ class Arrayable
     /**
      * Return the last element in an array passing a given truth test.
      *
-     * @param  callable|null  $callback
-     * @param  mixed  $default
+     * @param callable|null $callback
+     * @param mixed         $default
+     *
      * @return mixed
      */
     public function last(callable $callback = null, $default = null)
@@ -260,7 +276,8 @@ class Arrayable
     /**
      * Run a map over each of the items in the array.
      *
-     * @param  callable  $callback
+     * @param callable $callback
+     *
      * @return array
      */
     public function map(callable $callback)
@@ -280,7 +297,8 @@ class Arrayable
      * @template TMapWithKeysKey of array-key
      * @template TMapWithKeysValue
      *
-     * @param  callable(TValue, TKey): array<TMapWithKeysKey, TMapWithKeysValue>  $callback
+     * @param callable(TValue, TKey): array<TMapWithKeysKey, TMapWithKeysValue> $callback
+     *
      * @return array
      */
     public function mapWithKeys(callable $callback)
@@ -293,7 +311,8 @@ class Arrayable
     /**
      * Get a subset of the items from the given array.
      *
-     * @param  array|string  $keys
+     * @param array|string $keys
+     *
      * @return array
      */
     public function only($keys)
@@ -306,8 +325,9 @@ class Arrayable
     /**
      * Pluck an array of values from an array.
      *
-     * @param  string|array|int|null  $value
-     * @param  string|array|null  $key
+     * @param string|array|int|null $value
+     * @param string|array|null     $key
+     *
      * @return array
      */
     public function pluck($value, $key = null)
@@ -320,8 +340,9 @@ class Arrayable
     /**
      * Push an item onto the beginning of an array.
      *
-     * @param  mixed  $value
-     * @param  mixed  $key
+     * @param mixed $value
+     * @param mixed $key
+     *
      * @return array
      */
     public function prepend($value, $key = null)
@@ -334,7 +355,8 @@ class Arrayable
     /**
      * Prepend the key names of an associative array.
      *
-     * @param  string  $prependWith
+     * @param string $prependWith
+     *
      * @return array
      */
     public function prependKeysWith($prependWith)
@@ -347,8 +369,9 @@ class Arrayable
     /**
      * Get a value from the array, and remove it.
      *
-     * @param  string|int  $key
-     * @param  mixed  $default
+     * @param string|int $key
+     * @param mixed      $default
+     *
      * @return mixed
      */
     public function pull($key, $default = null)
@@ -373,11 +396,12 @@ class Arrayable
     /**
      * Get one or a specified number of random values from an array.
      *
-     * @param  int|null  $number
-     * @param  bool  $preserveKeys
-     * @return mixed
+     * @param int|null $number
+     * @param bool     $preserveKeys
      *
      * @throws \InvalidArgumentException
+     *
+     * @return mixed
      */
     public function random($number = null, $preserveKeys = false)
     {
@@ -389,8 +413,9 @@ class Arrayable
      *
      * If no key is given to the method, the entire array will be replaced.
      *
-     * @param  string|int|null  $key
-     * @param  mixed  $value
+     * @param string|int|null $key
+     * @param mixed           $value
+     *
      * @return array
      */
     public function set($key, $value)
@@ -403,8 +428,9 @@ class Arrayable
     /**
      * Shuffle the given array and return the result.
      *
-     * @param  array  $array
-     * @param  int|null  $seed
+     * @param array    $array
+     * @param int|null $seed
+     *
      * @return array
      */
     public function shuffle($seed = null)
@@ -417,14 +443,15 @@ class Arrayable
     /**
      * Sort the array using the given callback or "dot" notation.
      *
-     * @param  callable|array|string|null  $callback
+     * @param callable|array|string|null $callback
+     *
      * @return array
      */
     public function sort($callback = null)
     {
         $this->value = Arr::sort($this->value, $callback);
 
-        if (! is_null($callback)) {
+        if (!is_null($callback)) {
             $this->value = array_values($this->value);
         }
 
@@ -434,14 +461,15 @@ class Arrayable
     /**
      * Sort the array in descending order using the given callback or "dot" notation.
      *
-     * @param  callable|array|string|null  $callback
+     * @param callable|array|string|null $callback
+     *
      * @return array
      */
     public function sortDesc($callback = null)
     {
         $this->value = Arr::sortDesc($this->value, $callback);
 
-        if (! is_null($callback)) {
+        if (!is_null($callback)) {
             $this->value = array_values($this->value);
         }
 
@@ -451,8 +479,9 @@ class Arrayable
     /**
      * Recursively sort an array by keys and values.
      *
-     * @param  int  $options
-     * @param  bool  $descending
+     * @param int  $options
+     * @param bool $descending
+     *
      * @return array
      */
     public function sortRecursive($options = SORT_REGULAR, $descending = false)
@@ -465,7 +494,8 @@ class Arrayable
     /**
      * Recursively sort an array by keys and values in descending order.
      *
-     * @param  int  $options
+     * @param int $options
+     *
      * @return array
      */
     public function sortRecursiveDesc($options = SORT_REGULAR)
@@ -488,7 +518,8 @@ class Arrayable
     /**
      * Conditionally compile styles from an array into a style list.
      *
-     * @param  array  $array
+     * @param array $array
+     *
      * @return string
      */
     public function toCssStyles()
@@ -511,7 +542,8 @@ class Arrayable
     /**
      * Filter the array using the given callback.
      *
-     * @param  callable  $callback
+     * @param callable $callback
+     *
      * @return array
      */
     public function where(callable $callback)
@@ -536,7 +568,8 @@ class Arrayable
     /**
      * If the given value is not an array and not null, wrap it in one.
      *
-     * @param  mixed  $value
+     * @param mixed $value
+     *
      * @return array
      */
     public function wrap()
@@ -583,7 +616,8 @@ class Arrayable
     /**
      * Proxy dynamic properties onto methods.
      *
-     * @param  string  $key
+     * @param string $key
+     *
      * @return mixed
      */
     public function __get($key)
