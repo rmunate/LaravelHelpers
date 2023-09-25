@@ -352,6 +352,21 @@ Strings::helpers()->isUpper('AR1012'); //false
 
 Construyendo nuevas soluciones...
 
+### Arreglos
+
+Metodos fluidos concatenables de funciones nativas de Laravel.
+//Pendiente Documentar Helper::arraysOf()->
+
+#### Metodo: `isAlphanumeric()`
+Chequea si todos los caracteres en la string entregada, son alfanuméricos.
+
+```php
+Helper::stringIsAlphanumeric('AbCd1zyZ9'); //true
+Helper::stringIsAlphanumeric('foo!#$bar'); //false
+
+Strings::helpers()->isAlphanumeric('AbCd1zyZ9'); //true
+Strings::helpers()->isAlphanumeric('foo!#$bar'); //false
+```
 ## ¿Como Contribuir?
 Tu contribucion es muy importante en este paquete, el proceso de contribucion es simple. Puedes crear un `fork` de este proyecto con total confianza, luego cuando ya tengas la bifurcacion en tu perfil, podras empezar a aportar los nuevos metodos que consideres utiles en los `traits` que se encuentran dentro de la ruta `src/Predefined/Additional/` recuerda siempre comentariar de acuerdo al estandar phpDoc cada uno de los metodos que sugieras, luego aplica un Pull Request a la rama principal de este repositorio.
 Estaremos comentando tus aportes y aceptando esas soluciones que esten correctamente construidas.
