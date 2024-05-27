@@ -1,0 +1,143 @@
+<?php
+
+namespace App\Helpers;
+
+use Helpers\Illuminate\Support\Bases\BaseHelpers;
+use Helpers\Illuminate\Support\Native\LaravelStrings;
+
+class Str extends BaseHelpers
+{
+    use LaravelStrings;
+
+    /**
+     * Check for possible alphanumeric characters.
+     *
+     * @param string $string The string to check.
+     *
+     * @return bool True if the string is alphanumeric, false otherwise.
+     */
+    public static function isAlphanumeric(string $string)
+    {
+        return ctype_alnum($string);
+    }
+
+    /**
+     * Check for possible alphabetic characters.
+     *
+     * @param string $string The string to check.
+     *
+     * @return bool True if the string is alphabetic, false otherwise.
+     */
+    public static function isAlpha(string $string)
+    {
+        return ctype_alpha($string);
+    }
+
+    /**
+     * Check for possible control characters.
+     *
+     * @param string $string The string to check.
+     *
+     * @return bool True if the string contains control characters, false otherwise.
+     */
+    public static function isControl(string $string)
+    {
+        return ctype_cntrl($string);
+    }
+
+    /**
+     * Check for possible numeric characters.
+     *
+     * @param string $string The string to check.
+     *
+     * @return bool True if the string contains numeric characters, false otherwise.
+     */
+    public static function isDigit(string $string)
+    {
+        return ctype_digit($string);
+    }
+
+    /**
+     * Check for possible printable characters, excluding spaces.
+     *
+     * @param string $string The string to check.
+     *
+     * @return bool True if the string contains printable characters excluding spaces, false otherwise.
+     */
+    public static function isGraph(string $string)
+    {
+        return ctype_graph($string);
+    }
+
+    /**
+     * Check for possible lowercase characters.
+     *
+     * @param string $string The string to check.
+     *
+     * @return bool True if the string contains lowercase characters, false otherwise.
+     */
+    public static function isLower(string $string)
+    {
+        return ctype_lower($string);
+    }
+
+    /**
+     * Check for possible printable characters.
+     *
+     * @param string $string The string to check.
+     *
+     * @return bool True if the string contains printable characters, false otherwise.
+     */
+    public static function isPrint(string $string)
+    {
+        return ctype_print($string);
+    }
+
+    /**
+     * Check for possible printable characters that are neither spaces nor alphanumeric.
+     *
+     * @param string $string The string to check.
+     *
+     * @return bool True if the string contains printable characters that are neither spaces nor alphanumeric, false otherwise.
+     */
+    public static function isPunct(string $string)
+    {
+        return ctype_punct($string);
+    }
+
+    /**
+     * Check for possible whitespace characters.
+     *
+     * @param string $string The string to check.
+     *
+     * @return bool True if the string contains whitespace characters, false otherwise.
+     */
+    public static function isSpace(string $string)
+    {
+        return ctype_space($string);
+    }
+
+    /**
+     * Check for possible uppercase characters.
+     *
+     * @param string $string The string to check.
+     *
+     * @return bool True if the string contains uppercase characters, false otherwise.
+     */
+    public static function isUpper(string $string)
+    {
+        return ctype_upper($string);
+    }
+
+    /**
+     * Check for possible hexadecimal characters.
+     *
+     * @param string $string The string to check.
+     *
+     * @return bool True if the string contains hexadecimal characters, false otherwise.
+     */
+    public static function isHex(string $string)
+    {
+        return ctype_xdigit($string);
+    }
+}

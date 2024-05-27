@@ -3,9 +3,12 @@
 namespace App\Helpers;
 
 use Helpers\Illuminate\Support\Bases\BaseHelpers;
+use Helpers\Illuminate\Support\Native\LaravelNumber;
 
-class {{class}} extends BaseHelpers
+class Number extends BaseHelpers
 {
+    use LaravelNumber;
+
     /**
      * Example method in the helper class.
      *

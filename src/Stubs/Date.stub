@@ -3,9 +3,12 @@
 namespace App\Helpers;
 
 use Helpers\Illuminate\Support\Bases\BaseHelpers;
+use Helpers\Illuminate\Support\Native\LaravelDate;
 
-class {{class}} extends BaseHelpers
+class Date extends BaseHelpers
 {
+    use LaravelDate;
+
     /**
      * Example method in the helper class.
      *

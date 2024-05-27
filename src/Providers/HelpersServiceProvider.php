@@ -1,6 +1,6 @@
 <?php
 
-namespace Rmunate\LaravelHelpers\Providers;
+namespace Helpers\Illuminate\Support\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -13,7 +13,6 @@ class HelpersServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Register commands for the service provider
         $this->registerCommands();
     }
 
@@ -24,10 +23,9 @@ class HelpersServiceProvider extends ServiceProvider
      */
     protected function registerCommands()
     {
-        // Register the custom Artisan commands
         $this->commands([
-            \Rmunate\LaravelHelpers\Commands\GenerateHelpers::class,
-            \Rmunate\LaravelHelpers\Commands\CreateHelpers::class,
+            \Helpers\Illuminate\Support\Commands\GenerateHelpers::class,
+            \Helpers\Illuminate\Support\Commands\CreateHelpers::class,
         ]);
     }
 }

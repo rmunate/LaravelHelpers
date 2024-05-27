@@ -1,9 +1,9 @@
 <?php
 
-namespace Rmunate\LaravelHelpers\Commands;
+namespace Helpers\Illuminate\Support\Commands;
 
 use Illuminate\Console\Command;
-use Rmunate\LaravelHelpers\Traits\CommandUtilities;
+use Helpers\Illuminate\Support\Commands\Traits\CommandUtilities;
 
 class CreateHelpers extends Command
 {
@@ -14,7 +14,7 @@ class CreateHelpers extends Command
      *
      * @var string
      */
-    protected $signature = 'helpers:create {name}';
+    protected $signature = 'helper:create {name}';
 
     /**
      * The console command description.

@@ -3,9 +3,12 @@
 namespace App\Helpers;
 
 use Helpers\Illuminate\Support\Bases\BaseHelpers;
+use Helpers\Illuminate\Support\Native\LaravelArray;
 
-class {{class}} extends BaseHelpers
+class Arr extends BaseHelpers
 {
+    use LaravelArray;
+
     /**
      * Example method in the helper class.
      *

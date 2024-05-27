@@ -3,7 +3,7 @@
 namespace Rmunate\LaravelHelpers\Commands;
 
 use Illuminate\Console\Command;
-use Rmunate\LaravelHelpers\Traits\CommandUtilities;
+use Helpers\Illuminate\Support\Commands\Traits\CommandUtilities;
 
 class GenerateHelpers extends Command
 {
@@ -14,7 +14,7 @@ class GenerateHelpers extends Command
      *
      * @var string
      */
-    protected $signature = 'helpers:init';
+    protected $signature = 'helper:init';
 
     /**
      * The console command description.
@@ -29,13 +29,11 @@ class GenerateHelpers extends Command
      * @var array
      */
     private $files = [
-        'Arrays.php',
-        'DateTime.php',
+        'Arr.php',
+        'Date.php',
         'File.php',
-        'General.php',
-        'Html.php',
-        'Security.php',
-        'Strings.php',
+        'Number.php',
+        'Str.php',
     ];
 
     /**

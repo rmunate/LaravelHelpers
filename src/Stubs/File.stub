@@ -2,21 +2,22 @@
 
 namespace App\Helpers;
 
-use Rmunate\LaravelHelpers\Bases\BaseHelpers;
-use Rmunate\LaravelHelpers\Predefined\Native\NativeHelpersFile;
-use Rmunate\LaravelHelpers\Predefined\Additional\AdditionalHelpersFile;
+use Helpers\Illuminate\Support\Bases\BaseHelpers;
+use Helpers\Illuminate\Support\Native\LaravelFile;
 
 class File extends BaseHelpers
 {
-    use NativeHelpersFile, AdditionalHelpersFile;
-    
+    use LaravelFile;
+
     /**
-     * Describe what this helper does.
-     * 
+     * Example method in the helper class.
+     *
+     * This method is a placeholder to illustrate where you can add your helper logic.
+     *
      * @return void
      */
-    public function helperMethod()
+    public static function yourMethod()
     {
-        // Your helper code goes here
+        // Example placeholder code for your helper method.
     }
 }

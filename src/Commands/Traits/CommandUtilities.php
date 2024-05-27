@@ -1,6 +1,6 @@
 <?php
 
-namespace Rmunate\LaravelHelpers\Traits;
+namespace Helpers\Illuminate\Support\Commands\Traits;
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
@@ -172,13 +172,11 @@ trait CommandUtilities
     private function getStub($className)
     {
         $stubs = [
-            'Arrays'    => '/../Stubs/Arrays.stub',
-            'DateTime'  => '/../Stubs/DateTime.stub',
-            'File'      => '/../Stubs/File.stub',
-            'General'   => '/../Stubs/General.stub',
-            'Html'      => '/../Stubs/Html.stub',
-            'Security'  => '/../Stubs/Security.stub',
-            'Strings'   => '/../Stubs/Strings.stub',
+            'Arr'    => '/../Stubs/Arr.stub',
+            'Date'   => '/../Stubs/Date.stub',
+            'File'   => '/../Stubs/File.stub',
+            'Number' => '/../Stubs/Number.stub',
+            'Str'    => '/../Stubs/Str.stub'
         ];
 
         if (isset($stubs[$className])) {
