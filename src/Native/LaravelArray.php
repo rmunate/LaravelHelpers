@@ -17,7 +17,7 @@ trait LaravelArray
      *
      * @throws BadMethodCallException If the method does not exist.
      */
-    public function __call($method, $arguments)
+    public static function __callStatic($method, $arguments)
     {
         // Check if the method exists in the Illuminate\Support\Arr class.
         if (method_exists(ArrSupport::class, $method)) {

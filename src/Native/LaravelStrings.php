@@ -17,7 +17,7 @@ trait LaravelStrings
      *
      * @throws BadMethodCallException If the method does not exist.
      */
-    public function __call($method, $arguments)
+    public static function __callStatic($method, $arguments)
     {
         // Check if the method exists in the Str class.
         if (method_exists(StrSupport::class, $method)) {

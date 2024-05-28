@@ -172,17 +172,17 @@ trait CommandUtilities
     private function getStub($className)
     {
         $stubs = [
-            'Arr'    => '/../Stubs/Arr.stub',
-            'Date'   => '/../Stubs/Date.stub',
-            'File'   => '/../Stubs/File.stub',
-            'Number' => '/../Stubs/Number.stub',
-            'Str'    => '/../Stubs/Str.stub'
+            'Arr'    => '/../../Stubs/Arr.stub',
+            'Date'   => '/../../Stubs/Date.stub',
+            'File'   => '/../../Stubs/File.stub',
+            'Number' => '/../../Stubs/Number.stub',
+            'Str'    => '/../../Stubs/Str.stub'
         ];
 
         if (isset($stubs[$className])) {
             return $this->fileGet(__DIR__.$stubs[$className]);
         } else {
-            return $this->replaceString('{{class}}', $className, $this->fileGet(__DIR__.'/../Stubs/Custom.stub'));
+            return $this->replaceString('{{class}}', $className, $this->fileGet(__DIR__.'/../../Stubs/Custom.stub'));
         }
     }
 

@@ -10,8 +10,10 @@
 
 # Ignore Composer generated directory and files
 /vendor
+composer.lock
 
 # Ignore development tool generated files and directories
 .fleet
 .idea
 .vscode
+
