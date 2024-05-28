@@ -69,7 +69,7 @@ export default defineConfig({
         ],
         ['link', {
                 rel: 'icon',
-                href: '/LaravelHelpers/img/php2js.png',
+                href: '/LaravelHelpers/img/logo.png',
                 type: 'image/png'
             }
         ],
