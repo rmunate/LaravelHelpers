@@ -26,6 +26,7 @@ class HelpersServiceProvider extends ServiceProvider
         $this->commands([
             \Helpers\Illuminate\Support\Commands\GenerateHelpers::class,
             \Helpers\Illuminate\Support\Commands\CreateHelpers::class,
+            \Helpers\Illuminate\Support\Commands\CreateHelpersFunctions::class,
         ]);
     }
 }

@@ -1,0 +1,15 @@
+<?php
+
+// Check if the 'your_function' function does not already exist.
+if (!function_exists('your_function')) {
+    /**
+     * Example function that returns a string.
+     *
+     * @return string Returns a sample string 'your_code'.
+     */
+    function your_function()
+    {
+        // Return the sample string 'your_code'.
+        return 'your_code';
+    }
+}

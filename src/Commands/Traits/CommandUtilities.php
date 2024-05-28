@@ -187,6 +187,16 @@ trait CommandUtilities
     }
 
     /**
+     * Generate the content from the stub file.
+     *
+     * @return string
+     */
+    private function getStubFunction()
+    {
+        return $this->fileGet(__DIR__.'/../../Stubs/Functions.stub');
+    }
+
+    /**
      * Get the class name from the file path.
      *
      * @param string $filePath
