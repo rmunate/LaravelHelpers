@@ -11,7 +11,7 @@ If you're a fan of functional programming and prefer to define some globally acc
 To create the file where you'll define the functions, simply run the command:
 
 ```shell
-php artisan helpers:functions
+php artisan helper:functions
 ```
 
 ## Helpers File

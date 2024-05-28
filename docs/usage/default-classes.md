@@ -9,7 +9,7 @@ outline: deep
 After installing the dependency in your project, you can generate the initial structure for helpers by running the following command:
 
 ```shell
-php artisan helpers:init
+php artisan helper:init
 ```
 
 ## Helpers Folder

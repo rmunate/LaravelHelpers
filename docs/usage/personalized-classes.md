@@ -13,6 +13,7 @@ With a simple command, you can create your own static helper classes.
 ```shell
 php artisan helper:create Html
 ```
+In this case, `Html` is the name of the Helpers category, but you can use any name you prefer. Just make sure it follows PascalCase.
 
 The above command will create a new class within the `Helpers` folder with the name you specified.
 
