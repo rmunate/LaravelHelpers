@@ -2,8 +2,8 @@
 
 namespace Helpers\Illuminate\Support\Commands;
 
-use Illuminate\Console\Command;
 use Helpers\Illuminate\Support\Commands\Traits\CommandUtilities;
+use Illuminate\Console\Command;
 
 class CreateHelpersFunctions extends Command
 {

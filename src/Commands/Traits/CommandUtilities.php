@@ -176,7 +176,7 @@ trait CommandUtilities
             'Date'   => '/../../Stubs/Date.stub',
             'File'   => '/../../Stubs/File.stub',
             'Number' => '/../../Stubs/Number.stub',
-            'Str'    => '/../../Stubs/Str.stub'
+            'Str'    => '/../../Stubs/Str.stub',
         ];
 
         if (isset($stubs[$className])) {

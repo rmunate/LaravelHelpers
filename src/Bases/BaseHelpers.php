@@ -9,7 +9,7 @@ abstract class BaseHelpers
     /**
      * Handle calls to missing methods on the helper.
      *
-     * @param string $method    The name of the method being called.
+     * @param string $method     The name of the method being called.
      * @param array  $parameters The parameters passed to the method.
      *
      * @throws Exception If the method does not exist.

@@ -13,9 +13,9 @@ trait LaravelDate
      * @param string $method    The method being called.
      * @param array  $arguments The arguments being passed to the method.
      *
-     * @return mixed The result of the method call.
-     *
      * @throws BadMethodCallException If the method does not exist.
+     *
+     * @return mixed The result of the method call.
      */
     public static function __callStatic($method, $arguments)
     {
