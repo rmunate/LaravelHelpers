@@ -5,6 +5,53 @@ namespace App\Helpers;
 use Helpers\Illuminate\Support\Bases\BaseHelpers;
 use Helpers\Illuminate\Support\Native\LaravelArray;
 
+/**
+ * @method static mixed get(\ArrayAccess|array $array, string|int|null $key, mixed $default = null) Get an item from an array using "dot" notation.
+ * @method static bool has(\ArrayAccess|array $array, string|array $keys) Check if an item or items exist in an array using "dot" notation.
+ * @method static bool hasAny(\ArrayAccess|array $array, string|array $keys) Determine if any of the keys exist in an array using "dot" notation.
+ * @method static bool isAssoc(array $array) Determines if an array is associative.
+ * @method static bool isList(array $array) Determines if an array is a list.
+ * @method static string join(array $array, string $glue, string $finalGlue = '') Join all items using a string. The final items can use a separate glue string.
+ * @method static array keyBy(array $array, callable|array|string $keyBy) Key an associative array by a field or using a callback.
+ * @method static array prependKeysWith(array $array, string $prependWith) Prepend the key names of an associative array.
+ * @method static array only(array $array, array|string $keys) Get a subset of the items from the given array.
+ * @method static array select(array $array, array|string $keys) Select an array of values from an array.
+ * @method static array pluck(iterable $array, string|array|int|null $value, string|array|null $key = null) Pluck an array of values from an array.
+ * @method static array explodePluckParameters(string|array $value, string|array|null $key) Explode the "value" and "key" arguments passed to "pluck".
+ * @method static array map(array $array, callable $callback) Run a map over each of the items in the array.
+ * @method static bool accessible($value) Determine whether the given value is array accessible.
+ * @method static array add(array $array, $key, $value) Add an element to an array using "dot" notation if it doesn't exist.
+ * @method static array collapse(iterable $array) Collapse an array of arrays into a single array.
+ * @method static array crossJoin(iterable ...$arrays) Cross join the given arrays, returning all possible permutations.
+ * @method static array divide(array $array) Divide an array into two arrays. One with keys and the other with values.
+ * @method static array dot(iterable $array, string $prepend = '') Flatten a multi-dimensional associative array with dots.
+ * @method static array undot(iterable $array) Convert a flatten "dot" notation array into an expanded array.
+ * @method static array except(array $array, $keys) Get all of the given array except for a specified array of keys.
+ * @method static bool exists(\ArrayAccess|array $array, $key) Determine if the given key exists in the provided array.
+ * @method static mixed first(iterable $array, callable $callback = null, $default = null) Return the first element in an array passing a given truth test.
+ * @method static mixed last(array $array, callable $callback = null, $default = null) Return the last element in an array passing a given truth test.
+ * @method static array take(array $array, int $limit) Take the first or last {$limit} items from an array.
+ * @method static array flatten(iterable $array, int $depth = INF) Flatten a multi-dimensional array into a single level.
+ * @method static void forget(array &$array, $keys) Remove one or many array items from a given array using "dot" notation.
+ * @method static array mapWithKeys(array $array, callable $callback) Run an associative map over each of the items.
+ * @method static array mapSpread(array $array, callable $callback) Run a map over each nested chunk of items.
+ * @method static array prepend(array $array, $value, $key = null) Push an item onto the beginning of an array.
+ * @method static mixed pull(array &$array, $key, $default = null) Get a value from the array, and remove it.
+ * @method static string query(array $array) Convert the array into a query string.
+ * @method static mixed random(array $array, int|null $number = null, bool $preserveKeys = false) Get one or a specified number of random values from an array.
+ * @method static array set(array &$array, $key, $value) Set an array item to a given value using "dot" notation.
+ * @method static array shuffle(array $array) Shuffle the given array and return the result.
+ * @method static array sort(array $array, callable|array|string|null $callback = null) Sort the array using the given callback or "dot" notation.
+ * @method static array sortDesc(array $array, callable|array|string|null $callback = null) Sort the array in descending order using the given callback or "dot" notation.
+ * @method static array sortRecursive(array $array, int $options = SORT_REGULAR, bool $descending = false) Recursively sort an array by keys and values.
+ * @method static array sortRecursiveDesc(array $array, int $options = SORT_REGULAR) Recursively sort an array by keys and values in descending order.
+ * @method static string toCssClasses(array $array) Conditionally compile classes from an array into a CSS class list.
+ * @method static string toCssStyles(array $array) Conditionally compile styles from an array into a style list.
+ * @method static array where(array $array, callable $callback) Filter the array using the given callback.
+ * @method static array whereNotNull(array $array) Filter items where the value is not null.
+ * @method static array wrap($value) If the given value is not an array and not null, wrap it in one.
+ */
+
 class Arr extends BaseHelpers
 {
     use LaravelArray;

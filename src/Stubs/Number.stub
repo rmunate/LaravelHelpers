@@ -5,6 +5,21 @@ namespace App\Helpers;
 use Helpers\Illuminate\Support\Bases\BaseHelpers;
 use Helpers\Illuminate\Support\Native\LaravelNumber;
 
+/**
+ * @method static string|false format(int|float $number, ?int $precision = null, ?int $maxPrecision = null, ?string $locale = null) Format the given number according to the current locale.
+ * @method static string spell(int|float $number, ?string $locale = null, ?int $after = null, ?int $until = null) Spell out the given number in the given locale.
+ * @method static string ordinal(int|float $number, ?string $locale = null) Convert the given number to ordinal form.
+ * @method static string|false percentage(int|float $number, int $precision = 0, ?int $maxPrecision = null, ?string $locale = null) Convert the given number to its percentage equivalent.
+ * @method static string|false currency(int|float $number, string $in = 'USD', ?string $locale = null) Convert the given number to its currency equivalent.
+ * @method static string fileSize(int|float $bytes, int $precision = 0, ?int $maxPrecision = null) Convert the given number to its file size equivalent.
+ * @method static bool|string abbreviate(int|float $number, int $precision = 0, ?int $maxPrecision = null) Convert the number to its human-readable equivalent in abbreviated form.
+ * @method static bool|string forHumans(int|float $number, int $precision = 0, ?int $maxPrecision = null, bool $abbreviate = false) Convert the number to its human-readable equivalent.
+ * @method static int|float clamp(int|float $number, int|float $min, int|float $max) Clamp the given number between the given minimum and maximum.
+ * @method static array pairs(int|float $to, int|float $by, int|float $offset = 1) Split the given number into pairs of min/max values.
+ * @method static mixed withLocale(string $locale, callable $callback) Execute the given callback using the given locale.
+ * @method static void useLocale(string $locale) Set the default locale.
+ */
+
 class Number extends BaseHelpers
 {
     use LaravelNumber;

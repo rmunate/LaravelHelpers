@@ -5,6 +5,108 @@ namespace App\Helpers;
 use Helpers\Illuminate\Support\Bases\BaseHelpers;
 use Helpers\Illuminate\Support\Native\LaravelStrings;
 
+/**
+ * @method static \Illuminate\Support\Stringable of(string $string) Get a new stringable object from the given string.
+ * @method static string after(string $subject, string $search) Return the remainder of a string after the first occurrence of a given value.
+ * @method static string afterLast(string $subject, string $search) Return the remainder of a string after the last occurrence of a given value.
+ * @method static string ascii(string $value, string $language = 'en') Transliterate a UTF-8 value to ASCII.
+ * @method static string transliterate(string $string, ?string $unknown = null, ?bool $strict = false) Transliterate a string to its closest ASCII representation.
+ * @method static string before(string $subject, string $search) Get the portion of a string before the first occurrence of a given value.
+ * @method static string beforeLast(string $subject, string $search) Get the portion of a string before the last occurrence of a given value.
+ * @method static string between(string $subject, string $from, string $to) Get the portion of a string between two given values.
+ * @method static string betweenFirst(string $subject, string $from, string $to) Get the smallest possible portion of a string between two given values.
+ * @method static string camel(string $value) Convert a value to camel case.
+ * @method static string|false charAt(string $subject, int $index) Get the character at the specified index.
+ * @method static string chopStart(string $subject, string|array $needle) Remove the given string(s) if it exists at the start of the haystack.
+ * @method static string chopEnd(string $subject, string|array $needle) Remove the given string(s) if it exists at the end of the haystack.
+ * @method static bool contains(string $haystack, string|iterable $needles, bool $ignoreCase = false) Determine if a given string contains a given substring.
+ * @method static bool containsAll(string $haystack, iterable $needles, bool $ignoreCase = false) Determine if a given string contains all array values.
+ * @method static string convertCase(string $string, int $mode = MB_CASE_FOLD, ?string $encoding = 'UTF-8') Convert the case of a string.
+ * @method static bool endsWith(string $haystack, string|iterable $needles) Determine if a given string ends with a given substring.
+ * @method static string|null excerpt(string $text, string $phrase = '', array $options = []) Extracts an excerpt from text that matches the first instance of a phrase.
+ * @method static string finish(string $value, string $cap) Cap a string with a single instance of a given value.
+ * @method static string wrap(string $value, string $before, ?string $after = null) Wrap the string with the given strings.
+ * @method static string unwrap(string $value, string $before, ?string $after = null) Unwrap the string with the given strings.
+ * @method static bool is(string|iterable $pattern, string $value) Determine if a given string matches a given pattern.
+ * @method static bool isAscii(string $value) Determine if a given string is 7 bit ASCII.
+ * @method static bool isJson(mixed $value) Determine if a given value is valid JSON.
+ * @method static bool isUrl(mixed $value, array $protocols = []) Determine if a given value is a valid URL.
+ * @method static bool isUuid(mixed $value) Determine if a given value is a valid UUID.
+ * @method static bool isUlid(mixed $value) Determine if a given value is a valid ULID.
+ * @method static string kebab(string $value) Convert a string to kebab case.
+ * @method static int length(string $value, ?string $encoding = null) Return the length of the given string.
+ * @method static string limit(string $value, int $limit = 100, string $end = '...') Limit the number of characters in a string.
+ * @method static string lower(string $value) Convert the given string to lower-case.
+ * @method static string words(string $value, int $words = 100, string $end = '...') Limit the number of words in a string.
+ * @method static string markdown(string $string, array $options = [], array $extensions = []) Converts GitHub flavored Markdown into HTML.
+ * @method static string inlineMarkdown(string $string, array $options = []) Converts inline Markdown into HTML.
+ * @method static string mask(string $string, string $character, int $index, ?int $length = null, string $encoding = 'UTF-8') Masks a portion of a string with a repeated character.
+ * @method static string match(string $pattern, string $subject) Get the string matching the given pattern.
+ * @method static bool isMatch(string|iterable $pattern, string $value) Determine if a given string matches a given pattern.
+ * @method static \Illuminate\Support\Collection matchAll(string $pattern, string $subject) Get the string matching all instances of the given pattern.
+ * @method static string numbers(string $value) Remove all non-numeric characters from a string.
+ * @method static string padBoth(string $value, int $length, string $pad = ' ') Pad both sides of a string with another.
+ * @method static string padLeft(string $value, int $length, string $pad = ' ') Pad the left side of a string with another.
+ * @method static string padRight(string $value, int $length, string $pad = ' ') Pad the right side of a string with another.
+ * @method static array<int, string|null> parseCallback(string $callback, ?string $default = null) Parse a Class[@]method style callback into class and method.
+ * @method static string plural(string $value, int|array|\Countable $count = 2) Get the plural form of an English word.
+ * @method static string pluralStudly(string $value, int|array|\Countable $count = 2) Pluralize the last word of an English, studly caps case string.
+ * @method static string password(int $length = 32, bool $letters = true, bool $numbers = true, bool $symbols = true, bool $spaces = false) Generate a random, secure password.
+ * @method static int|false position(string $haystack, string $needle, int $offset = 0, ?string $encoding = null) Find the multi-byte safe position of the first occurrence of a given substring in a string.
+ * @method static string random(int $length = 16) Generate a more truly "random" alpha-numeric string.
+ * @method static void createRandomStringsUsing(?callable $factory = null) Set the callable that will be used to generate random strings.
+ * @method static void createRandomStringsUsingSequence(array $sequence, $whenMissing = null) Set the sequence that will be used to generate random strings.
+ * @method static void createRandomStringsNormally() Indicate that random strings should be created normally and not using a custom factory.
+ * @method static string repeat(string $string, int $times) Repeat the given string.
+ * @method static string replaceArray(string $search, iterable $replace, string $subject) Replace a given value in the string sequentially with an array.
+ * @method static string toStringOr(mixed $value, string $fallback) Convert the given value to a string or return the given fallback on failure.
+ * @method static string|string[] replace(string|iterable $search, string|iterable $replace, string|iterable $subject, bool $caseSensitive = true) Replace the given value in the given string.
+ * @method static string replaceFirst(string $search, string $replace, string $subject) Replace the first occurrence of a given value in the string.
+ * @method static string replaceStart(string $search, string $replace, string $subject) Replace the first occurrence of the given value if it appears at the start of the string.
+ * @method static string replaceLast(string $search, string $replace, string $subject) Replace the last occurrence of a given value in the string.
+ * @method static string replaceEnd(string $search, string $replace, string $subject) Replace the last occurrence of a given value if it appears at the end of the string.
+ * @method static string|string[]|null replaceMatches(array|string $pattern, \Closure|string[]|string $replace, array|string $subject, int $limit = -1) Replace the patterns matching the given regular expression.
+ * @method static string remove(string|iterable $search, string|iterable $subject, bool $caseSensitive = true) Remove any occurrence of the given string in the subject.
+ * @method static string reverse(string $value) Reverse the given string.
+ * @method static string start(string $value, string $prefix) Begin a string with a single instance of a given value.
+ * @method static string upper(string $value) Convert the given string to upper-case.
+ * @method static string title(string $value) Convert the given string to proper case.
+ * @method static string headline(string $value) Convert the given string to proper case for each word.
+ * @method static string apa(string $value) Convert the given string to APA-style title case.
+ * @method static string singular(string $value) Get the singular form of an English word.
+ * @method static string slug(string $title, string $separator = '-', ?string $language = 'en', array $dictionary = ['@' => 'at']) Generate a URL friendly "slug" from a given string.
+ * @method static string snake(string $value, string $delimiter = '_') Convert a string to snake case.
+ * @method static string trim(string $value, ?string $charlist = null) Remove all whitespace from both ends of a string.
+ * @method static string ltrim(string $value, ?string $charlist = null) Remove all whitespace from the beginning of a string.
+ * @method static string rtrim(string $value, ?string $charlist = null) Remove all whitespace from the end of a string.
+ * @method static string squish(string $value) Remove all "extra" blank space from the given string.
+ * @method static bool startsWith(string $haystack, string|iterable $needles) Determine if a given string starts with a given substring.
+ * @method static string studly(string $value) Convert a value to studly caps case.
+ * @method static string substr(string $string, int $start, ?int $length = null, string $encoding = 'UTF-8') Returns the portion of the string specified by the start and length parameters.
+ * @method static int substrCount(string $haystack, string $needle, int $offset = 0, ?int $length = null) Returns the number of substring occurrences.
+ * @method static string|string[] substrReplace(string|string[] $string, string|string[] $replace, int|int[] $offset = 0, ?int|int[] $length = null) Replace text within a portion of a string.
+ * @method static string swap(array $map, string $subject) Swap multiple keywords in a string with other keywords.
+ * @method static string take(string $string, int $limit) Take the first or last {$limit} characters of a string.
+ * @method static string toBase64(string $string) Convert the given string to Base64 encoding.
+ * @method static string|false fromBase64(string $string, bool $strict = false) Decode the given Base64 encoded string.
+ * @method static string lcfirst(string $string) Make a string's first character lowercase.
+ * @method static string ucfirst(string $string) Make a string's first character uppercase.
+ * @method static string[] ucsplit(string $string) Split a string into pieces by uppercase characters.
+ * @method static int wordCount(string $string, ?string $characters = null) Get the number of words a string contains.
+ * @method static \Ramsey\Uuid\UuidInterface uuid() Generate a UUID (version 4).
+ * @method static \Ramsey\Uuid\UuidInterface orderedUuid() Generate a time-ordered UUID.
+ * @method static void createUuidsUsing(?callable $factory = null) Set the callable that will be used to generate UUIDs.
+ * @method static void createUuidsUsingSequence(array $sequence, $whenMissing = null) Set the sequence that will be used to generate UUIDs.
+ * @method static \Ramsey\Uuid\UuidInterface freezeUuids(?Closure $callback = null) Always return the same UUID when generating new UUIDs.
+ * @method static void createUuidsNormally() Indicate that UUIDs should be created normally and not using a custom factory.
+ * @method static \Symfony\Component\Uid\Ulid ulid(\DateTimeInterface|null $time = null) Generate a ULID.
+ * @method static void createUlidsNormally() Indicate that ULIDs should be created normally and not using a custom factory.
+ * @method static void createUlidsUsing(?callable $factory = null) Set the callable that will be used to generate ULIDs.
+ * @method static void createUlidsUsingSequence(array $sequence, $whenMissing = null) Set the sequence that will be used to generate ULIDs.
+ * @method static Ulid freezeUlids(?Closure $callback = null) Always return the same ULID when generating new ULIDs.
+ * @method static void flushCache() Remove all strings from the casing caches.
+ */
+
 class Str extends BaseHelpers
 {
     use LaravelStrings;
