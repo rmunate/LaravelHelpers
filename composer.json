@@ -28,8 +28,8 @@
     ],
     "require": {
         "php": "^8.0",
-        "illuminate/support": "^11.0",
-        "illuminate/console": "^11.0"
+        "illuminate/support": "^11.0|^12.0",
+        "illuminate/console": "^11.0|^12.0"
     },
     "require-dev": {},
     "extra": {
