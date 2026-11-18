@@ -25,7 +25,7 @@ class CreateHelpers extends Command
     {
         $name = $this->argument('name');
 
-        if (! preg_match('/\A[A-Za-z]+\z/', $name)) {
+        if (!preg_match('/\A[A-Za-z]+\z/', $name)) {
             $this->error('A helper class name must contain only ASCII letters and no spaces.');
 
             return self::INVALID;

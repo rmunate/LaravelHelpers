@@ -22,7 +22,7 @@ final class HelpersTest extends TestCase
     protected function setUp(): void
     {
         $id = bin2hex(random_bytes(8));
-        $this->files = new Filesystem;
+        $this->files = new Filesystem();
         $this->fixture = sys_get_temp_dir().DIRECTORY_SEPARATOR.'laravel-helpers-'.$id;
         $this->namespace = 'Fixture'.$id;
 
@@ -182,16 +182,16 @@ final class HelpersTest extends TestCase
 
         $cases = [
             'isAlphanumeric' => ['abc123', 'abc 123'],
-            'isAlpha' => ['abc', 'abc1'],
-            'isControl' => ["\n\r", "a\n"],
-            'isDigit' => ['123', '-123'],
-            'isGraph' => ['abc!23', 'abc 23'],
-            'isLower' => ['abc', 'Abc'],
-            'isPrint' => ['abc 23', "abc\n23"],
-            'isPunct' => ['!@#', 'a!'],
-            'isSpace' => [" \t", 'a '],
-            'isUpper' => ['ABC', 'ABc'],
-            'isHex' => ['1a2B', '1g2B'],
+            'isAlpha'        => ['abc', 'abc1'],
+            'isControl'      => ["\n\r", "a\n"],
+            'isDigit'        => ['123', '-123'],
+            'isGraph'        => ['abc!23', 'abc 23'],
+            'isLower'        => ['abc', 'Abc'],
+            'isPrint'        => ['abc 23', "abc\n23"],
+            'isPunct'        => ['!@#', 'a!'],
+            'isSpace'        => [" \t", 'a '],
+            'isUpper'        => ['ABC', 'ABc'],
+            'isHex'          => ['1a2B', '1g2B'],
         ];
 
         foreach ($cases as $method => [$valid, $invalid]) {

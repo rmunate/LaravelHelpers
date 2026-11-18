@@ -7,11 +7,11 @@ use Illuminate\Support\Facades\File;
 trait CommandUtilities
 {
     private const NATIVE_CLASSES = [
-        'arr' => 'Arr',
-        'date' => 'Date',
-        'file' => 'File',
+        'arr'    => 'Arr',
+        'date'   => 'Date',
+        'file'   => 'File',
         'number' => 'Number',
-        'str' => 'Str',
+        'str'    => 'Str',
     ];
 
     private function writeHelper(string $name, bool $skipExisting = false): bool
@@ -19,7 +19,7 @@ trait CommandUtilities
         $directory = $this->laravel->path('Helpers');
         File::ensureDirectoryExists($directory);
 
-        if (! File::isDirectory($directory)) {
+        if (!File::isDirectory($directory)) {
             $this->error("Could not create the helpers directory [$directory].");
 
             return false;
@@ -51,7 +51,7 @@ trait CommandUtilities
         $bytes = @fwrite($handle, $contents);
         $closed = @fclose($handle);
 
-        if ($bytes !== strlen($contents) || ! $closed) {
+        if ($bytes !== strlen($contents) || !$closed) {
             File::delete($path);
             $this->error("Could not write the complete helper file [$path].");
 
@@ -70,7 +70,7 @@ trait CommandUtilities
 
         return $name === 'Functions' ? $contents : strtr($contents, [
             '{{namespace}}' => $this->laravel->getNamespace().'Helpers',
-            '{{class}}' => $name,
+            '{{class}}'     => $name,
         ]);
     }
 }

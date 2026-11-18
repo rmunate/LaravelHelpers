@@ -18,7 +18,7 @@ class GenerateHelpers extends Command
         $status = self::SUCCESS;
 
         foreach (self::NATIVE_CLASSES as $class) {
-            if (! $this->writeHelper($class, skipExisting: true)) {
+            if (!$this->writeHelper($class, skipExisting: true)) {
                 $status = self::FAILURE;
             }
         }
