@@ -1,0 +1,41 @@
+name: Tests
+
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [master]
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    name: Laravel ${{ matrix.laravel }} / PHP ${{ matrix.php }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        laravel: ['12', '13']
+        php: ['8.2', '8.3', '8.4', '8.5']
+        exclude:
+          - laravel: '13'
+            php: '8.2'
+    env:
+      LARAVEL_VERSION: ${{ matrix.laravel }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: ctype, intl, mbstring, tokenizer
+          tools: composer:v2
+          coverage: none
+      - run: composer validate --strict --no-check-lock
+      - run: composer update --with "laravel/framework:^${LARAVEL_VERSION}.0" --no-interaction --prefer-dist --no-progress
+      - run: composer check-platform-reqs
+      - run: composer test

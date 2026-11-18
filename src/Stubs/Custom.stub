@@ -1,20 +1,7 @@
 <?php
 
-namespace App\Helpers;
+namespace {{namespace}};
 
-use Helpers\Illuminate\Support\Bases\BaseHelpers;
-
-class {{class}} extends BaseHelpers
+class {{class}} extends \Helpers\Illuminate\Support\Bases\BaseHelpers
 {
-    /**
-     * Example method in the helper class.
-     *
-     * This method is a placeholder to illustrate where you can add your helper logic.
-     *
-     * @return void
-     */
-    public static function yourMethod()
-    {
-        // Example placeholder code for your helper method.
-    }
 }

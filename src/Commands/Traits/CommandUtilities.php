@@ -3,208 +3,74 @@
 namespace Helpers\Illuminate\Support\Commands\Traits;
 
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
 
 trait CommandUtilities
 {
-    /**
-     * Validate the name to contain only letters.
-     *
-     * @param string $name
-     *
-     * @return bool
-     */
-    private function validateName($name)
-    {
-        return preg_match('/^[A-Za-z]+$/u', $name);
-    }
+    private const NATIVE_CLASSES = [
+        'arr' => 'Arr',
+        'date' => 'Date',
+        'file' => 'File',
+        'number' => 'Number',
+        'str' => 'Str',
+    ];
 
-    /**
-     * Check if the 'components' property exists and is not null.
-     *
-     * @return bool
-     */
-    private function validateComponents()
+    private function writeHelper(string $name, bool $skipExisting = false): bool
     {
-        return property_exists($this, 'components') && $this->components !== null;
-    }
+        $directory = $this->laravel->path('Helpers');
+        File::ensureDirectoryExists($directory);
 
-    /**
-     * Display an error message using the 'components' property if available, otherwise use the default 'error' method.
-     *
-     * @param string $message
-     *
-     * @return void
-     */
-    private function notifyError($message)
-    {
-        if ($this->validateComponents()) {
-            $this->components->error($message);
-        } else {
-            $this->error($message);
+        if (! File::isDirectory($directory)) {
+            $this->error("Could not create the helpers directory [$directory].");
+
+            return false;
         }
-    }
 
-    /**
-     * Display an info message using the 'components' property if available, otherwise use the default 'info' method.
-     *
-     * @param string $message
-     *
-     * @return void
-     */
-    private function notifyInfo($message)
-    {
-        if ($this->validateComponents()) {
-            $this->components->info($message);
-        } else {
-            $this->info($message);
+        $path = $directory.DIRECTORY_SEPARATOR.$name.'.php';
+
+        if (File::exists($path) || is_link($path)) {
+            if ($skipExisting && File::isFile($path)) {
+                $this->info("Skipped existing helper file [$path].");
+
+                return true;
+            }
+
+            $this->error("Cannot create helper file [$path]: the path already exists.");
+
+            return false;
         }
-    }
 
-    /**
-     * Convert a string to studly case.
-     *
-     * @param string $name
-     *
-     * @return string
-     */
-    private function studly($name)
-    {
-        return Str::studly($name);
-    }
+        $contents = $this->renderHelper($name);
+        $handle = @fopen($path, 'xb');
 
-    /**
-     * Generate the file name by adding '.php' extension to the given name.
-     *
-     * @param string $name
-     *
-     * @return string
-     */
-    private function fileName($name)
-    {
-        return $name.'.php';
-    }
+        if ($handle === false) {
+            $this->error("Cannot create helper file [$path]. Check permissions and confirm the path is available.");
 
-    /**
-     * Ensure the existence of the 'Helpers' directory and return its path.
-     *
-     * @return string
-     */
-    private function ensureDirectoryExists($directory)
-    {
-        $path = app_path($directory);
-        File::ensureDirectoryExists($path);
-
-        return $path;
-    }
-
-    /**
-     * Get the full file path by combining the directory path and the file name.
-     *
-     * @param string $path
-     * @param string $fileName
-     *
-     * @return string
-     */
-    private function filePath($path, $fileName)
-    {
-        return $path.'/'.$fileName;
-    }
-
-    /**
-     * Check if the file exists.
-     *
-     * @param string $filePath
-     *
-     * @return bool
-     */
-    private function fileExist($filePath)
-    {
-        return File::exists($filePath);
-    }
-
-    /**
-     * Put the generated content into the file.
-     *
-     * @param string $filePath
-     * @param string $stub
-     *
-     * @return bool
-     */
-    private function filePut($filePath, $stub)
-    {
-        return File::put($filePath, $stub);
-    }
-
-    /**
-     * Get the content of a file.
-     *
-     * @param string $path
-     *
-     * @return string
-     */
-    private function fileGet($path)
-    {
-        return File::get($path);
-    }
-
-    /**
-     * Replace a search string with a replace string in the target string.
-     *
-     * @param string $search
-     * @param string $replace
-     * @param string $target
-     *
-     * @return string
-     */
-    private function replaceString($search, $replace, $target)
-    {
-        return str_replace($search, $replace, $target);
-    }
-
-    /**
-     * Generate the content from the stub file.
-     *
-     * @param string $className
-     *
-     * @return string
-     */
-    private function getStub($className)
-    {
-        $stubs = [
-            'Arr'    => '/../../Stubs/Arr.stub',
-            'Date'   => '/../../Stubs/Date.stub',
-            'File'   => '/../../Stubs/File.stub',
-            'Number' => '/../../Stubs/Number.stub',
-            'Str'    => '/../../Stubs/Str.stub',
-        ];
-
-        if (isset($stubs[$className])) {
-            return $this->fileGet(__DIR__.$stubs[$className]);
-        } else {
-            return $this->replaceString('{{class}}', $className, $this->fileGet(__DIR__.'/../../Stubs/Custom.stub'));
+            return false;
         }
+
+        $bytes = @fwrite($handle, $contents);
+        $closed = @fclose($handle);
+
+        if ($bytes !== strlen($contents) || ! $closed) {
+            File::delete($path);
+            $this->error("Could not write the complete helper file [$path].");
+
+            return false;
+        }
+
+        $this->info("Helper file [$path] created successfully.");
+
+        return true;
     }
 
-    /**
-     * Generate the content from the stub file.
-     *
-     * @return string
-     */
-    private function getStubFunction()
+    private function renderHelper(string $name): string
     {
-        return $this->fileGet(__DIR__.'/../../Stubs/Functions.stub');
-    }
+        $stub = $name === 'Functions' || isset(self::NATIVE_CLASSES[strtolower($name)]) ? $name : 'Custom';
+        $contents = File::get(dirname(__DIR__, 2).'/Stubs/'.$stub.'.stub');
 
-    /**
-     * Get the class name from the file path.
-     *
-     * @param string $filePath
-     *
-     * @return string
-     */
-    private function getClassName($filePath)
-    {
-        return pathinfo($filePath, PATHINFO_FILENAME);
+        return $name === 'Functions' ? $contents : strtr($contents, [
+            '{{namespace}}' => $this->laravel->getNamespace().'Helpers',
+            '{{class}}' => $name,
+        ]);
     }
 }

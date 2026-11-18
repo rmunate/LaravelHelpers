@@ -4,26 +4,26 @@ layout: home
 hero:
   name: Laravel
   text: Helpers
-  tagline: Your own integrated solutions with Laravel's Core! 💻✨
+  tagline: Organize and extend your application helpers. Compatible with Laravel 13.
   image:
-    src: img/logo.png
-    alt: VitePress
+    src: /img/logo.png
+    alt: Laravel Helpers logo
   actions:
     - theme: brand
       text: Get Started
-      link: /home
+      link: /getting-started/installation
     - theme: alt
       text: View on GitHub
       link: https://github.com/rmunate/LaravelHelpers
 
 features:
   - icon: 🌐
-    title: Standardize Helper Usage in Your Project
-    details: Establish a consistent standard for creating and using helpers in your Laravel projects. Define a clear structure for creating and calling them within your project.
+    title: Organize application helpers
+    details: Generate helper classes and an optional global functions file with Artisan.
   - icon: 🚀
-    title: Add Your Own Solutions
-    details: Imagine Laravel adding all your personal solutions. While it's challenging for maintainers to accept numerous features, it's time for the community to contribute and enhance the ecosystem.
+    title: Keep your customizations
+    details: Generate missing helper files without overwriting methods you already added.
   - icon: 📢
-    title: Easy Invocation
-    details: Utilize the same class names exposed by Laravel with the added convenience of being readily accessible in your project.
+    title: Reuse Laravel's helpers
+    details: Use Laravel's existing methods and macros through your own Arr, Date, File, Number, and Str classes.
 ---

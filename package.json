@@ -1,6 +1,11 @@
 {
+  "name": "laravel-helpers-docs",
+  "private": true,
+  "engines": {
+    "node": ">=24"
+  },
   "devDependencies": {
-    "vitepress": "^1.2.0"
+    "vitepress": "^1.6.4"
   },
   "scripts": {
     "docs:dev": "vitepress dev docs",

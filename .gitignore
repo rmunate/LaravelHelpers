@@ -1,23 +1,12 @@
-# Ignore common macOS files and directories
-**/.DS_Store
-
-# Ignore automatically generated files and directories
+.DS_Store
 /vendor/
-/.fleet
-/.idea
-/.vscode
-
-
-# Ignore Composer generated directory and files
-/vendor
-composer.lock
-node_modules
-docs/.vitepress/cache
-docs/.vitepress/dist
-docs/.vitepress/.temp
-
-# Ignore development tool generated files and directories
-.fleet
-.idea
-.vscode
+/composer.lock
+/.phpunit.cache/
+/node_modules/
+/docs/.vitepress/cache/
+/docs/.vitepress/dist/
+/docs/.vitepress/.temp/
+/.fleet/
+/.idea/
+/.vscode/
 

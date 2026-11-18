@@ -2,31 +2,27 @@
 
 namespace Helpers\Illuminate\Support\Providers;
 
+use Helpers\Illuminate\Support\Commands\CreateHelpers;
+use Helpers\Illuminate\Support\Commands\CreateHelpersFunctions;
+use Helpers\Illuminate\Support\Commands\GenerateHelpers;
 use Illuminate\Support\ServiceProvider;
 
 class HelpersServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot()
+    public function boot(): void
     {
-        $this->registerCommands();
-    }
+        $functions = $this->app->path('Helpers/Functions.php');
 
-    /**
-     * Register the commands provided by the service provider.
-     *
-     * @return void
-     */
-    protected function registerCommands()
-    {
-        $this->commands([
-            \Helpers\Illuminate\Support\Commands\GenerateHelpers::class,
-            \Helpers\Illuminate\Support\Commands\CreateHelpers::class,
-            \Helpers\Illuminate\Support\Commands\CreateHelpersFunctions::class,
-        ]);
+        if (is_file($functions)) {
+            require_once $functions;
+        }
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                GenerateHelpers::class,
+                CreateHelpers::class,
+                CreateHelpersFunctions::class,
+            ]);
+        }
     }
 }

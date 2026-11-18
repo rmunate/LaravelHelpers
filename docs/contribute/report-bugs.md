@@ -6,9 +6,8 @@ outline: deep
 
 # Bug Report
 
-If you find errors or opportunities within the package, you can create an incident that we will attend to in the shortest time possible.
+Open a [GitHub issue](https://github.com/rmunate/LaravelHelpers/issues/new) with:
 
-Here!:
-[https://github.com/rmunate/LaravelHelpers/issues/new](https://github.com/rmunate/LaravelHelpers/issues/new)
-
-Remember that you can also contribute as a collaborator of this solution.
+- Your Laravel, PHP, and Laravel Helpers versions.
+- The Artisan command or helper call that failed, and what you expected.
+- A minimal example and the relevant error output, with secrets removed.

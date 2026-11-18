@@ -1,82 +1,57 @@
 ---
 title: Default Classes
-editLink: true
-outline: deep
 ---
 
 # Default Classes
-
-After installing the dependency in your project, you can generate the initial structure for helpers by running the following command:
 
 ```shell
 php artisan helper:init
 ```
 
-## Helpers Folder
+For a standard Laravel application, this creates:
 
-This will create a folder named `Helpers` inside the `app/` directory, where you will find the standard classes suggested for creating your own helpers.
-
-The structure of the `Helpers` folder will be as follows:
-
-```shell
+```text
 app/
 └── Helpers/
-    └── Arr.php
-    └── Date.php
-    └── File.php
-    └── Number.php
+    ├── Arr.php
+    ├── Date.php
+    ├── File.php
+    ├── Number.php
     └── Str.php
-    //...
 ```
 
-These classes will replace the default classes exposed by the Laravel framework. For example, `Illuminate\Support\Str` will no longer need to be invoked. To use any of the helpers originally integrated into the framework, simply call the `App\Helpers\Str` class.
+If your app uses a different application directory or namespace, the generator uses that configuration. You own these files: running `helper:init` again skips files that already exist.
+
+## Call Laravel methods
+
+Import the helpers from your app's namespace. These classes do not replace Laravel support classes or facades elsewhere in your application.
 
 ```php
+use App\Helpers\Arr;
+use App\Helpers\Date;
+use App\Helpers\File;
+use App\Helpers\Number;
 use App\Helpers\Str;
 
-$string = Str::ucfirst('foo bar');
-
-// Foo bar
+$settings = [];
+Arr::set($settings, 'display.theme', 'dark'); // Updates $settings in place
+$date = Date::parse('2026-03-17', 'UTC');
+$exists = File::exists(app_path('Helpers/Str.php'));
+$formatted = Number::format(1234.5, 2, locale: 'en_US'); // Requires intl
+$slug = Str::slug('Laravel Helpers');
 ```
 
-## Creating New Methods
+Available native methods and macros depend on your version of Laravel. `Arr::push()`, for example, requires a Laravel version that provides it. `Date` and `File` use Laravel's facades and require a bootstrapped application.
 
-In the corresponding `App\Helpers\*` class, you can create methods that are convenient for your project. For example, following this example, we will create a string class that brings a bit of `Python` flavor to `PHP`.
+## Add your own methods
+
+Add your method inside the generated class and keep its trait to continue using Laravel methods. For example, add this method to `Str.php`:
 
 ```php
-class Str extends BaseHelpers
+public static function zfill(string $input, int $width): string
 {
-    /**
-     * Fill the string with zeros on the left to reach the specified length.
-     *
-     * @param string $input The input string.
-     * @param int $width The desired width of the output string.
-     * @return string The zero-filled string.
-     */
-    public static function zfill(string $input, int $width): string {
-
-        /**
-         * Check if the input string length is already
-         * greater than or equal to the desired width
-         */
-        if (strlen($input) >= $width) {
-            return $input;
-        }
-
-        /* Calculate the number of zeros needed */
-        $zerosNeeded = $width - strlen($input);
-
-        /* Pad the string with zeros on the left */
-        return str_repeat('0', $zerosNeeded) . $input;
-    }
+    return str_pad($input, $width, '0', STR_PAD_LEFT);
 }
 ```
 
-You can now invoke the class whenever and wherever you need it.
-
-```php
-use App\Helpers\Str;
-
-Str::zfill('42', 5);
-// Output: 00042
-```
+You can then call `Str::zfill('42', 5)` to get `'00042'`. The package also provides [string character checks](/methods/strings).

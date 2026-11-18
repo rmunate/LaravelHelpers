@@ -49,19 +49,44 @@ const members = [
 
 # Contributing
 
-## How to Contribute to this Solution?
+## Contributing changes
 
-If you see ways in which we can improve, change how we handle information, adjust pre-built blocks, or add new features, or even develop them yourself and add them.
+Fork the repository and open a pull request against `master`. Include the reason for the change and a regression test when changing package behavior.
 
-We are eager to receive your pull requests!
+Run the integration tests with a supported PHP version and an up-to-date Composer 2:
 
-Simply fork the repository on GitHub and create pull requests (PRs) to the main branch once you have prepared your changes.
+```shell
+composer install
+composer test
+```
 
-It is essential to provide a clear justification for the changes or new features, accompanied by a usage manual.
+To test a specific supported Laravel major without editing `composer.json`:
 
-::: tip TEST
-Remember to test your code before submitting pull requests.
-:::
+```shell
+composer update --with "laravel/framework:^13.0"
+composer test
+```
+
+The tests use temporary Laravel applications and require `intl` for the number formatting case. Build or preview the docs with Node.js 24 and npm:
+
+```shell
+npm ci
+npm run docs:build
+npm run docs:preview
+```
+
+## Publishing
+
+1. In GitHub, set **Settings → Pages → Build and deployment → Source** to **GitHub Actions**. The documentation workflow builds on pull requests and deploys only from `master`, including manual runs from that branch.
+2. Merge the changes and verify that the PHP matrix and documentation deployment are green on `master`.
+3. Tag that commit and push the tag to publish the Composer version:
+
+   ```shell
+   git tag -a v4.0.0 -m "Laravel Helpers 4.0.0"
+   git push origin v4.0.0
+   ```
+
+4. Confirm that [Packagist](https://packagist.org/packages/rmunate/laravel_helpers) lists `4.0.0`. Packagist reads Git tags; if it does not refresh automatically, check the repository integration in Packagist. The Pages workflow publishes the site, not the Composer package.
 
 ## Developers and Contributors
 

@@ -1,69 +1,36 @@
 ---
 title: Custom Classes
-editLink: true
-outline: deep
 ---
 
 # Custom Classes
 
-If your project's needs go beyond the categories of standard classes, you can create your own solutions.
-
-With a simple command, you can create your own static helper classes.
-
 ```shell
 php artisan helper:create Html
 ```
-In this case, `Html` is the name of the Helpers category, but you can use any name you prefer. Just make sure it follows PascalCase.
 
-The above command will create a new class within the `Helpers` folder with the name you specified.
+This creates `app/Helpers/Html.php` in a standard Laravel project. Use a PascalCase name with only ASCII letters, such as `Html` or `TextTools`. PHP keywords, reserved names such as `Functions`, and existing files are rejected.
 
-```shell
-app/
-└── Helpers/
-    └── Html.php
-    //...
-```
-
-## Defining Static Methods
-
-For this example, let's create a method in the `Html` class that handles rendering a text input.
+Add a public static method inside the generated class:
 
 ```php
-class Html extends BaseHelpers
+public static function textInput(string $name, string $value = ''): string
 {
-
-    /**
-     * Render a text input field.
-     *
-     * @param string $name The name attribute of the input field.
-     * @param string $value The value attribute of the input field (default is an empty string).
-     * @return string The rendered HTML for the input field.
-     */
-    public static function textInput(string $name, string $value = ''): string
-    {
-        return '<input type="text" name="' . htmlspecialchars($name, ENT_QUOTES, 'UTF-8') .
-               '" value="' . htmlspecialchars($value, ENT_QUOTES, 'UTF-8') . '">';
-    }
-
+    return '<input type="text" name="'.e($name).'" value="'.e($value).'">';
 }
 ```
 
-Now you can use your helper wherever you need it.
-
-## Example Usage of Helper in Blade
-
-If you want to execute your helper within Blade, you can do so with the following syntax.
-
-```blade
-{!! \App\Helpers\Html::textInput('username', 'rmunate') !!}
-```
-
-## Usage in Classes
-
-If, on the other hand, you'll be using it in controllers, services, or specific classes in your application, you can simply import the class and make the corresponding call.
+To use the class in PHP:
 
 ```php
 use App\Helpers\Html;
 
 $input = Html::textInput('username', 'rmunate');
 ```
+
+To render the HTML in Blade after escaping the input values:
+
+```blade
+{!! \App\Helpers\Html::textInput('username', 'rmunate') !!}
+```
+
+If your deployment uses an authoritative Composer class map, rebuild it with `composer dump-autoload --classmap-authoritative` after generating new classes.

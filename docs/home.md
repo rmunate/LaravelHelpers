@@ -1,17 +1,15 @@
 ---
 title: Introduction
-editLink: true
-outline: deep
 ---
 
-![logo-spell-number](/img/logo-full-scream.png)
+# Introduction
 
-## Introduction
+![Laravel Helpers](/img/logo-full-scream.png)
 
-For many years, I have used Laravel, and I believe it is the framework that breathes the best life into PHP. However, the creation of Helpers has not been standardized within this framework. Thus, I decided to create a standard and implement it across the various systems and companies I have worked with. Today, many colleagues have decided to support this initiative and create a package that becomes a powerful feature in Laravel.
+Laravel Helpers gives your application a place to keep small reusable methods and optional global functions. It does not replace Laravel's helpers; your classes live in your application's `Helpers` namespace and can delegate to the framework when you need its native methods.
 
-Our solution offers a simple, efficient, and elegant way to execute your application's custom methods from any class or view, making development much easier. Enhance your Laravel project while maintaining the elegance and cleanliness of your code with this package.
+1. [Install the package](/getting-started/installation).
+2. [Generate the default classes](/usage/default-classes), or [create your own](/usage/personalized-classes).
+3. Optionally add a [global functions file](/usage/global-functions).
 
-We have oriented the entire use of Helpers towards classes and, most importantly, centralized the existing Laravel helpers through the categories of this package. We include native Laravel functionalities accessible through classes like `Str::` and `Arr::`. Other helpers that are not accessed via classes but as functions should continue to be used as presented in Laravel's official documentation.
-
-It's time to standardize how we create and use helpers in our projects.
+Use Laravel's standalone helper functions, such as `data_get()` or `now()`, as described in the [Laravel documentation](https://laravel.com/docs/13.x/helpers).
